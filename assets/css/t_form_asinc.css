@@ -1,0 +1,263 @@
+* {
+	font-family: 'Source Sans Pro', 'Sans Serif';
+	font-size: 1rem;
+}
+
+ventana-modal .modal {
+	min-width: 300px;
+	padding: 20px;
+}
+
+ventana-modal header h1 {
+	font-size: 1.3em;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+ventana-modal label {
+	display: block;
+	position: relative;
+	width: 390px;
+	margin-bottom: 10px;
+}
+
+ventana-modal label span {
+	display: inline-block;
+	padding: 4px 5px;
+}
+
+ventana-modal form fieldset {
+	border: 1px solid #000;
+}
+
+ventana-modal form input:not([type='submit']):not([type='reset']),
+ventana-modal select {
+	position: absolute;
+	right: 0;
+	border: 1px solid var(--clrbtnform);
+	padding: 2px 10px;
+	width: 195px;
+}
+
+ventana-modal select {
+	width: 217px;
+}
+
+ventana-modal form input.nro_real {
+	width: 100px;
+	text-align: right;
+}
+
+ventana-modal .btn_submit {
+	text-align: center;
+	margin-top: 40px;
+}
+
+ventana-modal .btn_submit * {
+	background: white;
+	padding: var(--padsupinfbtn) var(--padlatbtn);
+	border: 1px solid black;
+	margin: 0 10px;
+	cursor: pointer;
+}
+
+
+ventana-modal .grupo_radio label input[type=radio] {
+    position: relative;
+
+    width: auto;
+    visibility: hidden;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+ventana-modal .grupo_radio {
+	width: 390px;
+    margin-top: 10px;
+}
+
+ventana-modal .grupo_radio label {
+    display: inline-block;
+    width: 125px;
+    margin-top: 0;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+ventana-modal .grupo_radio label input[type=radio]:before {
+    position: absolute;
+    top: -15%;
+    right: -15%;
+
+    display: block;
+    border: 2px solid rgba(0,0,0,.44);
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+
+    content: '';
+    visibility: visible;
+}
+
+ventana-modal .grupo_radio label:first-of-type [type=radio]:checked:before {
+    border-color: #5E8FB9;
+}
+
+ventana-modal .grupo_radio label:last-of-type [type=radio]:checked:before {
+    border-color: #E3335D;
+}
+
+ventana-modal .grupo_radio label input[type=radio]:after {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+
+    display: block;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    visibility: hidden;
+
+    content: '';
+
+    transition: all .25s ease-in-out;
+    transform: scale(0);
+}
+
+ventana-modal .grupo_radio label:first-of-type input[type=radio]:after {
+    background: #5E8FB9;
+}
+
+.grupo_radio label:last-of-type input[type=radio]:after {
+    background: #E3335D;
+}
+
+.grupo_radio input[type=radio]:checked:after,
+.grupo_radio label:hover input[type=radio]:after {
+    visibility: visible;
+    transform: scale(1);
+}
+
+.grupo_radio label:hover input[type=radio]:not(:checked):after {
+    transform: scale(.8);
+}
+
+.select_lugar {
+	position: relative;
+
+	width: 390px;
+	height: 30px;
+	margin-bottom: 4px;
+}
+
+.select_lugar > select {
+	left: 30px;
+}
+
+ventana-modal form fieldset {
+	padding-left: 5px;
+	width: 383px !important;
+	margin-top: 10px;
+	border: 1px solid var(--clrbtnform);
+	padding-top: 5px;
+
+}
+
+.domicilio > label, .domicilio .select_lugar {
+	width: 370px;
+}
+
+.domicilio > .grupo_radio {
+	width: 380px;
+}
+
+select[disabled] {
+	display: none;
+}
+
+#en_escuela {
+	position: relative;
+	width: auto;
+	margin-left: 10px;
+}
+
+.invalido {
+	border: 1px solid red !important;
+}
+
+.box_msj {
+	position: absolute;
+	right: 0;
+	bottom: -2px;
+	padding: 0 10px;
+	width: 195px;
+}
+
+.invalido ~ .box_msj > .msj_invalido {
+	position: absolute;
+	left: -20px;
+	top: 5px;
+	z-index: 1;
+
+	padding: 10px 15px;
+	background: #efefef;
+	border: 1px solid #828282;
+	border-radius: 5px;
+
+	box-shadow: 0 0 1em #000;
+
+	animation: msj_aparecer 5s;
+	opacity: 0;
+}
+
+.msj_invalido > span {
+	display: block;
+	font-weight: 600;
+}
+
+.msj_invalido:before {
+	content: '';
+
+	position: absolute;
+	top: -15px;
+	left: 16px;
+
+	display: block;
+	width: 5px;
+	height: 5px;
+	border: 5px solid transparent;
+	border-bottom-color: #828282;
+}
+
+.msj_invalido:after {
+	content: '';
+
+	position: absolute;
+	top: -15px;
+
+	display: block;
+	width: 7px;
+	height: 7px;
+	border: 5px solid transparent;
+	border-bottom-color: #eee;
+}
+
+@keyframes msj_aparecer {
+	0% {
+		opacity: 0;
+		transform: scale(0, 0);
+	}
+
+	10% {
+		opacity: 1;
+		transform: scale(1, 1);
+	}
+
+	80% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}

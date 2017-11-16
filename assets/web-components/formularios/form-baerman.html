@@ -1,0 +1,48 @@
+<template>
+	<label class="etiqueta">Baerman
+		<input type="checkbox" class="activar" name="baerman" />
+	</label>
+
+	<fieldset class="datos_formulario" disabled="disabled">
+		<label>Strongyloides
+			<select name="baerman[strongyloides]" required="required">
+				<option></option>
+				<option value="+">+</option>
+				<option value="++">++</option>
+				<option value="+++">+++</option>
+				<option value="NEGATIVO">Negativo</option>
+			</select>
+		</label>
+		<label>Ancylostoma
+			<select name="baerman[ancylostoma]" required="required">
+				<option></option>
+				<option value="+">+</option>
+				<option value="++">++</option>
+				<option value="+++">+++</option>
+				<option value="NEGATIVO">Negativo</option>
+			</select>
+		</label>
+		<label>Necator
+			<select name="baerman[necator]" required="required">
+				<option></option>
+				<option value="+">+</option>
+				<option value="++">++</option>
+				<option value="+++">+++</option>
+				<option value="NEGATIVO">Negativo</option>
+			</select>
+		</label>
+		<div class="btn_negativo">
+			<button type="button">Completar con Negativos</button>
+		</div>
+	</fieldset>
+</template>
+
+<script>
+
+protoFormBaerman = Object.create(protoFormHaradaMori);
+
+protoFormBaerman.template = document.currentScript.ownerDocument.querySelector("template").content;
+
+document.registerElement("form-baerman", { prototype: protoFormBaerman });
+
+</script>

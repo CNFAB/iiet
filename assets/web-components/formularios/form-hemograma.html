@@ -1,0 +1,43 @@
+<template>
+	<label class="etiqueta">Hemograma
+		<input type="checkbox" class="activar" name="hemograma" />
+	</label>
+
+	<fieldset class="datos_formulario" disabled="disabled">
+		<label>Gl&oacute;bulos Blancos
+			<input type="text" class="numero" name="hemograma[globulos_blancos]" pattern="^\d*(\.\d{1,2})?$" required="required" />
+			<span>mm&#179;</span>
+		</label>
+		<label>Hemoglobina
+			<input type="text" class="numero" name="hemograma[hemoglobina]" pattern="^\d*(\.\d{1,2})?$" required="required" />
+			<span>gr&#47;dl</span>
+		</label>
+		<label>Eosinofilos
+			<input type="text" class="numero" name="hemograma[eosinofilos]" pattern="^\d*(\.\d{1,2})?$" required="required" />
+			<span>&#37;</span>
+		</label>
+	</fieldset>
+</template>
+
+<script>
+
+protoFormHemograma = Object.create(PrototipoFormulario);
+
+protoFormHemograma.template = document.currentScript.ownerDocument.querySelector("template").content;
+
+protoFormHemograma.establecerPropiedades = function() {
+	PrototipoFormulario.establecerPropiedades.call(this);
+
+	this.campos = this.datosFormulario.querySelectorAll("input");
+};
+
+protoFormHemograma.deshabilitar = function() {
+	PrototipoFormulario.deshabilitar.call(this);
+
+	for(var i = 0; i < this.campos.length; ++i)
+		this.campos[i].value = null;
+};
+
+document.registerElement("form-hemograma", { prototype: protoFormHemograma });
+
+</script>

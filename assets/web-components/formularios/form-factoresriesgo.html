@@ -1,0 +1,86 @@
+<template>
+	<span class="etiqueta">Factores de Riesgo</span>
+
+	<fieldset class="datos_formulario">
+		<label>Red Dimiciliaria y Red Cloacal
+			<input type="checkbox" name="red_dom_y_cloaca" />
+		</label>
+		<label>Tratamiento del Agua
+			<select name="tratamiento_agua">
+				<option></option>
+				<option value="CL">CL</option>
+				<option value="F">F</option>
+				<option value="H">H</option>
+				<option value="P">P</option>
+				<option value="NO">NO</option>
+			</select>
+		</label>
+		<label>DSE
+			<select name="dse">
+				<option></option>
+				<option value="CP">CP</option>
+				<option value="L">L</option>
+				<option value="RC">RC</option>
+				<option value="NO">NO</option>
+			</select>
+		</label>
+		<label>TSB
+			<select name="tsb">
+				<option></option>
+				<option value="R">R</option>
+				<option value="PB">PB</option>
+				<option value="NO">NO</option>
+			</select>
+		</label>
+		<label>Piso de la Vivienda
+			<select name="piso_vivienda">
+				<option></option>
+				<option value="MOSAICO / BALDOSA">Mosaico / Baldosa</option>
+				<option value="CEMENTO">Cemento</option>
+				<option value="TIERRA">Tierra</option>
+				<option value="LOSA">Losa</option>
+				<option value="OTROS">Otros</option>
+			</select>
+		</label>
+		<label>Desempleo / Ingreso Econ&oacute;mico Inestable
+			<input type="checkbox" name="desemp_ing_econ_inest" />
+		</label>
+		<label>Analfabetismo de Personas a Cargo de Menores
+			<input type="checkbox" name="analfab_pers_cargo_menores" />
+		</label>
+		<label>Familia de Riesgo
+			<input type="checkbox" name="familia_riesgo" />
+		</label>
+	</fieldset>
+</template>
+
+<script>
+	
+protoFormFactoresRiesgo = Object.create(PrototipoFormulario);
+
+protoFormFactoresRiesgo.template = document.currentScript.ownerDocument.querySelector("template").content;
+
+protoFormFactoresRiesgo.establecerPropiedades = function() {
+	PrototipoFormulario.establecerPropiedades.call(this);
+
+	this.campos = this.querySelectorAll("label > *");
+};
+
+protoFormFactoresRiesgo.establecerEventos = function() {};
+
+protoFormFactoresRiesgo.deshabilitar = function() {
+	PrototipoFormulario.deshabilitar.call(this);
+
+	this.campos[0].checked = false;
+	this.campos[1].selectedIndex = 0;
+	this.campos[2].selectedIndex = 0;
+	this.campos[3].selectedIndex = 0;
+	this.campos[4].selectedIndex = 0;
+	this.campos[5].checked = false;
+	this.campos[6].checked = false;
+	this.campos[7].checked = false;
+};
+
+document.registerElement("form-factoresriesgo", { prototype: protoFormFactoresRiesgo });
+
+</script>

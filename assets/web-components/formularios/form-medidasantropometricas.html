@@ -1,0 +1,30 @@
+<template>
+	<span class="etiqueta">Medidas</span>
+
+	<fieldset class="datos_formulario">
+		<label>Peso
+			<input type="text" class="numero" name="medidas_antropometricas[peso]" pattern="^\d*(,\d{1,2})?$" required="required" />
+			<span>kg</span>
+		</label>
+		<label>Talla
+			<input type="text" class="numero" name="medidas_antropometricas[talla]" pattern="^\d*(,\d{1,2})?$" required="required" />
+			<span>mtrs</span>
+		</label>
+		<label>Per&iacute;metro Cef&aacute;lico
+			<input type="text" class="numero" name="medidas_antropometricas[perimetro_cefalico]" pattern="^\d*(,\d{1,2})?$" required="required" />
+			<span>cm</span>
+		</label>
+	</fieldset>
+</template>
+
+<script>
+	
+protoFormMedidasAntropometricas = Object.create(protoFormHemograma);
+
+protoFormMedidasAntropometricas.template = document.currentScript.ownerDocument.querySelector("template").content;
+
+protoFormMedidasAntropometricas.establecerEventos = function() {};
+
+document.registerElement("form-medidasantropometricas", { prototype: protoFormMedidasAntropometricas });
+
+</script>

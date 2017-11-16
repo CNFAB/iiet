@@ -1,0 +1,65 @@
+<template>
+	<span class="etiqueta">Diagn&oacute;stico Presuntivo</span>
+
+	<fieldset class="datos_formulario">
+		<label>Control
+			<input type="checkbox" name="control" />
+		</label>
+		<label>Bajo Peso
+			<input type="checkbox" name="bajo_peso" />
+		</label>
+		<label>Anemia
+			<input type="checkbox" name="anemia" />
+		</label>
+		<label>Diarrea
+			<input type="checkbox" name="diarrea" />
+		</label>
+		<label>Estre&ntilde;imiento
+			<input type="checkbox" name="estrenimiento" />
+		</label>
+		<label>Manchas en la Piel
+			<input type="checkbox" name="manchas_piel" />
+		</label>
+		<label>Priurito Anal
+			<input type="checkbox" name="priurito_anal" />
+		</label>
+		<label>Bruxismo
+			<input type="checkbox" name="bruxismo" />
+		</label>
+		<label>Dolor Abdominal
+			<input type="checkbox" name="dolor_abdominal" />
+		</label>
+		<label>Otros
+			<input type="text" name="otros" />
+		</label>
+	</fieldset>
+</template>
+
+<script>
+	
+protoFormDiagnostivoPresuntivo = Object.create(PrototipoFormulario);
+
+protoFormDiagnostivoPresuntivo.template = document.currentScript.ownerDocument.querySelector("template").content;
+
+protoFormDiagnostivoPresuntivo.establecerPropiedades = function() {
+	PrototipoFormulario.establecerPropiedades.call(this);
+
+	this.campos = this.querySelectorAll("input");
+};
+
+protoFormDiagnostivoPresuntivo.establecerEventos = function() {};
+
+protoFormDiagnostivoPresuntivo.deshabilitar = function() {
+	var i;
+
+	PrototipoFormulario.deshabilitar.call(this);
+
+	for(i = 0; i < this.campos.length - 1; ++i)
+		this.campos[i].checked = false;
+
+	this.campos[i].value = null;
+};
+
+document.registerElement("form-diagnosticopresuntivo", { prototype: protoFormDiagnostivoPresuntivo });
+
+</script>

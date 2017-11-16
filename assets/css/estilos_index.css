@@ -1,0 +1,152 @@
+/********/
+body {
+	font-family: 'Source Sans Pro';
+	font-style: 400;
+}
+
+body > header {
+	text-align: center;
+	padding: 30px;
+}
+
+header > h1 {
+	font-size: 5em;
+}
+
+header > span {
+	font-size: 0.9em;
+}
+
+#nuevo > h2, #agregar > h2 {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	display: block;
+	position: relative;
+}
+
+#nuevo span, #agregar span {
+	background-color: white;
+	padding: 10px 20px;
+}
+
+#nuevo, #agregar {
+	padding: 10px 10px 20px 10px;
+	position: relative;
+	display: block;
+}
+
+#nuevo > h2:before, #nuevo > h2:after,
+#agregar > h2:before, #agregar > h2:after {
+	content: "";
+	display: inline-block;
+	border: none;
+	width: 50%;
+	height: 1px;
+	position: absolute;
+	top: 50%;
+	z-index: -1;
+}
+
+#nuevo > h2:before, #agregar > h2:before {
+	background-image: linear-gradient(to right, #fff, #000);
+	left: 0;
+}
+
+#nuevo > h2:after, #agregar > h2:after {
+	background-image: linear-gradient(to left, #fff, #000);
+	right: 0;
+}
+
+/*************************/
+
+.btn_nuevo {
+	display: inline-block;
+	width: 160px;
+	border: 1px solid black;
+	text-align: center;
+	padding: 10px 0;
+	margin-left: 20px;
+	margin-top: 20px;
+	color: #000;
+}
+
+#agregar {
+	margin-top: 40px;
+}
+
+.grp_btns,.grp_campos {
+	display: block;
+	width: 100%;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+.grp_campos {
+	margin-top: 25px;
+	display: block;
+	position: relative;
+}
+
+.grp_campos select {
+	border-bottom: 1px solid #000;
+	padding: 2px;
+}
+
+#grp_busqueda {
+	position: relative;
+	display: inline-block;
+	width: 500px;
+}
+
+#campo_busqueda {
+	position: absolute;
+	left: -58%;
+}
+
+#valor_busqueda {
+	border-bottom: 1px solid #000;
+	width: 100%;
+	padding: 2px;
+}
+
+#crear_paciente {
+	display: block;
+	position: absolute;
+	bottom: -147%;
+	left: 0;
+	width: 100%;
+	padding: 10px 2px;
+	border: 1px solid #202020;
+	color: #c9c9c9;
+	background: #363636;
+}
+
+#crear_paciente img {
+	position: absolute;
+	top: calc(50% - 16px);
+	left: 155px;
+}
+
+#crear_paciente:hover {
+	background: #464646;
+	border-color: #303030;
+}
+
+input, select {
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  color: #000;
+}
+
+h2 {
+  font-size: 1.3em;
+}
+
+option {
+  padding: 1px 5px;
+}
+
+.oculto {
+	display: none !important;
+}

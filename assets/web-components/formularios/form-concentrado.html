@@ -1,0 +1,56 @@
+<template>
+	<label class="etiqueta">Concentrado
+		<input type="checkbox" class="activar" name="concentrado" />
+	</label>
+
+	<fieldset class="datos_formulario" disabled="disabled">
+		<label>Ascaris
+			<input type="checkbox" name="concentrado[ascaris]" />
+		</label>
+		<label>Giardia
+			<input type="checkbox" name="concentrado[giardia]" />
+		</label>
+		<label>Entamoebacoli
+			<input type="checkbox" name="concentrado[entamoebacoli]" />
+		</label>
+		<label>Uncinarias
+			<input type="checkbox" name="concentrado[uncinarias]" />
+		</label>
+		<label>Strongyloides
+			<input type="checkbox" name="concentrado[strongyloides]" />
+		</label>
+		<label>Hymenolepis
+			<input type="checkbox" name="concentrado[hymenolepis]" />
+		</label>
+		<label>Trichuris
+			<input type="checkbox" name="concentrado[trichuris]" />
+		</label>
+		<label>Enterobius
+			<input type="checkbox" name="concentrado[enterobius]" />
+		</label>
+		<label>Taenia
+			<input type="checkbox" name="concentrado[taenia]" />
+		</label>
+	</fieldset>
+</template>
+
+<script>
+	protoFormConcentrado = Object.create(PrototipoFormulario);
+
+	protoFormConcentrado.template = document.currentScript.ownerDocument.querySelector("template").content;
+
+	protoFormConcentrado.establecerPropiedades = function() {
+		PrototipoFormulario.establecerPropiedades.call(this);
+
+		this.campos = this.datosFormulario.querySelectorAll("input");
+	};
+
+	protoFormConcentrado.deshabilitar = function() {
+		PrototipoFormulario.deshabilitar.call(this);
+
+		for(var i = 0; i < this.campos.length; ++i)
+			this.campos[i].checked = false;
+	};
+
+	document.registerElement("form-concentrado", { prototype: protoFormConcentrado });
+</script>

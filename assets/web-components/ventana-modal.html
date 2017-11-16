@@ -1,0 +1,140 @@
+<template>
+	<style>
+		ventana-modal {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 1000;
+
+			display: block;
+			background: rgba(31, 31, 36, 0.93);
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 250ms ease-in;
+		}
+
+		ventana-modal * {
+			outline: 0;
+		}
+
+		.modal {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+
+			display: block;
+			max-width: 100%;
+			max-height: 85%;
+			min-width: 200px;
+			min-height: 50px;
+			border-radius: 3px;
+			/*padding: 40px 20px 20px 20px;*/
+			padding-top: calc(1.1em + 15px);
+
+			/* aspecto */
+			background: #fff;
+			box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+		}
+
+		.modal button.close {
+			/* posición */
+			position: absolute;
+			top: 5px;
+			right: 5px;
+
+			/* aspecto */
+			padding: 3px 7px 1px 7px;
+			border: none;
+
+			/* contenido */
+			font-family: Dingbats;
+			font-weight: bold;
+			font-size: 1.3em;
+			text-decoration: none;
+			text-align: center;
+			color: rgba(0, 0, 0, .3);
+			line-height: 1;
+			cursor: pointer;
+			background: transparent;
+
+			transition: all .25s ease-in-out;
+		}
+
+		.modal button.close:hover {
+			color: #585858;
+		}
+	</style>
+	<div class="modal">
+		<button type="button" class="close" title="Cerrar" tabindex="-10000">&#10005;</button>
+	</div>
+</template>
+
+<script>
+(function() {
+
+
+var protoWindow = Object.create(HTMLElement.prototype);
+var contentTemplate = document.currentScript.ownerDocument.querySelector("template").content;
+
+protoWindow.createdCallback = function() {
+	var clon = document.importNode(contentTemplate, true);
+
+	this.window = clon.querySelector(".modal");
+	this.window.innerHTML = this.window.innerHTML + this.innerHTML;
+	this.btnClose = this.window.querySelector(".close");
+
+	this.innerHTML = "";
+	this.appendChild(clon);
+	this.content = this.window;
+
+	var self = this;
+
+	this.btnClose.addEventListener("click", function(e) {
+		self.close();
+	});
+};
+
+protoWindow.attachedCallback = function() {
+	if(this.id)
+		this.setEstiloFondo();
+};
+
+protoWindow.attributeChangedCallback = function(atributo) {
+	if(atributo === "id")
+		this.setEstiloFondo();
+};
+
+// añade una nueva regla css al documento
+protoWindow.setEstiloFondo = function() {
+	var estilo = document.createElement("style");
+	var reglaCSS = "#"+this.id+":target { opacity: 1; pointer-events: auto; }";
+
+	document.head.appendChild(estilo);
+	estilo.sheet.insertRule(reglaCSS, 0);
+};
+
+protoWindow.clear = function() {
+	var window = this.window;
+
+	while(window.firstChild)
+		window.removeChild(window.firstChild);
+
+	window.appendChild(this.btnClose);
+};
+
+protoWindow.appendContent = function(node) {
+	this.window.appendChild(node);
+};
+
+protoWindow.close = function() {
+	history.go(-1);
+};
+
+
+document.registerElement("ventana-modal", { prototype: protoWindow });
+
+})();
+</script>

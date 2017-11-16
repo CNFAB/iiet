@@ -1,0 +1,389 @@
+body {
+	height: 500px;
+	background: white;
+}
+
+body > header {
+	position: relative;
+  	padding: 5px 20px;
+	z-index: 5;
+	background: var(--celeste);
+}
+
+body > header h1 {
+	display: inline-block;
+  font-size: 2.5em;
+  font-weight: 400;
+}
+
+body > header p {
+	font-size: 0.8em;
+	font-weight: 300;
+}
+
+
+/* BARRA DE NAVEGACION */
+
+nav {
+	/* posicionamiento */
+	position: relative; /* es necesario para usar el z-index */
+	z-index: 5;
+
+	/* caja */
+	background: var(--color-fondo-nav);
+  	padding: 0 10px;
+
+  	/* contenido */
+  	text-align: center;
+}
+
+nav * {
+	/* contenido */
+	font-size: 1em;
+	font-weight: 300;
+	color: #fff;
+}
+
+nav > ul > li {
+	/* caja */
+	display: inline-block;
+	min-width: 150px;
+  	width: 15%;
+	max-width: 200px;
+}
+
+nav > ul > li > * {
+	/* caja */
+	display: block;
+  	padding: 10px 10px;
+	cursor: pointer;
+}
+
+nav > ul > li > button {
+	/* caja */
+	background: none;
+	border: none;
+	width: 100%;
+
+	/* contenido */
+	color: var(--color-fuente-nav);
+	line-height: 1;
+}
+
+nav > ul > li:not(:last-child) > * {
+	/* caja */
+	border-right: 1px solid var(--gris-oscuro) !important;
+}
+
+
+/* BARRA DE BUSQUEDAD DE PACIENTE */
+
+#busca_paciente {
+	/* posicionamiento */
+	position: relative;
+}
+
+#busca_paciente form {
+	/* posicionamiento */
+	position: absolute;
+	top: -48px;
+	right: 0;
+	left: 0;
+	z-index: 4;
+
+	/* caja */
+	background: var(--color-fondo-bpac);
+	padding: 10px 20px;
+
+	/* contenido */
+	color: var(--color-fuente-bpac);
+}
+
+#busca_paciente form span {
+	/* caja */
+	margin-right: 10px;
+
+	/* contenido */
+	font-weight: 300;
+}
+
+#busca_paciente form select,
+#busca_paciente form option {
+	/* caja */
+	padding: 1px 5px;
+
+	/* contenido */
+	font-weight: 300;
+	color: #000;
+}
+
+#busca_paciente form input[type=text] {
+	/* caja */
+	padding: 1px 5px;
+	width: 30%;
+	margin-left: 20px;
+}
+
+#busca_paciente form input[type=submit],
+#busca_paciente form button {
+	/* caja */
+	padding: 3px 30px;
+	margin-left: 20px;
+	cursor: pointer;
+
+	/* contenido */
+	font-size: 1em;
+	font-weight: 300;
+	color: var(--color-fuente-1);
+}
+
+#busca_paciente .desplegar {
+	animation-name: desplegar;
+	animation-duration: .5s;
+	animation-fill-mode: forwards;
+}
+
+#busca_paciente .ocultar {
+	animation-name: ocultar;
+	animation-duration: .5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes desplegar {
+	from {
+		top: -48px;
+	}
+	
+	to {
+		top: 0px;
+	}
+}
+
+@keyframes ocultar {
+	from {
+		top: 0px;
+	}
+	
+	to {
+		top: -48px;
+	}
+}
+
+
+
+#barra_inferior {
+	/* posicionamiento */
+	position: absolute;
+	bottom: 0;
+	z-index: 3;
+
+	/* caja */
+	background: var(--gris);
+	padding: 1px 0;
+	border-top: 1px solid var(--gris-oscuro);
+	border-right: none;
+	border-bottom: none;
+	border-left: none;
+	width: calc(100% - 201px);
+
+	/* contenido */
+	text-align: center;
+	font-size: .9em;
+}
+
+#barra_inferior input {
+	/* caja */
+	padding: 1px 5px;
+	width: 2em;
+	margin: 0 5px;
+
+	/* contenido */
+	font-size: .9em;
+	font-weight: 400;
+	color: var(--color-fuente-1);
+}
+
+#main {
+	/* posicionamiento */
+	position: absolute;
+	top: 130px;
+
+	/* caja */
+	width: 100%;
+}
+
+.estudio {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding-top: 35px;
+	border-top: 1px solid #363636;
+}
+
+.solapa {
+	position: absolute;
+	top: calc(-1em - 8px);
+	border: 1px solid #696969;
+	background: #DFDFDF;
+	width: 170px;
+	text-align: center;
+}
+
+.solapa > button {
+	display: inline;
+	font-size: .9em;
+	font-weight: 300;
+	color: #000;
+	padding: 0;
+	border: none;
+	width: 100%;
+	background: none;
+	padding: 2px 0;
+	cursor: pointer;
+}
+
+#form_principal > section:not(.primer_plano) {
+	z-index: 1;
+}
+
+section.primer_plano {
+	z-index: 2;
+}
+
+section.primer_plano .solapa {
+	background: #FFE4E1;
+	border-color: #363636;
+	border-bottom-color: #000;
+}
+
+section.estudio:nth-of-type(1) > .solapa {
+	left: 10px;
+}
+
+section.estudio:nth-of-type(2) > .solapa {
+	left: 181px;
+}
+
+section.estudio:nth-of-type(3) > .solapa {
+	left: 352px;
+}
+
+section.estudio:nth-of-type(4) > .solapa {
+	left: 523px;
+}
+
+section.estudio:nth-of-type(5) > .solapa {
+	left: 694px;
+}
+
+section.estudio:nth-of-type(6) > .solapa {
+	left: 865px;
+}
+
+section.estudio:nth-of-type(7) > .solapa {
+	left: 1036px;
+}
+
+#reg_operaciones {
+	/* posicionamiento */
+	position: fixed;
+	right: 30px;
+	bottom: 0;
+	z-index: 3;
+	width: 310px;
+	height: 70px;
+}
+
+#reg_operaciones button {
+	position: absolute;
+	top: 10px;
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	cursor: pointer;
+    box-shadow:
+	/* Sombras externa */
+		inset 0 10px 15px rgba(255,255,255,.35), inset 0 -10px 15px rgba(0,0,0,.05), inset 10px 0 15px rgba(0,0,0,.05), inset -10px 0 15px rgba(0,0,0,.05),
+	/* Sombra interna */
+		0 5px 10px rgba(0,0,0,.1);
+	animation-name: contraer_btn;
+	animation-duration: .2s;
+	animation-fill-mode: forwards;
+}
+
+/* Al presionar */
+#reg_operaciones button:active {
+	/* Sombra interior */
+  	box-shadow: inset 0 5px 30px rgba(0,0,0,.2);
+  	/*Cambiamos el tamaÃ±o de la imagen */
+  	background-size: 35%;
+}
+
+#reg_operaciones button:hover {
+	animation-name: expandir_btn;
+	animation-duration: .2s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes expandir_btn {
+	from {
+		top: 10px;
+		width: 60px;
+		height: 60px;
+	}
+
+	to {
+		top: 8px;
+		width: 56px;
+		height: 56px;
+	}
+}
+
+@keyframes contraer_btn {
+	from {
+		width: 55px;
+		height: 55px;
+	}
+
+	to {
+		width: 50px;
+		height: 50px;
+	}
+}
+
+#reg_operaciones button[disabled] {
+	background-color: #615d5d;
+	border-color: #564a4a;
+}
+
+#btn_nuevo {
+	background: url(../images/ic_nuevo.png) no-repeat center center, rgb(0, 40, 236);
+	border: 1px solid #0a1384;
+	left: 10px;
+}
+
+#btn_editar {
+	background: url(../images/ic_editar.png) no-repeat center center, rgba(222, 108, 11, 0.95);
+	border: 1px solid #8e4510;
+	left: 70px;
+}
+
+#btn_deshacer {
+	background: url(../images/ic_deshacer.png) no-repeat center center, rgb(184, 83, 236);
+	border: 1px solid #69149c;
+	left: 130px;
+}
+
+#btn_eliminar {
+	background: url(../images/ic_eliminar.png) no-repeat center center, rgb(218, 13, 13);
+	border: 1px solid #903b3b;
+	left: 190px;
+}
+
+#btn_guardar {
+	background: url(../images/ic_guardar.png) no-repeat center center, rgb(67, 169, 3);
+	border: 1px solid #19560f;
+	left: 250px;
+}

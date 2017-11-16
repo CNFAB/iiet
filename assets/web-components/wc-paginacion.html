@@ -1,0 +1,197 @@
+<template>
+	<style>
+		wc-paginacion {
+			display: block;
+		}
+		
+		.wc-paginacion_pagina {
+			background: red;
+			height: calc(100% - 29px);
+		}
+
+		.wc-paginacion_pagina > * {
+			height: 100%;
+		}
+
+		.wc-paginacion_ctrl_pagina > form {
+			background: #c9c9c9;
+			text-align: center;
+			padding: 3px 5px;
+		}
+
+		.wc-paginacion_ctrl_pagina > form * {
+			font-size: 15px;
+		}
+
+		.wc-paginacion_ctrl_pagina input {
+			text-align: right;
+			background: #fefefe;
+			padding: 1px 5px;
+			width: 2.5em;
+			border: 1px solid #9f9f9f;
+			-moz-appearance: textfield;
+		}
+
+		.wc-paginacion_ctrl_pagina input[name="pag_act"] {
+			margin-right: 5px;
+		}
+
+		.wc-paginacion_ctrl_pagina input[name="pag_total"] {
+			color: #000;
+			background: rgba(255, 255, 255, .7);
+			border: 1px solid rgba(0, 0, 0, .2);
+			margin-left: 5px;
+		}
+
+		.wc-paginacion_ctrl_pagina input::-webkit-outer-spin-button,
+		.wc-paginacion_ctrl_pagina input::-webkit-inner-spin-button {
+		  -webkit-appearance: none;
+		  margin: 0;
+		}
+
+		.wc-paginacion_ctrl_pagina button {
+			color: #464646;
+			font-weight: bold;
+			background: #dfdfdf;
+			padding: 1px 6px;
+			border: 1px solid #8f8f8f;
+		}
+
+		.wc-paginacion_ctrl_pagina button:hover {
+			color: #303030;
+			background: #efefef;
+			border-color: #696969;
+		}
+
+		.wc-paginacion_ctrl_pagina button[disabled] {
+			color: rgba(0, 0, 0, .4);
+			background: rgba(255, 255, 255, .5);
+			border-color: rgba(0, 0, 0, .2);
+		}
+	</style>
+
+	<section class="wc-paginacion_pagina">
+		
+	</section>
+	<footer class="wc-paginacion_ctrl_pagina">
+		<form>
+			<button type="button" disabled="disabled" class="wc-paginacion_ir_1ra">&lt;&lt;</button>
+			<button type="button" disabled="disabled" class="wc-paginacion_prev">&lt;</button>
+			<input type="number" name="pag_act"/>
+			<span>de</span>
+			<input type="number" name="pag_total" disabled="disabled" min="0" />
+			<button type="button" disabled="disabled" class="wc-paginacion_sig">&gt;</button>
+			<button type="button" disabled="disabled" class="wc-paginacion_ir_ult">&gt;&gt;</button>
+			<input type="submit" value="enviar" style="display: none;" />
+		</form>
+	</footer>
+</template>
+
+<script>
+
+(function() {
+	
+
+var protoPaginacion = Object.create(HTMLElement.prototype);
+var contTemplate = document.currentScript.ownerDocument.querySelector("template").content;
+
+
+protoPaginacion.createdCallback = function() {
+	var clon = document.importNode(contTemplate, true);
+
+	this.pagActual = 0;
+	this.cantPaginas = 0;
+	this.fcPaginacion = null;
+
+	this.contenedor = clon.querySelector(".wc-paginacion_pagina");
+
+	this.btnIr1ra = clon.querySelector(".wc-paginacion_ir_1ra");
+	this.btnPrev = clon.querySelector(".wc-paginacion_prev");
+	this.btnSig = clon.querySelector(".wc-paginacion_sig");
+	this.btnIrUlt = clon.querySelector(".wc-paginacion_ir_ult");
+
+	this.formPaginacion = clon.querySelector("form");
+	this.inputPagActual = clon.querySelector("input[name='pag_act']");
+	this.inputPagTotal = clon.querySelector("input[name='pag_total']");
+
+	var self = this;
+
+	this.formPaginacion.addEventListener("submit", function(e) {
+		e.preventDefault();
+
+		var nuevaPagina = self.inputPagActual.value - 0;
+
+		if(nuevaPagina >= 1 && nuevaPagina <= self.cantPaginas)
+			self.establecerPagina(nuevaPagina);
+
+		else
+			self.inputPagActual.value = self.pagActual;
+		//nuevaPagina = nuevaPagina <= self.cantPaginas ? nuevaPagina : self.cantPaginas;
+	});
+
+	this.btnIr1ra.addEventListener("click", function(e) {
+		self.establecerPagina(1);
+	});
+
+	this.btnPrev.addEventListener("click", function(e) {
+		if(self.pagActual > 1)
+			self.establecerPagina(self.pagActual - 1);
+	});
+
+	this.btnSig.addEventListener("click", function(e) {
+		if(self.pagActual < self.cantPaginas)
+			self.establecerPagina(self.pagActual + 1);
+	});
+
+	this.btnIrUlt.addEventListener("click", function(e) {
+		self.establecerPagina(self.cantPaginas);
+	});
+
+	this.innerHTML = "";
+	this.appendChild(clon);
+};
+
+protoPaginacion.establecerCantPaginas = function(cantidad) {
+	if(cantidad > 0) {
+		this.cantPaginas = cantidad;
+		this.inputPagTotal.value = cantidad;
+		this.inputPagActual.value = 0;
+	}
+};
+
+protoPaginacion.obtenerCantPaginas = function() {
+	return this.cantPaginas;
+};
+
+protoPaginacion.manejadorEventoPaginacion = function(fc) {
+	this.fcPaginacion = fc;
+
+	this.btnIr1ra.disabled = null;
+	this.btnPrev.disabled = null;
+	this.btnSig.disabled = null;
+	this.btnIrUlt.disabled = null;
+};
+
+protoPaginacion.establecerPagina = function(indicePagina) {
+	var elemento = this.fcPaginacion(indicePagina);
+
+	if(elemento !== null) {
+		this.contenedor.innerHTML = "";
+		this.contenedor.appendChild(elemento)
+		this.pagActual = indicePagina;
+		this.inputPagActual.value = indicePagina;
+	}
+};
+
+protoPaginacion.obtenerAnchoContenedor = function() {
+	return getComputedStyle(this.contenedor, null)["width"].replace("px", "") - 0;
+};
+
+protoPaginacion.obtenerAltoContenedor = function() {
+	return getComputedStyle(this.contenedor, null)["height"].replace("px", "") - 0;
+};
+
+document.registerElement("wc-paginacion", { prototype: protoPaginacion });
+
+})();
+</script>

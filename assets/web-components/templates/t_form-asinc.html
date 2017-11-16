@@ -1,0 +1,1126 @@
+<template id="t_nuevo_departamento">
+	
+<ventana-modal id="nuevo_departamento" class="vm_nuevo_divpolit">
+	<header>
+		<h1>Nuevo Departamento</h1>
+	</header>
+	<section>
+		<form is="form-asinc" class="form_divpolit" action="/iiet/division_politica/cargar_divpolit/departamentos" method="POST">
+			<label>
+				<span>Nombre</span>
+				<input type="text" name="nombre" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Latitud</span>
+				<input type="text" name="latitud" class="nro_real" pattern="^-?\d+(.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Longitud</span>
+				<input type="text" name="longitud" class="nro_real" pattern="^-?\d+(\.\d+)?$" />
+			<div class="box_msj"></div>
+			</label>
+			<div class="btn_submit">
+				<input type="submit" value="Guardar"/>
+				<input type="reset" value="Cancelar"/>
+			</div>
+		</form>
+	</section>
+</ventana-modal>
+
+</template>
+<template id="t_nueva_localidad">
+	
+<ventana-modal id="nueva_localidad" class="vm_nuevo_divpolit">
+	<header>
+		<h1>Nueva Localidad</h1>
+	</header>
+	<section>
+		<form is="form-asinc" class="form_divpolit" action="/iiet/division_politica/cargar_divpolit/localidades" method="POST">
+			<label>
+				<span>Nombre</span>
+				<input type="text" name="nombre" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Departamento</span>
+				<select name="departamento" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Latitud</span>
+				<input type="text" name="latitud" class="nro_real" pattern="^-?\d+(.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Longitud</span>
+				<input type="text" name="longitud" class="nro_real" pattern="^-?\d+(\.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<div class="btn_submit">
+				<input type="submit" value="Guardar"/>
+				<input type="reset" value="Cancelar"/>
+			</div>
+		</form>
+	</section>
+</ventana-modal>
+
+</template>
+<template id="t_nuevo_barrio">
+	
+<ventana-modal id="nuevo_barrio" class="vm_nuevo_divpolit">
+	<header>
+		<h1>Nuevo Barrio</h1>
+	</header>
+	<section>
+		<form is="form-asinc" class="form_divpolit" action="/iiet/division_politica/cargar_divpolit/barrios" method="POST">
+			<label>
+				<span>Nombre</span>
+				<input type="text" name="nombre" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Departamento</span>
+				<select name="departamento" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Localidad</span>
+				<select name="localidad" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Latitud</span>
+				<input type="text" name="latitud" class="nro_real" pattern="^-?\d+(.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Longitud</span>
+				<input type="text" name="longitud" class="nro_real" pattern="^-?\d+(\.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<div class="btn_submit">
+				<input type="submit" value="Guardar"/>
+				<input type="reset" value="Cancelar"/>
+			</div>
+		</form>
+	</section>
+</ventana-modal>
+
+</template>
+<template id="t_nuevo_paraje">
+	
+<ventana-modal id="nuevo_paraje" class="vm_nuevo_divpolit">
+	<header>
+		<h1>Nuevo Paraje</h1>
+	</header>
+	<section>
+		<form is="form-asinc" class="form_divpolit" action="/iiet/division_politica/cargar_divpolit/parajes" method="POST">
+			<label>
+				<span>Nombre</span>
+				<input type="text" name="nombre" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Departamento</span>
+				<select name="departamento" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Localidad</span>
+				<select name="localidad" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Latitud</span>
+				<input type="text" name="latitud" class="nro_real" pattern="^-?\d+(.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Longitud</span>
+				<input type="text" name="longitud" class="nro_real" pattern="^-?\d+(\.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<div class="btn_submit">
+				<input type="submit" value="Guardar"/>
+				<input type="reset" value="Cancelar"/>
+			</div>
+		</form>
+	</section>
+</ventana-modal>
+
+</template>
+<template id="t_nuevo_puesto">
+
+<ventana-modal id="nuevo_puesto" class="vm_nuevo_divpolit">
+	<header>
+		<h1>Nuevo Puesto</h1>
+	</header>
+	<section>
+		<form is="form-asinc" class="form_divpolit" action="/iiet/division_politica/cargar_divpolit/puestos" method="POST">
+			<label>
+				<span>Nombre</span>
+				<input type="text" name="nombre" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Departamento</span>
+				<select name="departamento" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Localidad</span>
+				<select name="localidad" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Paraje</span>
+				<select name="paraje" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Latitud</span>
+				<input type="text" name="latitud" class="nro_real" pattern="^-?\d+(.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Longitud</span>
+				<input type="text" name="longitud" class="nro_real" pattern="^-?\d+(\.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<div class="btn_submit">
+				<input type="submit" value="Guardar"/>
+				<input type="reset" value="Cancelar"/>
+			</div>
+		</form>
+	</section>
+</ventana-modal>
+	
+</template>
+
+<template id="t_nueva_escuela">
+	
+<ventana-modal id="nueva_escuela" class="vm_nuevo_divpolit">
+	<header>
+		<h1>Nueva Escuela</h1>
+	</header>
+	<section>
+		<form is="form-asinc" class="form_divpolit" name="nueva_escuela" action="/iiet/escuelas/cargar_escuela">
+			<label>
+				<span>Nombre</span>
+				<input type="text" name="nombre" required="required"/>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Departamento</span>
+				<select name="departamento" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Localidad</span>
+				<select name="localidad" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<div class="grupo_radio">
+				<label>
+					<span>Paraje</span>
+					<input type="radio" name="lugar" value="paraje" checked="checked" />
+				<div class="box_msj"></div>
+				</label>
+				<label>
+					<span>Barrio</span>
+					<input type="radio" name="lugar" value="barrio" />
+				<div class="box_msj"></div>
+				</label>
+			</div>
+			<div class="select_lugar">
+				<select name="paraje" required="required" required="required"></select>
+				<div class="box_msj"></div>
+				<select name="barrio" required="required" disabled="disabled"></select>
+				<div class="box_msj"></div>
+			</div>
+			<label>
+				<span>Latitud</span>
+				<input type="text" name="latitud" class="nro_real" pattern="^-?\d+(.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Longitud</span>
+				<input type="text" name="longitud" class="nro_real" pattern="^-?\d+(\.\d+)?$" />
+				<div class="box_msj"></div>
+			</label>
+			<div class="btn_submit">
+				<input type="submit" value="Guardar"/>
+				<input type="reset" value="Cancelar"/>
+			</div>
+		</form>
+	</section>
+</ventana-modal>
+
+</template>
+<template id="t_nuevo_paciente">
+	
+<ventana-modal id="nuevo_paciente" class="vm_nuevo_divpolit">
+	<header>
+		<h1>Nuevo Paciente</h1>
+	</header>
+	<section>
+		<form is="form-asinc" class="form_divpolit" name="nuevo_paciente" action="/iiet/pacientes/cargar">
+			<label>
+				<span>DNI</span>
+				<input type="number" name="dni" min="1000000" max="100000000" required="required" autocomplete="off" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Apellidos</span>
+				<input type="text" name="apellido" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Nombres</span>
+				<input type="text" name="nombre" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Fecha de Nacimiento</span>
+				<input type="date" name="fecha_nacimiento" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<fieldset class="grupo_radio">
+				<legend>Sexo</legend>
+
+				<label>
+					<span>Masculino</span>
+					<input type="radio" name="sexo" value="M" />
+				</label>
+				<label>
+					<span>Femenino</span>
+					<input type="radio" name="sexo" value="F" />
+				</label>
+			</fieldset>
+			<fieldset class="domicilio">
+				<legend>Domicilio</legend>
+
+				<label>
+					<span>Departamento</span>
+					<select name="departamento" required="required"></select>
+					<div class="box_msj"></div>
+				</label>
+				<label>
+					<span>Localidad</span>
+					<select name="localidad" required="required"></select>
+					<div class="box_msj"></div>
+				</label>
+				<div class="grupo_radio">
+					<label>
+						<span>Paraje</span>
+						<input type="radio" name="lugar" value="paraje" checked="checked" />
+					</label>
+					<label>
+						<span>Barrio</span>
+						<input type="radio" name="lugar" value="barrio" />
+					</label>
+				</div>
+				<div class="select_lugar">
+					<select name="paraje" required="required"></select>
+					<select name="barrio" required="required" disabled="disabled"></select>
+					<div class="box_msj"></div>
+				</div>
+				<label id="puesto_paciente">
+					<span>Puesto</span>
+					<select name="puesto"></select>
+				</label>
+				<label>
+					<span>Direcci&oacute;n</span>
+					<input type="text" name="domicilio" />
+				</label>
+			</fieldset>
+			<div class="btn_submit">
+				<input type="submit" value="Guardar"/>
+				<input type="reset" value="Cancelar"/>
+			</div>
+		</form>
+	</section>
+</ventana-modal>
+
+</template>
+<template id="t_nueva_campania">
+
+<ventana-modal id="nueva_campania" class="vm_nuevo_divpolit">
+	<header>
+		<h1>Nueva Campa&ntilde;a</h1>
+	</header>
+	<section>
+		<form is="form-asinc" class="form_divpolit" name="nueva_campania" action="/iiet/campanias/cargar">
+			<label>
+				<span>Nombre</span>
+				<input type="text" name="etiqueta" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Fecha de inicio</span>
+				<input type="date" name="fecha_inicio" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Fecha de finalizaci&oacute;n</span>
+				<input type="date" name="fecha_fin" required="required" />
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Departamento</span>
+				<select name="departamento" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<label>
+				<span>Localidad</span>
+				<select name="localidad" required="required"></select>
+				<div class="box_msj"></div>
+			</label>
+			<div class="grupo_radio">
+				<label>
+					<span>Paraje</span>
+					<input type="radio" name="lugar" value="paraje" checked="checked" />
+				</label>
+				<label>
+					<span>Barrio</span>
+					<input type="radio" name="lugar" value="barrio" />
+				</label>
+			</div>
+			<div class="select_lugar">
+				<select name="paraje" required="required"></select>
+				<div class="box_msj"></div>
+				<select name="barrio" required="required" disabled="disabled"></select>
+				<div class="box_msj"></div>
+			</div>
+			<label>
+				<span>
+					Escuela
+					<input type="checkbox" id="en_escuela" name="en_escuela"/>
+				</span>
+				<select name="escuela" required="required" disabled="disabled"></select>
+				<div class="box_msj"></div>
+			</label>
+			<div class="btn_submit">
+				<input type="submit" value="Guardar"/>
+				<input type="reset" value="Cancelar"/>
+			</div>
+		</form>
+	</section>
+</ventana-modal>
+
+</template>
+
+<script>
+
+var documentoScript = document.currentScript.ownerDocument;
+	
+var formNuevoPaciente 	  = null,
+	formNuevoDepartamento = null,
+	formNuevaLocalidad    = null,
+	formNuevoBarrio       = null,
+	formNuevoParaje       = null,
+	formNuevoPuesto       = null,
+	formNuevaEscuela      = null,
+	formNuevaCampania     = null;
+
+(function() {
+
+var urlListadoDivPolit = '/iiet/division_politica/listado_';
+var forms = [];
+var listadoDep = [];
+
+var tNuevoPaciente 	   = documentoScript.querySelector('#t_nuevo_paciente').content,
+	tNuevoDepartamento = documentoScript.querySelector('#t_nuevo_departamento').content,
+	tNuevaLocalidad    = documentoScript.querySelector('#t_nueva_localidad').content,
+	tNuevoBarrio       = documentoScript.querySelector('#t_nuevo_barrio').content,
+	tNuevoParaje       = documentoScript.querySelector('#t_nuevo_paraje').content,
+	tNuevoPuesto       = documentoScript.querySelector('#t_nuevo_puesto').content,
+	tNuevaEscuela      = documentoScript.querySelector('#t_nueva_escuela').content,
+	tNuevaCamapania    = documentoScript.querySelector('#t_nueva_campania').content;
+
+
+Utils.ajax(urlListadoDivPolit + 'departamentos', [], function(e) {
+	for(let i = 0; i < forms.length; ++i)
+		Utils.listarDatosEnSelect(forms[i].departamento, e.target.response);
+});
+
+/**
+ * Funciones de validación de campos
+ */
+
+function validarDNI(e) {
+	var elemDNI, validez;
+
+	elemDNI = e.target;
+	validez = elemDNI.validity;
+
+	if(elemDNI.form.bandera) {
+		elemDNI.form.bandera = false;
+		return;
+	}
+	
+	if(validez.valid) {
+		datos = new Map([['dni', elemDNI.value]]);
+
+		Utils.ajax('/iiet/pacientes/existe_paciente', datos, function(e) {
+			var paciente = e.target.response;
+
+			if(paciente !== false) {
+				var mensaje, txtNombre;
+
+				txtNombre = document.createElement('span');
+
+				mensaje = mostrarMensaje(elemDNI, 'El DNI ya existe y pertenece a: ');
+				txtNombre.textContent = paciente.apellido + ', ' + paciente.nombre;
+				mensaje.appendChild(txtNombre);
+
+				elemDNI.form.dniInvalido = true;
+				elemDNI.select();
+			}
+
+			else  {
+				eliminarMensaje(elemDNI);
+				elemDNI.form.dniInvalido = false;
+			}
+		});
+	}
+
+	else if(validez.rangeUnderflow || validez.rangeOverflow) {
+		mostrarMensaje(elemDNI, 'El DNI debe contener 7 u 8 dígitos.');
+
+		elemDNI.select();
+	}
+
+	else if(validez.valueMissing) {
+		mostrarMensaje(elemDNI, 'El DNI es obligatorio, por favor complételo.');
+
+		elemDNI.focus();
+	}
+}
+
+function validarNombres(e) {
+	var elemento, validez, strMsj;
+
+	elemento = e.target;
+	validez = elemento.validity;
+
+	// solo válido para el formulario Nuevo Paciente
+	if(elemento.form.dniInvalido || elemento.form.bandera) {
+		elemento.form.bandera = false;
+		return;
+	}
+
+	if(validez.valueMissing) {
+		strMsj = 'El ' + elemento.name + ' es obligatorio, por favor complételo.';
+		mostrarMensaje(elemento, strMsj);
+
+		elemento.focus();
+	}
+
+	else
+		eliminarMensaje(elemento);
+}
+
+function validarFecha(e) {
+	var inputDate, arrFecha, fechaIng, fechaActual;
+
+	inputDate = e.target;
+
+	if(inputDate.form.dniInvalido || inputDate.form.bandera) {
+		inputDate.form.bandera = false;
+		return;
+	}
+
+	if(!inputDate.value) {
+		mostrarMensaje(inputDate, 'La fecha es obligatoria, por favor complétela.');
+		inputDate.select();
+
+		return;
+	}
+
+	arrFecha = inputDate.value.split('-');
+	fechaIng = new Date(
+		parseInt(arrFecha[0]),
+		parseInt(arrFecha[1]) - 1,
+		parseInt(arrFecha[2])
+	);
+	fechaActual = new Date();
+
+	if(fechaIng > fechaActual) {
+		mostrarMensaje(inputDate, 'La fecha no debe ser posterior a la fecha actual.');
+
+		inputDate.select();
+	}
+
+	else
+		eliminarMensaje(inputDate);
+}
+
+function validarCampoSelect(e) {
+	var elemento, validez, strMsj;
+
+	elemento = e.target;
+	validez = elemento.validity;
+
+	if(elemento.form.dniInvalido || elemento.form.bandera) {
+		elemento.form.bandera = false;
+		return;
+	}
+
+	if(validez.valueMissing) {
+		switch(elemento.name) {
+			case 'localidad':
+			case 'escuela':
+				strMsj = 'La ' + elemento.name + ' es obligatoria, por favor complétela.';
+			break;
+
+			default:
+				strMsj = 'El ' + elemento.name + ' es obligatorio, por favor complételo.';
+			break;
+		}
+
+		mostrarMensaje(elemento, strMsj);
+
+		elemento.focus();
+	}
+
+	else
+		eliminarMensaje(elemento);
+}
+
+function validarCoordenada(e) {
+	var elemento, form, strMsj, otro, validez;
+
+	elemento = e.target;
+	form = e.target.form;
+	validez = elemento.validity;
+
+	//if(elemento.form.dniInvalido || elemento.form.bandera) {
+	//	elemento.form.bandera = false;
+	//	return;
+	//}
+
+	if(validez.valueMissing) {
+		mostrarMensaje(elemento, 'Por favor ingrese un valor para la ' + elemento.name);
+		elemento.focus();
+
+		return;
+	}
+
+	else if(validez.patternMismatch) {
+		mostrarMensaje(elemento, 'La ' + elemento.name + ' debe ser un número.');
+		elemento.select();
+
+		return;
+	}
+
+	eliminarMensaje(elemento);
+
+	otro = elemento.name == 'latitud' ? form.longitud : form.latitud;
+
+	if(elemento.value && !otro.value) {
+		otro.required = 'required';
+	}
+
+	else if(!elemento.value && otro.value) {
+		elemento.required = 'required';
+	}
+
+	else {
+		otro.required = null;
+		elemento.required = null;
+	}
+}
+
+function validarFormulario(e) {
+	e.preventDefault();
+
+	switch (e.target.name) {
+		case 'dni':
+			validarDNI(e);
+		break;
+
+		case 'apellido':
+		case 'nombre':
+		case 'etiqueta':
+			validarNombres(e);
+		break;
+
+		case 'fecha_nacimiento':
+		case 'fecha_inicio':
+		case 'fecha_fin':
+			validarFecha(e);
+		break;
+
+		case 'departamento':
+		case 'localidad':
+		case 'barrio':
+		case 'paraje':
+		case 'puesto':
+		case 'escuela':
+			validarCampoSelect(e);
+		break;
+
+		case 'latitud':
+		case 'longitud':
+			validarCoordenada(e);
+		break;
+
+		default:
+			console.error("El campo " + e.target.name + "no es un campo admitido para el formulario.");
+		break;
+	}
+}
+
+
+/**
+ * Funciones de inicialización de formularios
+ */
+
+function fNuevoPaciente(padre) {
+	var clon, form;
+
+	clon = document.importNode(tNuevoPaciente, true);
+	padre.appendChild(clon);
+
+	form = padre.querySelector('#nuevo_paciente form');
+	form.vm = padre.querySelector('#nuevo_paciente');
+	form.vm.close = closeVM;
+	
+	// establece escuchas para validar el campo cuando éste pierde el foco
+	form.dni.addEventListener('blur', validarDNI);
+	form.nombre.addEventListener('blur', validarNombres);
+	form.apellido.addEventListener('blur', validarNombres);
+	form.fecha_nacimiento.addEventListener('blur', validarFecha);
+	form.departamento.addEventListener('blur', validarCampoSelect);
+	form.localidad.addEventListener('blur', validarCampoSelect);
+	form.barrio.addEventListener('blur', validarCampoSelect);
+	form.paraje.addEventListener('blur', validarCampoSelect);
+
+	form.addEventListener('invalid', validarFormulario, true);
+
+	// pone en mayúsculas la primera letra de cada palabra
+	form.apellido.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+	form.nombre.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+
+	// cierra la ventana cada vez que se resetee el formulario
+	form.addEventListener('reset', e => form.vm.close(e.target));
+
+	// inicializa la lista de departamentos
+	Utils.listarDatosEnSelect(form.departamento, listadoDep);
+
+	// establece escuchas para cuando cambien los valores de: departamento, localidad y paraje
+	cambioDepartamento(form);
+	cambioLocalidad(form);
+	cambioParaje(form);
+
+	// establece escuchas para lograr la exclusividad entre: paraje y barrio
+	var campoLugar = form.lugar;
+
+	campoLugar[0].addEventListener('change', onChange);
+	campoLugar[0].opuesto = campoLugar[1];
+
+	campoLugar[1].addEventListener('change', onChange);
+	campoLugar[1].opuesto = campoLugar[0];
+
+	// agrega el formulario al array de formularios
+	forms.push(form);
+
+	return form;
+}
+
+function fNuevoDepartamento(padre) {
+	var clon, form;
+
+	clon = document.importNode(tNuevoDepartamento, true);
+	padre.appendChild(clon);
+
+	form = padre.querySelector('#nuevo_departamento form');
+	form.vm = padre.querySelector('#nuevo_departamento');
+	form.vm.close = cerrarVM;
+
+	// establece escuchas para validar el campo cuando éste pierde el foco
+	form.nombre.addEventListener('blur', validarNombres);
+	form.latitud.addEventListener('blur', validarCoordenada);
+	form.longitud.addEventListener('blur', validarCoordenada);
+
+	form.addEventListener('invalid', validarFormulario, true);
+
+	// pone en mayúsculas la primera letra de cada palabra
+	form.nombre.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+
+	// cierra la ventana cada vez que se resetee el formulario
+	form.addEventListener('reset', e => form.vm.close(e.target));
+
+	// actualiza la lista de departamentos
+	form.fcExito = function(e) {
+		if(e.target.response.id != null)
+			Utils.ajax(urlListadoDivPolit + 'departamentos', [], function(e) {
+				for(let formNuevo of forms)
+					Utils.listarDatosEnSelect(formNuevo.departamento, e.target.response);
+			});
+
+		form.reset();
+	};
+}
+
+function fNuevaLocalidad(padre) {
+	var clon, form;
+
+	clon = document.importNode(tNuevaLocalidad, true);
+	padre.appendChild(clon);
+
+	form = padre.querySelector('#nueva_localidad form');
+	form.vm = padre.querySelector('#nueva_localidad');
+	form.vm.close = cerrarVM;
+
+	// establece escuchas para validar el campo cuando éste pierde el foco
+	form.nombre.addEventListener('blur', validarNombres);
+	form.departamento.addEventListener('blur', validarCampoSelect);
+	form.latitud.addEventListener('blur', validarCoordenada);
+	form.longitud.addEventListener('blur', validarCoordenada);
+
+	form.addEventListener('invalid', validarFormulario, true);
+
+	// pone en mayúsculas la primera letra de cada palabra
+	form.nombre.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+
+	// cierra la ventana cada vez que se resetee el formulario
+	form.addEventListener('reset', e => form.vm.close(e.target));
+
+	// agrega el formulario al array de formularios
+	forms.push(form);
+
+	return form;
+}
+
+function fNuevoBarrio(padre) {
+	var clon, from;
+
+	clon = document.importNode(tNuevoBarrio, true);
+	padre.appendChild(clon);
+
+	form = padre.querySelector('#nuevo_barrio form');
+	form.vm = padre.querySelector('#nuevo_barrio');
+	form.vm.close = cerrarVM;
+
+	// establece escuchas para validar el campo cuando éste pierde el foco
+	form.nombre.addEventListener('blur', validarNombres);
+	form.departamento.addEventListener('blur', validarCampoSelect);
+	form.localidad.addEventListener('blur', validarCampoSelect);
+	form.latitud.addEventListener('blur', validarCoordenada);
+	form.longitud.addEventListener('blur', validarCoordenada);
+
+	form.addEventListener('invalid', validarFormulario, true);
+
+	// pone en mayúsculas la primera letra de cada palabra
+	form.nombre.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+
+	// cierra la ventana cada vez que se resetee el formulario
+	form.addEventListener('reset', e => form.vm.close(e.target));
+
+	// establece escuchas para cuando cambien los valores de: departamento
+	cambioDepartamento(form);
+
+	// agrega el formulario al array de formularios
+	forms.push(form);
+
+	return form;
+}
+
+function fNuevoParaje(padre) {
+	var clon, form;
+
+	clon = document.importNode(tNuevoParaje, true);
+	padre.appendChild(clon);
+
+	form = padre.querySelector('#nuevo_paraje form');
+	form.vm = padre.querySelector('#nuevo_paraje');
+	form.vm.close = cerrarVM;
+
+	// establece escuchas para validar el campo cuando éste pierde el foco
+	form.nombre.addEventListener('blur', validarNombres);
+	form.departamento.addEventListener('blur', validarCampoSelect);
+	form.localidad.addEventListener('blur', validarCampoSelect);
+	form.latitud.addEventListener('blur', validarCoordenada);
+	form.longitud.addEventListener('blur', validarCoordenada);
+
+	form.addEventListener('invalid', validarFormulario, true);
+
+	// pone en mayúsculas la primera letra de cada palabra
+	form.nombre.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+
+	// cierra la ventana cada vez que se resetee el formulario
+	form.addEventListener('reset', e => form.vm.close(e.target));
+
+	// establece escuchas para cuando cambien los valores de: departamento
+	cambioDepartamento(form);
+
+	// agrega el formulario al array de formularios
+	forms.push(form);
+
+	return form;
+}
+
+function fNuevoPuesto(padre) {
+	var clon, form;
+
+	clon = document.importNode(tNuevoPuesto, true);
+	padre.appendChild(clon);
+
+	form = padre.querySelector('#nuevo_puesto form');
+	form.vm = padre.querySelector('#nuevo_puesto');
+	form.vm.close = cerrarVM;
+
+	// establece escuchas para validar el campo cuando éste pierde el foco
+	form.nombre.addEventListener('blur', validarNombres);
+	form.departamento.addEventListener('blur', validarCampoSelect);
+	form.localidad.addEventListener('blur', validarCampoSelect);
+	form.latitud.addEventListener('blur', validarCoordenada);
+	form.longitud.addEventListener('blur', validarCoordenada);
+
+	form.addEventListener('invalid', validarFormulario, true);
+
+	// pone en mayúsculas la primera letra de cada palabra
+	form.nombre.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+
+	// cierra la ventana cada vez que se resetee el formulario
+	form.addEventListener('reset', e => form.vm.close(e.target));
+
+	// establece escuchas para cuando cambien los valores de: departamento y localidad
+	cambioDepartamento(form);
+	cambioLocalidad(form);
+
+	// agrega el formulario al array de formularios
+	forms.push(form);
+
+	return form;
+}
+
+function fNuevaEscuela(padre) {
+	var clon, form;
+
+	clon = document.importNode(tNuevaEscuela, true);
+	padre.appendChild(clon);
+
+	form = padre.querySelector('#nueva_escuela form');
+	form.vm = padre.querySelector('#nueva_escuela');
+	form.vm.close = cerrarVM;
+
+	// establece escuchas para validar el campo cuando éste pierde el foco
+	form.nombre.addEventListener('blur', validarNombres);
+	form.departamento.addEventListener('blur', validarCampoSelect);
+	form.localidad.addEventListener('blur', validarCampoSelect);
+	form.barrio.addEventListener('blur', validarCampoSelect);
+	form.paraje.addEventListener('blur', validarCampoSelect);
+	form.latitud.addEventListener('blur', validarCoordenada);
+	form.longitud.addEventListener('blur', validarCoordenada);
+
+	form.addEventListener('invalid', validarFormulario, true);
+
+	// pone en mayúsculas la primera letra de cada palabra
+	form.nombre.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+
+	// cierra la ventana cada vez que se resetee el formulario
+	form.addEventListener('reset', e => form.vm.close(e.target));
+
+	// establece escuchas para cuando cambien los valores de: departamento y localidad
+	cambioDepartamento(form);
+	cambioLocalidad(form);
+
+	// agrega el formulario al array de formularios
+	forms.push(form);
+
+	return form;
+}
+
+function fNuevaCampania(padre) {
+	var clon, form;
+
+	clon = document.importNode(tNuevaCamapania, true);
+	padre.appendChild(clon);
+
+	form = padre.querySelector('#nueva_campania form');
+	form.vm = padre.querySelector('#nueva_campania');
+	form.vm.close = cerrarVM;
+
+	// establece escuchas para validar el campo cuando éste pierde el foco
+	form.etiqueta.addEventListener('blur', validarNombres);
+	form.fecha_inicio.addEventListener('blur', validarFecha);
+	form.fecha_fin.addEventListener('blur', validarFecha);
+	form.departamento.addEventListener('blur', validarCampoSelect);
+	form.localidad.addEventListener('blur', validarCampoSelect);
+	form.barrio.addEventListener('blur', validarCampoSelect);
+	form.paraje.addEventListener('blur', validarCampoSelect);
+	form.escuela.addEventListener('blur', validarCampoSelect);
+
+	form.addEventListener('invalid', validarFormulario, true);
+
+	// pone en mayúsculas la primera letra de cada palabra
+	form.etiqueta.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+	form.escuela.addEventListener('input', e => e.target.value = Utils.toCamelCase(e.target.value));
+
+	var enEscuela = document.getElementById('en_escuela');
+
+	enEscuela.addEventListener('change', e => form.escuela.disabled = e.target.checked ? null : 'disabled');
+
+	// cierra la ventana cada vez que se resetee el formulario
+	form.addEventListener('reset', e => form.vm.close(e.target));
+
+	// establece escuchas para cuando cambien los valores de: departamento y localidad
+	cambioDepartamento(form);
+	cambioLocalidad(form);
+
+	forms.push(form);
+
+	return form;
+}
+
+
+/**
+ * Funciones que escuchan si el valor de un campo tipo select cambia
+ * para después actualizar los valores de los select's dependientes
+ */
+
+function cambioDepartamento(form) {
+	form.departamento.addEventListener('change', function(e) {
+		Utils.obtenerDatosAJAX(e.target, e.target.form.localidad, urlListadoDivPolit + 'localidades');
+	});
+}
+
+function cambioLocalidad(form) {
+	form.localidad.addEventListener('change', function(e) {
+		var form = e.target.form;
+		Utils.obtenerDatosAJAX(e.target, form.paraje, urlListadoDivPolit + 'parajes');
+
+		if(form.barrio)
+			Utils.obtenerDatosAJAX(e.target, form.barrio, urlListadoDivPolit + 'barrios');
+	});
+}
+
+function cambioParaje(form) {
+	form.paraje.addEventListener('change', function(e) {
+		Utils.obtenerDatosAJAX(e.target, e.target.form.puesto, urlListadoDivPolit + 'puestos');
+	});
+}
+
+
+/**
+ * Funciones de reiniciado y cierre de formularios
+ */
+
+function closeVM(form) {
+	if(form === undefined)
+		this.querySelector('form').reset();
+
+	else {
+		form.paraje.disabled = null;
+		form.barrio.disabled = 'disabled';
+		document.getElementById('puesto_paciente').className = '';
+		
+		Object.getPrototypeOf(form.vm).close();
+
+		form.bandera = true;
+		eliminarMensajesTodos(form);
+
+		reiniciarCamposSelect(form);
+	}
+}
+
+function cerrarVM(form) {
+	if(form === undefined)
+		this.querySelector('form').reset();
+
+	else {
+		Object.getPrototypeOf(form.vm).close();
+
+		eliminarMensajesTodos(form);
+	}
+}
+
+function reiniciarCamposSelect(form) {
+	if(form.localidad)
+		form.localidad.innerHTML = '';
+
+	if(form.barrio)
+		form.barrio.innerHTML = '';
+
+	if(form.paraje)
+		form.paraje.innerHTML = '';
+
+	if(form.puesto)
+		form.puesto.innerHTML = '';
+
+	if(form.escuela)
+		form.escuela.innerHTML = '';
+}
+
+
+/**
+ * Funciones para la gestión de mensajes
+ */
+
+function mostrarMensaje(elemInvalido, strMsj) {
+	var box, msj;
+
+	box = elemInvalido.parentNode.querySelector('.box_msj');
+	msj = document.createElement('div');
+
+	msj.textContent = strMsj;
+	box.innerHTML = '';
+	box.appendChild(msj);
+
+	elemInvalido.className = 'invalido';
+	msj.className = 'msj_invalido';
+
+	return msj;
+}
+
+function eliminarMensaje(elemento) {
+	var box = elemento.parentNode.querySelector('.box_msj');
+
+	box.innerHTML = '';
+	elemento.className = null;
+}
+
+function eliminarMensajesTodos(form) {
+	var invalidos = form.querySelectorAll('.invalido');
+
+	for(let invalido of invalidos) {
+		eliminarMensaje(invalido);
+		//invalido.blur();
+	}
+}
+
+
+function onChange(e) {
+	var radio = e.target,
+		opuesto = radio.opuesto,
+		form = radio.form,
+		select = form[radio.value],
+		lblPuesto = document.getElementById('puesto_paciente');
+
+	select.disabled = null;
+	form[opuesto.value].disabled = 'disabled';
+
+	if(this.value == 'paraje')
+		lblPuesto.className = '';
+
+	else
+		lblPuesto.className = 'oculto';
+}
+
+formNuevoPaciente     = fNuevoPaciente;
+formNuevoDepartamento = fNuevoDepartamento;
+formNuevaLocalidad    = fNuevaLocalidad;
+formNuevoBarrio       = fNuevoBarrio;
+formNuevoParaje       = fNuevoParaje;
+formNuevoPuesto       = fNuevoPuesto;
+formNuevaEscuela      = fNuevaEscuela;
+formNuevaCampania     = fNuevaCampania;
+
+})();
+
+</script>

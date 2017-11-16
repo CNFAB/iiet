@@ -1,0 +1,355 @@
+.bloque_1, .bloque_2 {
+	font-size: .92em;
+	padding: 5px 10px;
+	background: #B0E2FF;
+	border-bottom: 1px solid var(--celeste);
+}
+
+.bloque_1 *, .bloque_2 * {
+	font-size: 1em;
+	font-weight: 300;
+	padding: 1px 5px;
+}
+
+.bloque_1 {
+	position: absolute;
+	z-index: 3;
+	top: 1px;
+	left: 0;
+	right: 0;
+}
+
+.bloque_3, .bloque_4 {
+	text-align: center;
+}
+
+.bloque_3 {
+	margin-top: 20px;
+}
+
+.bloque_4 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.bloque_1 label:not(:first-child),
+.bloque_2 label:not(:first-child) {
+	margin-left: 20px;
+}
+
+.bloque_1 input,
+.bloque_2 input[type=number],
+.bloque_2 input[name=peso_materia] {
+	font-weight: 300;
+	width: 2em;
+	padding: 1px 5px;
+	text-align: right;
+}
+
+.bloque_2 input[type=date] {
+	font-weight: 300;
+	width: 9.2em;
+	padding: 1px 5px;
+}
+
+.bloque_2 input[name=nro_tubo] {
+	width: 6em;
+	text-align: right;
+}
+
+
+
+/* FORMULARIOS */
+
+.formulario {
+	/* caja */
+	display: inline-block;
+	background: #fff;
+	/*border: 1px solid #000;*/
+	min-width: 215px;
+	width: 28.7%;
+	margin-left: 1.5%;
+	margin-right: 1.5%;
+
+	/* contenido */
+	text-align: left;
+	vertical-align: top;
+}
+
+.formulario * {
+	/* contenido */
+	font-weight: 300;
+}
+
+.formulario > .etiqueta {
+	/* posicionamiento */
+	position: relative;
+
+	/* caja */
+	display: block;
+	background: #ffb90f;
+	padding: 10px;
+	border: 1px solid #cd950c;
+
+	/* contenido */
+	font-size: 1.3em;
+	font-weight: 600;
+	color: #2a2a2a;
+
+	cursor: pointer;
+}
+
+.formulario > .etiqueta > input[type="checkbox"] {
+	/* posicionamiento */
+	position: absolute;
+	top: calc(50% - 6px);
+	right: 15px;
+}
+
+.datos_formulario {
+	/* caja */
+	display: inline-block;
+	border: 1px solid #828282;
+	border-top: none;
+	width: calc(100% - 2px);
+}
+
+.datos_formulario > label {
+	/* posicionamiento */
+	position: relative;
+
+	/* caja */
+	display: block;
+	padding: 10px 10px;
+	width: calc(100% - 20px);
+
+	/* contenido */
+	color: #1c1c1c;
+}
+
+.datos_formulario:not([disabled]) > label:nth-child(2n),
+.datos_formulario:not([disabled]) > div:nth-child(2n) {
+	/* caja */
+	background: #eeb4b4;
+}
+
+.datos_formulario:not([disabled]) > label:nth-child(2n+1),
+.datos_formulario:not([disabled]) > div:nth-child(2n+1) {
+	/* caja */
+	background: #FFC1C1;
+}
+
+.datos_formulario[disabled] > label:nth-child(2n),
+.datos_formulario[disabled] > div:nth-child(2n) {
+	/* caja */
+	background-color: #cdcdcd;
+}
+
+.datos_formulario[disabled] > label:nth-child(2n+1),
+.datos_formulario[disabled] > div:nth-child(2n+1) {
+	/* caja */
+	background-color: #b5b5b5;
+}
+
+.datos_formulario[disabled] > label input,
+.datos_formulario[disabled] > label select,
+.datos_formulario[disabled] > div input,
+.datos_formulario[disabled] > div select,
+.datos_formulario .btn_negativo > button {
+	/* caja */
+	background-color: #efefef;
+	border-color: #ababab;
+}
+
+.datos_formulario[disabled] * {
+	color: #9a9a9a;
+}
+
+.datos_formulario label input:not([type=checkbox]) {
+	/* posicionamiento */
+	position: absolute;
+	top: 13%;
+	right: 10px;
+}
+
+.datos_formulario > label > input[type=checkbox] {
+	/* posicionamiento */
+	position: absolute;
+	top: calc(50% - 6px);
+	right: 15px;
+}
+
+.datos_formulario > label > select {
+	/* posicionamiento */
+	position: absolute;
+	top: 12%;
+	right: 10px;
+
+	/* caja */
+	background-color: #fff;
+	border-color: #929292;
+	width: 130px;
+
+	/* contenido */
+	color: #363636;
+}
+
+.datos_formulario > label > input[type=date] {
+	/* posicionamiento */
+	top: 10%;
+
+	/* caja */
+	padding: 1px 0 1px 2px;
+	width: 150px;
+}
+
+#mc_master .datos_formulario input,
+#hemograma .datos_formulario input,
+#serologia .datos_formulario label:first-child input,
+#medidas_antropometricas .datos_formulario input,
+#tratamiento_actual .datos_formulario input {
+	/* posicionamiento */
+	right: 40px;
+}
+
+#mc_master .datos_formulario span,
+#hemograma .datos_formulario span,
+#serologia .datos_formulario label:first-child span,
+#medidas_antropometricas .datos_formulario span,
+#tratamiento_actual .datos_formulario span {
+	/* posicionamiento */
+	position: absolute;
+	top: 25%;
+	right: 5px;
+
+	/* caja */
+	width: 2em;
+}
+
+.datos_formulario .btn_negativo {
+	/* caja */
+	width: calc(100%);
+
+	/* contenido */
+	text-align: center;
+}
+
+.datos_formulario .btn_negativo > button {
+	/* caja */
+	padding: 10px 5px;
+	width: 250px;
+	cursor: pointer;
+
+	/* contenido */
+	font-size: inherit;
+	color: #000;
+}
+
+#mc_master .datos_formulario > :last-child {
+	/* caja */
+	padding-top: 51px;
+	padding-bottom: 15px;
+}
+
+#harada_mori .datos_formulario > :last-child,
+#pcr .datos_formulario > :last-child,
+#qpcr .datos_formulario > :last-child {
+	/* caja */
+	padding-top: 25px;
+	padding-bottom: 15px;
+}
+
+#baerman .datos_formulario > :last-child,
+#placa_agar .datos_formulario > :last-child {
+	/* caja */
+	padding-top: 61px;
+	padding-bottom: 15px;
+}
+
+#tratamiento_actual .datos_formulario:nth-child(2) label:last-child {
+	/* caja */
+	border-bottom: 1px solid #000;
+}
+
+#tratamiento_actual .datos_formulario:last-child > label {
+	/* caja */
+	padding-top: 76px;
+	padding-bottom: 15px;
+}
+
+#tratamiento_actual > :last-child label select {
+	/* posicionamiento */
+	position: absolute;
+	top: unset;
+	right: 10px;
+	bottom: 12px;
+}
+
+#factores_riesgo {
+	/* caja */
+	min-width: 380px;
+	width: 45%;
+}
+
+input[type="number"]:not([name=dni]),
+.numero:not([name=dni]){
+	/* caja */
+	width: 3em;
+}
+
+.no_planilla {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: #363636;
+	height: 100%;
+}
+
+.no_planilla > div {
+	/* posicionamiento */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	/* contenido */
+	text-align: center;
+}
+
+.no_planilla > div > p {
+	/* caja */
+	margin-bottom: 20px;
+
+	/* contenido */
+	font-size: 1.1em;
+	color: #b5b5b5;
+}
+
+.no_planilla > div > button {
+	/* caja */
+	background: #9c9c9c;
+	padding: 15px 40px;
+	border: 1px solid #828282;
+	cursor: pointer;
+
+	/* contenido */
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 1;
+	color: #1c1c1c;
+
+	transition: all .25s ease-in-out;
+}
+
+.no_planilla > div > button:hover {
+	background: #cdcdcd;
+	border-color: #cdcdcd;
+	color: #363636;
+}
+
+.contenido {
+	height: 100%;
+	overflow-y: scroll;
+	background: #FFF;
+}

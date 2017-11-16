@@ -1,0 +1,210 @@
+<template id="t_cont_pestanias">
+	<style>
+		cont-pestanias {
+			position: relative;
+			display: block;
+		}
+
+		cont-pestanias > .wc-pestania_cabecera {
+			display: block;
+			height: 26px;
+			border: 0;
+			border-bottom: 1px solid #696969;	
+		}
+
+		cont-pestanias > elem-pestania {
+			position: absolute;
+			left: 0;
+			right: 0;
+			display: block;
+
+			height: calc(100% - 26px);
+		}
+	</style>
+	<div class="wc-pestania_cabecera"></div>
+</template>
+
+<template id="t_elem_pestanias">
+	<style>
+		elem-pestania {
+			z-index: 0;
+		}
+
+		elem-pestania[data-foco="foco"] {
+			z-index: 1;
+		}
+
+		elem-pestania > .wc-pestania_titulo {
+			position: absolute;
+			top: -27px;
+			display: inline;
+
+			font-size: 16px;
+			text-align: center;
+			font-weight: 400;
+			white-space: nowrap;
+			color: #363636;
+			
+			background: #dfdfdf;
+			padding: 4px;
+			min-width: 100px;
+			max-width: 200px;
+			height: 16px;
+			border: 1px solid #696969;
+			border-bottom-color: transparent;
+			margin: 0;
+
+			cursor: default;
+		}
+
+		elem-pestania[data-foco="foco"] > .wc-pestania_titulo {
+			color: #121212;
+			border-color: #363636;
+			border-bottom-color: transparent;
+		}
+
+		elem-pestania > .wc-pestania_titulo:before {
+			position: absolute;
+			right: 0;
+			left: 0;
+			bottom: -1px;
+
+			display: block;
+
+			content: "";
+			background: red;
+			height: 1px;
+
+			animation-name: contraer_guion;
+			animation-duration: .5s;
+			animation-fill-mode: forwards;
+		}
+
+		elem-pestania[data-foco="foco"] > .wc-pestania_titulo:before {
+			animation-name: extender_guion;
+			animation-duration: .5s;
+			animation-fill-mode: forwards;
+		}
+
+		@keyframes extender_guion {
+			from {
+				left: 50%;
+				right: 50%;
+			}
+
+			to {
+				left: 0%;
+				right: 0%;
+			}
+		}
+
+		@keyframes contraer_guion {
+			from {
+				left: 0%;
+				right: 0%;
+			}
+
+			to {
+				left: 50%;
+				right: 50%;
+			}
+		}
+	</style>
+	<h2 class="wc-pestania_titulo"></h2>
+</template>
+
+<script>
+
+(function() {
+
+var protoContPestanias = Object.create(HTMLElement.prototype);
+var tempContPestania = document.currentScript.ownerDocument.querySelector("#t_cont_pestanias").content;
+
+protoContPestanias.createdCallback = function() {
+	var clon = document.importNode(tempContPestania, true);
+
+	var contenido = this.innerHTML;
+	this.pestanias = [];
+	this.pestaniaActual = -1;
+	this.innerHTML = "";
+
+	this.appendChild(clon);
+	this.innerHTML += contenido;
+
+	var self = this;
+
+	window.addEventListener("load", function(e) {
+		setTimeout(function() {
+			self.normalizar();
+		}, 3000);
+	});
+};
+
+protoContPestanias.normalizar = function() {
+	var cantPestanias = this.pestanias.length;
+	var offset, altura;
+
+
+	for(var i = 1; i < cantPestanias; ++i) {
+		offset = Utils.getRight(this.pestanias[i-1].titulo) - 1;
+		this.pestanias[i].titulo.style.left = offset + "px";
+	}
+};
+
+document.registerElement("cont-pestanias", { prototype: protoContPestanias });
+
+
+
+	
+var protoElemPestania = Object.create(HTMLElement.prototype);
+var tempPestania = document.currentScript.ownerDocument.querySelector("#t_elem_pestanias").content;
+
+protoElemPestania.createdCallback = function() {
+	var clon = document.importNode(tempPestania, true);
+
+
+	this.contenedor = null;
+	this.pos = null;
+
+	var contenido = this.innerHTML;
+	this.innerHTML = "";
+
+	this.appendChild(clon);
+	this.innerHTML += contenido;
+
+	this.titulo = this.querySelector(".wc-pestania_titulo");
+	this.titulo.innerHTML = this.dataset.title || "Sin título";
+
+	var self = this;
+
+	this.titulo.addEventListener("click", function(e) {
+		var i = self.contenedor.pestaniaActual;
+
+		self.contenedor.pestanias[i].dataset.foco = "";
+
+		self.dataset.foco = "foco";
+		self.contenedor.pestaniaActual = self.pos;
+	});
+};
+
+protoElemPestania.attributeChangedCallback = function(atributo) {
+	if(atributo === "data-title")
+		this.titulo.innerHTML = this.dataset.title || "Sin título";
+};
+
+protoElemPestania.attachedCallback = function() {
+	this.contenedor = this.parentNode;
+	this.pos = this.contenedor.pestanias.push(this) - 1;
+
+	if(this.pos === 0)
+		this.titulo.style.left = "20px";
+
+	if(this.dataset.foco === "foco")
+		this.contenedor.pestaniaActual = this.pos;
+};
+
+document.registerElement("elem-pestania", { prototype: protoElemPestania });
+
+})();
+
+</script>

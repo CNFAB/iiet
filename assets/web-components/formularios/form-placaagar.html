@@ -1,0 +1,48 @@
+<template>
+	<label class="etiqueta">Placa de Agar
+		<input type="checkbox" class="activar" name="placa_agar" />
+	</label>
+
+	<fieldset class="datos_formulario" disabled="disabled">
+		<label>Strongyloides
+			<select name="placa_agar[strongyloides]" required="required">
+				<option></option>
+				<option value="+">+</option>
+				<option value="++">++</option>
+				<option value="+++">+++</option>
+				<option value="NEGATIVO">Negativo</option>
+			</select>
+		</label>
+		<label>Ancylostoma
+			<select name="placa_agar[ancylostoma]" required="required">
+				<option></option>
+				<option value="+">+</option>
+				<option value="++">++</option>
+				<option value="+++">+++</option>
+				<option value="NEGATIVO">Negativo</option>
+			</select>
+		</label>
+		<label>Necator
+			<select name="placa_agar[necator]" required="required">
+				<option></option>
+				<option value="+">+</option>
+				<option value="++">++</option>
+				<option value="+++">+++</option>
+				<option value="NEGATIVO">Negativo</option>
+			</select>
+		</label>
+		<div class="btn_negativo">
+			<button type="button">Completar con Negativos</button>
+		</div>
+	</fieldset>
+</template>
+
+<script>
+
+protoFormPlacaAgar = Object.create(protoFormHaradaMori);
+
+protoFormPlacaAgar.template = document.currentScript.ownerDocument.querySelector("template").content;
+
+document.registerElement("form-placaagar", { prototype: protoFormPlacaAgar });
+
+</script>

@@ -1,0 +1,89 @@
+<template>
+	<label class="etiqueta">Mc Master
+		<input type="checkbox" class="activar" name="mc_master" />
+	</label>
+
+	<fieldset class="datos_formulario" disabled="disabled">
+		<label>Ascaris
+			<input type="number" name="mc_master[ascaris]" required="required" min="0" />
+			<span>hpg</span>
+		</label>
+		<label>Uncinarias
+			<input type="number" name="mc_master[uncinarias]" required="required" min="0" />
+			<span>hpg</span>
+		</label>
+		<label>Hymenolepis
+			<input type="number" name="mc_master[hymenolepis]" required="required" min="0" />
+			<span>hpg</span>
+		</label>
+		<label>Trichuris
+			<input type="number" name="mc_master[trichuris]" required="required" min="0" />
+			<span>hpg</span>
+		</label>
+		<label>Enterobius
+			<input type="number" name="mc_master[enterobius]" required="required" min="0" />
+			<span>hpg</span>
+		</label>
+		<label>Taenia
+			<input type="number" name="mc_master[taenia]" required="required" min="0" />
+			<span>hpg</span>
+		</label>
+		<div class="btn_negativo">
+			<button type="button">Completar con Negativos</button>
+		</div>
+	</fieldset>
+</template>
+
+<script>
+
+protoFormMcMaster = Object.create(PrototipoFormulario);
+
+protoFormMcMaster.template = document.currentScript.ownerDocument.querySelector("template").content;
+
+protoFormMcMaster.establecerPropiedades = function() {
+	PrototipoFormulario.establecerPropiedades.call(this);
+
+	this.campos = this.datosFormulario.querySelectorAll("input");
+	this.negativo = this.datosFormulario.querySelector("button");
+	this.negativo.clicked = false;
+};
+
+protoFormMcMaster.establecerEventos = function() {
+	var self = this;
+
+	PrototipoFormulario.establecerEventos.call(this);
+
+	this.negativo.addEventListener("click", function(e) {
+		if(!this.clicked) {
+			for(var i = 0; i < self.campos.length; ++i)
+				if(self.campos[i].value == "")
+					self.campos[i].value = 0;
+
+			this.innerHTML = "Deshacer Negativos";
+		}
+
+		else {
+			for(var i = 0; i < self.campos.length; ++i)
+				if(self.campos[i].value == 0)
+					self.campos[i].value = "";
+
+			this.innerHTML = "Completar con Negativos";
+		}
+
+		this.clicked = !this.clicked;
+	});
+};
+
+protoFormMcMaster.deshabilitar = function() {
+	PrototipoFormulario.deshabilitar.call(this);
+
+	for(var i = 0; i < this.campos.length; ++i)
+		this.campos[i].value = null;
+
+	this.negativo.clicked = false;
+	this.negativo.innerHTML = "Completar con Negativos";
+};
+
+document.registerElement("form-mcmaster", { prototype: protoFormMcMaster });
+
+</script>

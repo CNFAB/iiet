@@ -1,0 +1,67 @@
+<template>
+	<label class="etiqueta">Tratamiento Actual
+		<input type="checkbox" class="activar" name="tratamiento_actual" />
+	</label>
+
+	<fieldset class="datos_formulario" disabled="disabled">
+		<label>Mebendazol
+			<input type="number" min="1" name="droga_1[mebendazol]" />
+			<span>mg</span>
+		</label>
+		<label>Albendazol
+			<input type="number" min="1" name="droga_2[albendazol]" />
+			<span>mg</span>
+		</label>
+		<label>Ivermectina
+			<input type="number" min="1" name="droga_3[ivermectina]" />
+			<span>mg</span>
+		</label>
+	</fieldset>
+	<fieldset class="datos_formulario">
+		<label>Motivo de Exclusi&oacute;n
+			<select name="tratamiento[exclusion]">
+				<option></option>
+				<option value="AUSENTE">Ausente</option>
+				<option value="RECHAZO">Rechazo</option>
+				<option value="EMBARAZO">Embarazo</option>
+				<option value="LACTANCIA">Lactancia</option>
+				<option value="MENOR A 12 MESES">Menor a 12 meses</option>
+				<option value="MENOS DE 15 KG">Menos de 15kg</option>
+			</select>
+		</label>
+	</fieldset>
+</template>
+
+<script>
+	
+protoTratamientoActual = Object.create(PrototipoFormulario);
+
+protoTratamientoActual.template = document.currentScript.ownerDocument.querySelector("template").content;
+
+protoTratamientoActual.establecerPropiedades = function() {
+	PrototipoFormulario.establecerPropiedades.call(this);
+
+	this.motivoExclusion = this.querySelectorAll(".datos_formulario")[1];
+	this.campos = this.datosFormulario.querySelectorAll("input");
+	this.exclusion = this.motivoExclusion.querySelector("select");
+};
+
+protoTratamientoActual.habilitar = function() {
+	PrototipoFormulario.habilitar.call(this);
+
+	this.motivoExclusion.disabled = "disabled";
+	this.exclusion.selectedIndex = 0;
+};
+
+protoTratamientoActual.deshabilitar = function() {
+	PrototipoFormulario.deshabilitar.call(this);
+
+	for(var i = 0; i < this.campos.length; ++i)
+		this.campos[i].value = null;
+
+	this.motivoExclusion.disabled = null;
+};
+
+document.registerElement("form-tratamientoactual", { prototype: protoTratamientoActual });
+
+</script>

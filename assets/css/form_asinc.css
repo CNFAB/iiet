@@ -1,0 +1,124 @@
+ventana-modal form * {
+    font-weight: 300;
+}
+
+ventana-modal header {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+ventana-modal section {
+    padding: 10px 20px 20px;
+}
+
+ventana-modal label {
+    /* posicionamiento */
+    position: relative;
+
+    /* caja */
+    display: block;
+    padding: 4px 0;
+    width: 420px;
+    margin-top: 10px;
+}
+
+ventana-modal label input, ventana-modal label select {
+    /* posicionamiento */
+    position: absolute;
+    right: 0;
+
+    /* caja */
+    padding: 2px 5px;
+    width: 15em;
+    margin-left: 15px;
+}
+
+ventana-modal label input {
+    /* posicionamiento */
+    top: -2px;
+}
+
+ventana-modal label select {
+    /* posicionamiento */
+    top: -3px;
+}
+
+ventana-modal label input[type=date] {
+    /* posicionamiento */
+    top: -4px;
+}
+
+ventana-modal .submit input {
+    /* caja */
+    padding: 8px 30px;
+    cursor: pointer;
+}
+
+ventana-modal .submit input:first-child {
+    /* caja */
+    margin-right: 10px;
+}
+
+ventana-modal .submit input:last-child {
+    /* caja */
+    margin-left: 10px;
+}
+
+ventana-modal .submit {
+    /* caja */
+    margin-top: 40px;
+    /* contenido */
+    text-align: center;
+}
+
+ventana-modal [disabled] {
+    /* caja */
+    display: none;
+}
+
+
+ventana-modal .select_lugar,
+#chk_escuela + select {
+    /* caja */
+    margin-top: 5px;
+}
+
+ventana-modal .select_lugar select,
+#chk_escuela + select {
+    /* caja */
+    width: 60%;
+    margin-left: 30px;
+}
+
+#chk_escuela {
+    margin-top: 15px;
+}
+
+#chk_escuela input {
+    /* posicionamiento */
+    top: 30%;
+    right: unset;
+
+    /* caja */
+    width: auto;
+}
+
+#nuevo_paciente .datos_paciente fieldset {
+    /* caja */
+    padding: 0 20px 20px 20px;
+    border: 1px solid #000;
+    margin-top: 20px;
+}
+
+#nuevo_paciente .datos_paciente fieldset legend {
+    /* caja */
+    background: #fff;
+    padding: 10px;
+}
+
+#nuevo_paciente .datos_paciente fieldset:first-of-type label {
+    /* caja */
+    display: inline-block;
+    width: 100px;
+}
