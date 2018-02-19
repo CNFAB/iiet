@@ -52,18 +52,18 @@ class Escuela_model extends CI_Model {
 		return $consulta->row()->numero;
 	}
 
-	public function obtener_escuelas($lugar, $datos) {
+	public function obtener_escuelas($lugar) {
 		$this->db->select('numero, nombre');
 		$this->db->from('escuelas E');
 
-		if($lugar == 'barrio') {
+		if(isset($lugar['barrio'])) {
 			$this->db->join('barrio_escuela BE', 'E.numero = BE.escuela');
-			$this->db->where('BE.barrio = ' . $datos['barrio']);
+			$this->db->where('BE.barrio = ' . $lugar['barrio']);
 		}
 
 		else {
 			$this->db->join('paraje_escuela PE', 'E.numero = PE.escuela');
-			$this->db->where('PE.paraje = ' . $datos['paraje']);
+			$this->db->where('PE.paraje = ' . $lugar['paraje']);
 		}
 
 		$consulta = $this->db->get();

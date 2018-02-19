@@ -34,6 +34,14 @@ Utils.getRight = function(el) {
 	return el.getBoundingClientRect()["right"];
 };
 
+Utils.getTop = function(el) {
+	return el.getBoundingClientRect()["top"];
+};
+
+Utils.getBottom = function(el) {
+	return el.getBoundingClientRect()["bottom"];
+};
+
 Utils.getZIndex = function(el) {
 	var strIndex = getComputedStyle(el, null)["z-index"];
 
@@ -67,7 +75,7 @@ Utils.obtenerDatosAJAX = function(selectOrg, selectDst, url) {
 		campoId = selectOrg.name;
 		valorId = selectOrg.item(i).value;
 		datos = new Map([[campoId, valorId]]);
-		
+
 		Utils.ajax(url, datos, function(e) {
 			Utils.listarDatosEnSelect(selectDst, e.target.response);
 		});
@@ -93,4 +101,10 @@ Utils.toCamelCase = function(str) {
 	str = str.toLowerCase();
 
 	return str.replace(/(^\w|\s+\w)/g, $1 => $1.toUpperCase());
+};
+
+Utils.soloNumeros = function(str) {
+	str = str.replace(/([^\d\.\-]|(?<=\..*)\.|(?<=.+)-)/g, '');
+
+	return str;
 };

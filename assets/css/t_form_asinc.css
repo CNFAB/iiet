@@ -18,7 +18,7 @@ ventana-modal label {
 	display: block;
 	position: relative;
 	width: 390px;
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 }
 
 ventana-modal label span {
@@ -30,7 +30,7 @@ ventana-modal form fieldset {
 	border: 1px solid #000;
 }
 
-ventana-modal form input:not([type='submit']):not([type='reset']),
+ventana-modal form input:not([type='submit']):not([type='reset']):not([type='checkbox']):not([type='radio']),
 ventana-modal select {
 	position: absolute;
 	right: 0;
@@ -39,8 +39,18 @@ ventana-modal select {
 	width: 195px;
 }
 
+ventana-modal form input:not([type='submit']):not([type='reset']):focus,
+ventana-modal select:focus {
+	border-color: #00b8ff !important;
+}
+
 ventana-modal select {
 	width: 217px;
+}
+
+ventana-modal form .divisor {
+	display: inline-block;
+	vertical-align: top;
 }
 
 ventana-modal form input.nro_real {
@@ -50,7 +60,7 @@ ventana-modal form input.nro_real {
 
 ventana-modal .btn_submit {
 	text-align: center;
-	margin-top: 40px;
+	margin-top: 22px;
 }
 
 ventana-modal .btn_submit * {
@@ -63,10 +73,8 @@ ventana-modal .btn_submit * {
 
 
 ventana-modal .grupo_radio label input[type=radio] {
-    position: relative;
-
-    width: auto;
-    visibility: hidden;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
     margin-left: 20px;
 }
@@ -84,62 +92,12 @@ ventana-modal .grupo_radio label {
     cursor: pointer;
 }
 
-ventana-modal .grupo_radio label input[type=radio]:before {
-    position: absolute;
-    top: -15%;
-    right: -15%;
-
-    display: block;
-    border: 2px solid rgba(0,0,0,.44);
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
-
-    content: '';
-    visibility: visible;
+ventana-modal .grupo_radio label:last-of-type [type=radio] {
+	background: #E3335D;
 }
 
-ventana-modal .grupo_radio label:first-of-type [type=radio]:checked:before {
-    border-color: #5E8FB9;
-}
-
-ventana-modal .grupo_radio label:last-of-type [type=radio]:checked:before {
-    border-color: #E3335D;
-}
-
-ventana-modal .grupo_radio label input[type=radio]:after {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-
-    display: block;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    visibility: hidden;
-
-    content: '';
-
-    transition: all .25s ease-in-out;
-    transform: scale(0);
-}
-
-ventana-modal .grupo_radio label:first-of-type input[type=radio]:after {
-    background: #5E8FB9;
-}
-
-.grupo_radio label:last-of-type input[type=radio]:after {
-    background: #E3335D;
-}
-
-.grupo_radio input[type=radio]:checked:after,
-.grupo_radio label:hover input[type=radio]:after {
-    visibility: visible;
-    transform: scale(1);
-}
-
-.grupo_radio label:hover input[type=radio]:not(:checked):after {
-    transform: scale(.8);
+ventana-modal .grupo_radio label:last-of-type [type=radio]:checked {
+    color: #E3335D;
 }
 
 .select_lugar {
@@ -160,7 +118,10 @@ ventana-modal form fieldset {
 	margin-top: 10px;
 	border: 1px solid var(--clrbtnform);
 	padding-top: 5px;
+}
 
+ventana-modal form fieldset:last-of-type {
+	margin-bottom: 10px;
 }
 
 .domicilio > label, .domicilio .select_lugar {
@@ -181,11 +142,14 @@ select[disabled] {
 	margin-left: 10px;
 }
 
-.invalido {
+ventana-modal .invalido,
+ventana-modal form input:not([type='submit']):not([type='reset']).invalido:focus,
+ventana-modal select.invalido:focus {
 	border: 1px solid red !important;
 }
 
 .box_msj {
+	display: none;
 	position: absolute;
 	right: 0;
 	bottom: -2px;
@@ -193,20 +157,25 @@ select[disabled] {
 	width: 195px;
 }
 
+.invalido ~ .box_msj {
+	display: block;
+}
+
 .invalido ~ .box_msj > .msj_invalido {
 	position: absolute;
 	left: -20px;
 	top: 5px;
-	z-index: 1;
+	z-index: 5;
 
 	padding: 10px 15px;
 	background: #efefef;
 	border: 1px solid #828282;
-	border-radius: 5px;
+	width: 250px;
+	/*border-radius: 5px;*/
 
-	box-shadow: 0 0 1em #000;
+	/*box-shadow: 0 0 1em #000;*/
 
-	animation: msj_aparecer 5s;
+	animation: msj_aparecer 3s forwards;
 	opacity: 0;
 }
 

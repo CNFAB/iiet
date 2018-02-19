@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Escuelas extends CI_Controller {
 	public function __construct() {
@@ -17,9 +18,9 @@ class Escuelas extends CI_Controller {
 		$this->output->set_output($json);
 	}
 
-	public function listado_escuelas($lugar) {
+	public function listado_escuelas() {
 		$datos = $this->input->post();
-		$result = $this->escuela_model->obtener_escuelas($lugar, $datos);
+		$result = $this->escuela_model->obtener_escuelas($datos);
 		$json = json_encode($result);
 
 		$this->output->set_content_type('application/json');

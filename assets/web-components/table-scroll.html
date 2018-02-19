@@ -1,0 +1,517 @@
+<!-- var tabla = document.createElement("table", "table-scroll"); -->
+
+<template>
+	<style>
+		table[is="table-scroll"] * {
+			height: auto;
+			min-height: none;
+		}
+
+		table[is="table-scroll"] {
+			margin: 0;
+			border-collapse: collapse;
+		}
+
+		table[is="table-scroll"] thead {
+			display: block;
+		}
+
+		table[is="table-scroll"] tbody {
+			display: block;
+			overflow-y: scroll;
+		}
+
+		tr {
+			display: block;
+		}
+
+		td[data-extended="true"] {
+			overflow-x: auto;
+			white-space: normal;
+			text-overflow: clip;
+			text-align: left;
+		}
+
+		th, td {
+			overflow-x: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+	</style>
+</template>
+
+<script>
+
+var protoTableScroll = Object.create(HTMLTableElement.prototype);
+
+(function() {
+
+var contentTemplate = document.currentScript.ownerDocument.querySelector("template").content;
+
+function extendCell() {
+	var parent = this.parentNode;
+	
+	parent.extendedCell = this;
+	this.dataset.extended = "true";
+}
+
+function contractCell() {
+	var parent = this.parentNode;
+
+	parent.extendedCell = null;
+	this.dataset.extended = "false";
+}
+
+function overflowCell(cell) {
+	var table = cell.parentNode.table;
+	var parent = cell.parentNode;
+
+	cell.style.maxWidth = table.cellMaxWidth + "px";
+	cell.dataset.extended = "false";
+	cell.extend = extendCell;
+	cell.contract = contractCell;
+
+	cell.addEventListener("click", function() {
+		if(this.parentNode.selected)
+			this.parentNode.unselect();
+
+		if(this.dataset.extended == "false") {
+			if(parent.extendedCell)
+				parent.extendedCell.contract();
+
+			this.extend();
+		}
+
+		else
+			this.contract();
+	});
+}
+
+function insertTextContent(textContent) {
+	var parentRow = this.parentNode,
+		table = parentRow.table,
+		cells = parentRow.children,
+		isVoid = this.textContent === "";
+
+	var text = document.createTextNode(textContent);
+	this.appendChild(text);
+
+	if(table && table.normalized)
+		if(cells.length === table.rows[0].children.length) {
+			if(!isVoid)
+				table.normalizeCells(this.indexCol);
+
+			else
+				parentRow.normalize();
+		}
+}
+
+protoTableScroll.scrollBarWidth = 18;
+protoTableScroll.cellMaxWidth = 300;
+protoTableScroll.styleLabel = false;
+
+protoTableScroll.normalize = function() {
+	// si no hay filas no es necesario normalizar
+	if(this.rows.length === 0)
+		return;
+	
+	var rowsLen = 0,
+		cellsLen = 0,
+		i, j;
+
+	// si las celdas no fueron agregadas al array
+	if(!this.cells[0]) {
+		rowsLen = this.rows.length;
+		
+		// agrega las referencias a las celdas al array cells
+		for(i = 0; i < rowsLen; ++i)
+			this.cells[i] = this.rows[i].children;
+
+		cellsLen = this.cells[0].length;
+
+		// si no hay celdas no es necesario normalizar
+		if(!cellsLen)
+			return;
+
+		// agrega la propiedad indexCol a cada celda
+		for(i = 0; i < rowsLen; ++i)
+			for(j = 0; j < cellsLen; ++j)
+				this.cells[i][j].indexCol = j;
+	}
+
+	this.normalizeWidth();
+	this.normalizeHeight();
+};
+
+protoTableScroll.normalizeWidth = function() {
+	var maxWidth = [],
+		len = this.cells[0].length,
+		tableWidth = 0,
+		padding = tools.getPropertyOf(this.rows[0], "outerWidth");
+
+	this.style.width = "0px";
+
+	for(var i = 0; i < len; ++i) {
+		maxWidth[i] = this.getCellMaxWidth(i);
+
+		tableWidth += maxWidth[i];
+		padding += tools.getPropertyOf(this.cells[0][i], "outerWidth");
+	}
+
+	for(var i = 0; i < len; ++i)
+		this.setColWidth(i, maxWidth[i]);
+
+	var totalWidth = ow = tableWidth + padding + this.scrollBarWidth;
+
+	if(typeof this.dataset.maxWidth !== 'undefined') {
+		let maxWidth2 = tools.getNumber(this.dataset.maxWidth);
+
+		if(totalWidth > maxWidth2) {
+			ow = maxWidth2;
+			this.style.display = 'block';
+			this.style.overflowX = 'scroll';
+		}
+
+	}
+
+	this.tHead.style.width = totalWidth + 'px';
+	this.tBodies[0].style.width = totalWidth + 'px';
+	this.style.width = ow + 'px';
+	//this.style.width = tableWidth + padding + this.scrollBarWidth + "px";
+};
+
+protoTableScroll.normalizeHeight = function() {
+	this.style.height = null;
+
+	var tbody = this.tBodies[0];
+
+	if(typeof tbody === 'undefined' || tbody.children.length === 0 || typeof this.dataset.maxHeight === 'undefined')
+		return;
+
+	var currentHeight = tools.getPropertyOf(this, "height");
+	var maxHeight = tools.getNumber(this.dataset.maxHeight);
+
+	if(currentHeight > maxHeight) {
+		this.style.height = maxHeight;
+		tbody.style.height = maxHeight - tools.getPropertyOf(this.tHead, "height") + "px";
+	}
+};
+
+protoTableScroll.normalizeCells = function(indexCol) {
+	var len = this.rows.length,
+		currentWidth = this.getColWidth(indexCol),
+		newWidth = 0,
+		dif = 0;
+
+	for(var i = 0; i < len; ++i)
+		this.cells[i][indexCol].style.width = "auto";
+
+	newWidth = this.getCellMaxWidth(indexCol);
+
+	this.setColWidth(indexCol, newWidth);
+
+	dif = currentWidth - newWidth;
+	this.style.width = tools.getNumber(this.style.width) - dif + "px";
+};
+
+// para cuando la tabla no esta normalizada
+protoTableScroll.getCellMaxWidth = function(indexCol) {
+	var rowsLen = this.cells.length,
+		maxWidth = tools.getPropertyOf(this.cells[0][indexCol], "width"),
+		newWidth = 0;
+
+	for(var i = 0; i < rowsLen; ++i) {
+		newWidth = tools.getPropertyOf(this.cells[i][indexCol], "width");
+
+		if(newWidth > this.cellMaxWidth) {
+			overflowCell(this.cells[i][indexCol]);
+			newWidth = this.cellMaxWidth;
+		}
+
+		maxWidth = (newWidth > maxWidth) ? newWidth : maxWidth;
+	}
+
+	return maxWidth;
+};
+
+protoTableScroll.getColWidth = function(indexCol) {
+	var cell;
+
+	if(indexCol !== undefined) {
+		if(indexCol < 0 || indexCol >= this.rows[0].length)
+			throw "Indice fuera de rango";
+
+		cell = this.cells[0][indexCol];
+
+		return tools.getNumber(cell.style.width);
+	}
+};
+
+protoTableScroll.setColWidth = function(indexCol, newWidth) {
+	var len = this.rows.length;
+
+	for(var i = 0; i < len; ++i)
+		this.cells[i][indexCol].style.width = newWidth + "px";
+};
+
+protoTableScroll.insertRow = function(pos) {
+	var rowsLen = this.rows.length;
+
+	if(pos < -1 || pos > rowsLen)
+		throw "Indice fuera de rango";
+
+	var tr = document.createElement("tr", "row-select");
+	var thead = null;
+	var tbody = null;
+
+	if(!rowsLen) {
+		thead = this.tHead || this.createTHead();
+		thead.appendChild(tr);
+		this.cells[0] = tr.children;
+	}
+
+	else {
+		tbody = this.tBodies[0] || this.createTBody();
+
+		switch(pos) {
+			case undefined:
+			case -1:
+			case rowsLen:
+				tbody.appendChild(tr);
+				this.cells[rowsLen] = tr.children;
+			break;
+
+			default:
+				tbody.insertBefore(tr, this.rows[pos]);
+				this.cells.splice(pos, 0, tr.children);
+			break;
+		}
+	}
+
+	return tr;
+};
+
+// Elimina de la tabla la fila en la posición indicada
+protoTableScroll.deleteRow = function(pos) {
+	var len, i, dif;
+
+	HTMLTableElement.prototype.deleteRow.call(this, pos);
+	this.cells.splice(pos, 1);
+
+	len = this.cells[0].length;
+
+	for(i = 0; i < len; ++i)
+		dif = this.normalizeCells(i);
+};
+
+protoTableScroll.clearBody = function() {
+	this.tBodies[0].innerHTML = '';
+};
+
+protoTableScroll.createdCallback = function() {
+	var clonStyle, observer, config;
+
+	this.rowSelected = null;
+	this.cells = [];
+
+	// inserta los estilos de la tabla en la cabecera del documento
+	if(!this.styleLabel) {
+		clonStyle = document.importNode(contentTemplate, true);
+
+		document.head.appendChild(clonStyle);
+		protoTableScroll.styleLabel = true;
+	}
+
+	observer = new MutationObserver(tableNormalize);
+	config = { "childList": true, "subtree": true };
+
+	observer.observe(this, config);
+};
+
+protoTableScroll.attachedCallback = function() {
+	var self = this;
+
+	window.addEventListener("load", function() {
+		self.normalize();
+	});
+};
+
+document.registerElement("table-scroll", {
+	prototype: protoTableScroll,
+	extends: "table"
+});
+
+function tableNormalize(mutaciones) {
+	var table = mutaciones[0].target;
+
+	if(table.dataset.maxHeight != "")
+		table.normalize();
+}
+
+
+
+/***************************************************************************/
+
+function getParentRowOf(el) {
+	if(el == null || el === document || el.nodeName === "TABLE")
+		return null;
+
+	else if(el.nodeName !== "TR")
+		return getParentRowOf(el.parentNode);
+
+	else
+		return el;
+}
+
+function rowSelect(e) {
+	var row, rowSelected, parent, difTop, difBottom;
+
+	row = getParentRowOf(e.target);
+	rowSelected = row.table.rowSelected;
+
+	if(row.dataset.selected == "false") {
+		if(rowSelected) {
+			if(rowSelected.extendedCell)
+				rowSelected.extendedCell.contract();
+
+			row.table.rowSelected.unselect();
+		}
+
+		row.select();
+
+		parent = row.parentNode,
+		difTop = tools.getPropertyOf(row, "top") - tools.getPropertyOf(parent, "top"),
+		difBottom = tools.getPropertyOf(parent, "bottom") - tools.getPropertyOf(row, "bottom");
+
+		if(difTop < 0)
+			parent.scrollTop = parent.scrollTop + difTop;
+
+		if(difBottom < 0)
+			parent.scrollTop = parent.scrollTop - difBottom;
+	}
+
+	else {
+		if(row.extendedCell)
+			row.extendedCell.contract();
+
+		row.unselect();
+	}
+}
+
+var protoRow = Object.create(HTMLTableRowElement.prototype);
+
+protoRow.createdCallback = function() {
+	this.table = null;
+	this.dataset.selected = "false";
+	this.extendedCell = null;
+	this.inserted = false;
+};
+
+protoRow.attachedCallback = function() {
+	if(this.parentNode.nodeName == "THEAD" || this.inserted)
+		return;
+
+	this.table = this.parentNode.parentNode;
+	this.inserted = true;
+
+	this.addEventListener("click", rowSelect);
+	this.addEventListener("contextmenu", rowSelect);
+};
+
+protoRow.select = function() {
+	this.table.rowSelected = this;
+	this.dataset.selected = "true";
+};
+
+protoRow.unselect = function() {
+	this.table.rowSelected = null;
+	this.dataset.selected = "false";
+};
+
+protoRow.insertCell = function(type, pos) {
+	var element = null;
+	var cells = this.children;
+
+	if(!type || type === "td") {
+		element = HTMLTableRowElement.prototype.insertCell.call(this, pos);
+
+		if(pos === undefined || pos === -1 || pos === cells.length)
+			element.indexCol = cells.length - 1;
+	}
+
+	else if(type === "th") {
+		element = document.createElement("th");
+
+		if(pos === undefined || pos === -1 || pos === cells.length) {
+			this.appendChild(element);
+			element.indexCol = cells.length - 1;
+		}
+
+		else if(pos > -1 && pos < cells.length) {
+			this.insertBefore(element, cells[pos]);
+			element.indexCol = pos;
+		}
+
+		else
+			throw "Indice fuera de rango";
+	}
+
+	else
+		throw "Tipo de celda no permitido";
+
+	element.insertTextContent = insertTextContent;
+
+	return element;
+};
+
+protoRow.normalize = function() {
+	var currentWidth = 0,
+		newWidth = 0,
+		cells = this.children,
+		len = cells.length,
+		tableWidth = 0,
+		padding = tools.getPropertyOf(this, "outerWidth");
+
+	if(!this.table)
+		throw "No se puede normalizar porque no existe una tabla";
+
+	for(var i = 0; i < len; ++i) {
+		currentWidth = this.table.getColWidth(i);
+		newWidth = tools.getPropertyOf(cells[i], "width");
+
+		if(newWidth > this.table.cellMaxWidth) {
+			overflowCell(cells[i]);
+			newWidth = this.table.cellMaxWidth;
+		}
+
+		if(newWidth > currentWidth) {
+			this.table.setColWidth(i, newWidth);
+			tableWidth += newWidth;
+		}
+
+		else {
+			cells[i].style.width = currentWidth + "px";
+			tableWidth += currentWidth;
+		}
+
+		padding += tools.getPropertyOf(cells[i], "outerWidth");
+	}
+
+	this.table.style.width = tableWidth + padding + this.table.scrollBarWidth + "px";
+};
+
+protoRow.insertCells = function(type, cellsData) {
+	var i, len = cellsData.length;
+
+	for(i = 0; i < len; ++i)
+		this.insertCell(type).insertTextContent(cellsData[i]);
+};
+
+document.registerElement("row-select", {
+	prototype: protoRow,
+	extends: "tr"
+});
+
+
+})();
+</script>

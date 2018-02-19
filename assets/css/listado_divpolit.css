@@ -1,0 +1,186 @@
+#nav {
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    z-index: 10;
+    text-align: left;
+}
+
+#nav > li {
+    display: inline;
+    color: #0024cc;
+}
+
+#nav > li > span {
+    margin: 0 5px;
+    color: #f96008;
+}
+
+#nav > li > a {
+    display: inline-block;
+    position: relative;
+    color: #0024cc;
+}
+
+#nav > li:last-child > a {
+    pointer-events: none;
+}
+
+#nav > li > a:before {
+    position: absolute;
+    right: 50%;
+    left: 50%;
+    bottom: -2px;
+    display: block;
+
+    content: '';
+
+    height: 2px;
+    background: #f96008;
+
+    transition: all .25s ease-in-out;
+}
+
+#nav > li > a:hover:before {
+    left: 0;
+    right: 0;
+
+    transition: all .25s ease-in-out;
+}
+
+#nav > li:first-child > span {
+    display: none;
+}
+
+#main {
+    position: relative;
+}
+
+#main > .entidad {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#main > .entidad.entidad_activa {
+    display: block;
+}
+
+#main > .entidad > header {
+    text-align: center;
+    font-size: 1.2em;
+    color: #1b1b1b;
+
+    padding: 15px;
+    background: #fff;
+}
+
+#main > .entidad {
+    text-align: center;
+}
+
+.lista_entidades {
+    display: inline-block;
+    background: #fff;
+    width: 600px;
+    height: 500px;
+    border: 5px solid #f59660;
+
+    text-align: left;
+    overflow-y: scroll;
+}
+
+.lista_entidades > li.msj_vacio {
+    position: relative;
+
+    width: 94%;
+    height: 95%;
+    text-align: center;
+
+    background: #737373;
+    border: #000;
+}
+
+.lista_entidades > li.msj_vacio > span {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    display: block;
+}
+
+.lista_entidades > li {
+    border: 1px solid #5a79ec;
+    background: #5a98ce;
+    margin: 10px 20px;
+    color: #f5f5f5;
+
+    box-shadow: 0 2px 8px #2b2b2b;
+}
+
+.lista_entidades > li > .cont_datos_entidad {
+    position: relative;
+}
+
+.lista_entidades > li > .cont_datos_entidad > div {
+    padding: 6px 20px;
+}
+
+.lista_entidades > li > .cont_datos_entidad > div:first-child {
+    display: none;
+}
+
+.lista_entidades > li > .cont_datos_entidad > div > :first-child {
+    display: inline-block;
+    width: 11em;
+}
+
+.lista_entidades > li > .cont_datos_entidad > div > :last-child {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.lista_entidades > li > .cont_datos_entidad > div.descender {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.lista_entidades > li > .cont_datos_entidad > div.descender > a {
+    color: #f5f5f5;
+    text-decoration: underline;
+}
+
+.lista_entidades > li > .cont_datos_entidad > a {
+    background-image: url('/iiet/assets/images/ic_lapiz.svg');
+    background-size: 90%;
+    background-position: center center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 35px;
+    height: 35px;
+}
+
+.lista_entidades > li > .cont_datos_entidad > a:hover {
+    background-size: 95%;
+
+    transition: all .1s ease-in-out;
+}
+
+.lista_entidades > li > .cont_datos_entidad > a:active {
+    background-size: 85%;
+}
+
+.cont_nueva_entidad {
+    padding: 20px;
+    background: #fff;
+}
+
+.nueva_entidad {
+    padding: 10px 20px;
+}

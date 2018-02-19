@@ -1,0 +1,36 @@
+body > section {
+    text-align: center;
+    background: #fff;
+}
+
+body > section > div {
+    margin: 20px 0;
+}
+
+body > section > div > a {
+    display: inline-block;
+    vertical-align: top;
+    /*position: relative;
+    top: 50%;
+    transform: translateY(-50%);*/
+    
+    color: #fff;
+    font-size: 1.3em;
+    text-align: center;
+    background: #ffae49;
+    width: 20%;
+    height: 260px;
+    padding: 10px;
+    margin: 0 20px;
+}
+
+body > section > div > a:hover {
+    background: #00a0ff;
+}
+
+body > section > div > a > span {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

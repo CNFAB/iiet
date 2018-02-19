@@ -10,14 +10,14 @@ PrototipoFormulario.createdCallback = function() {
 };
 
 PrototipoFormulario.establecerPropiedades = function() {
-	this.habilitador = this.querySelector(".activar");
+	this.habilitador = this.querySelector(".switcher");
 	this.datosFormulario = this.querySelector(".datos_formulario");
 };
 
 PrototipoFormulario.establecerEventos = function() {
 	var self = this;
 
-	this.habilitador.addEventListener("click", function(e) {
+	this.habilitador.addEventListener("change", function(e) {
 		if(this.checked)
 			self.habilitar();
 
@@ -28,6 +28,7 @@ PrototipoFormulario.establecerEventos = function() {
 
 PrototipoFormulario.habilitar = function() {
 	this.datosFormulario.disabled = null;
+	this.campos[0].focus();
 };
 
 PrototipoFormulario.deshabilitar = function() {

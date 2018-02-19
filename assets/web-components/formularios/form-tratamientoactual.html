@@ -1,26 +1,52 @@
-<template>
+<!-- <template>
 	<label class="etiqueta">Tratamiento Actual
-		<input type="checkbox" class="activar" name="tratamiento_actual" />
+		<input type="checkbox" class="switcher" name="tratamiento_actual" />
 	</label>
 
 	<fieldset class="datos_formulario" disabled="disabled">
 		<label>Mebendazol
-			<input type="number" min="1" name="droga_1[mebendazol]" />
+			<input type="number" min="1" name="dosis_drogas[mebendazol]" />
 			<span>mg</span>
 		</label>
 		<label>Albendazol
-			<input type="number" min="1" name="droga_2[albendazol]" />
+			<input type="number" min="1" name="dosis_drogas[albendazol]" />
 			<span>mg</span>
 		</label>
 		<label>Ivermectina
-			<input type="number" min="1" name="droga_3[ivermectina]" />
+			<input type="number" min="1" name="dosis_drogas[ivermectina]" />
 			<span>mg</span>
 		</label>
 	</fieldset>
 	<fieldset class="datos_formulario">
 		<label>Motivo de Exclusi&oacute;n
-			<select name="tratamiento[exclusion]">
-				<option></option>
+			<select name="exclusion">
+				<option value=""></option>
+				<option value="AUSENTE">Ausente</option>
+				<option value="RECHAZO">Rechazo</option>
+				<option value="EMBARAZO">Embarazo</option>
+				<option value="LACTANCIA">Lactancia</option>
+				<option value="MENOR A 12 MESES">Menor a 12 meses</option>
+				<option value="MENOS DE 15 KG">Menos de 15kg</option>
+			</select>
+		</label>
+	</fieldset>
+</template> -->
+
+<template>
+	<label class="etiqueta">Mebendazol
+		<input type="checkbox" class="switcher" name="mebendazol" />
+	</label>
+
+	<fieldset class="datos_formulario" disabled="disabled">
+		<label>Dosis
+			<input type="number" min="1" name="mebendazol[dosis]" />
+			<span>mg</span>
+		</label>
+	</fieldset>
+	<fieldset class="datos_formulario">
+		<label>Motivo de Exclusi&oacute;n
+			<select name="mebendazol[exclusion]">
+				<option value="NO SUMINISTRADO">No suministrado</option>
 				<option value="AUSENTE">Ausente</option>
 				<option value="RECHAZO">Rechazo</option>
 				<option value="EMBARAZO">Embarazo</option>
@@ -32,12 +58,102 @@
 	</fieldset>
 </template>
 
+<template>
+	<label class="etiqueta">Albendazol
+		<input type="checkbox" class="switcher" name="albendazol" />
+	</label>
+
+	<fieldset class="datos_formulario" disabled="disabled">
+		<label>Dosis
+			<input type="number" min="1" name="albendazol[dosis]" />
+			<span>mg</span>
+		</label>
+	</fieldset>
+	<fieldset class="datos_formulario">
+		<label>Motivo de Exclusi&oacute;n
+			<select name="albendazol[exclusion]">
+				<option value="NO SUMINISTRADO">No suministrado</option>
+				<option value="AUSENTE">Ausente</option>
+				<option value="RECHAZO">Rechazo</option>
+				<option value="EMBARAZO">Embarazo</option>
+				<option value="MENOR A 12 MESES">Menor a 12 meses</option>
+			</select>
+		</label>
+	</fieldset>
+</template>
+
+<template>
+	<label class="etiqueta">Ivermectina
+		<input type="checkbox" class="switcher" name="ivermectina" />
+	</label>
+
+	<fieldset class="datos_formulario" disabled="disabled">
+		<label>Dosis
+			<input type="number" min="1" name="ivermectina[dosis]" />
+			<span>mg</span>
+		</label>
+	</fieldset>
+	<fieldset class="datos_formulario">
+		<label>Motivo de Exclusi&oacute;n
+			<select name="ivermectina[exclusion]">
+				<option value="NO SUMINISTRADO">No suministrado</option>
+				<option value="AUSENTE">Ausente</option>
+				<option value="RECHAZO">Rechazo</option>
+				<option value="EMBARAZO">Embarazo</option>
+				<option value="PUERPERIO">Puerperio</option>
+				<option value="MENOS DE 15 KG">Menos de 15kg</option>
+			</select>
+		</label>
+	</fieldset>
+</template>
+
 <script>
 	
-protoTratamientoActual = Object.create(PrototipoFormulario);
+protoMebendazol = Object.create(PrototipoFormulario);
+protoAlbendazol = Object.create(PrototipoFormulario);
+protoIvermectina = Object.create(PrototipoFormulario);
 
-protoTratamientoActual.template = document.currentScript.ownerDocument.querySelector("template").content;
+protoMebendazol.template = document.currentScript.ownerDocument.querySelectorAll("template")[0].content;
+protoAlbendazol.template = document.currentScript.ownerDocument.querySelectorAll("template")[1].content;
+protoIvermectina.template = document.currentScript.ownerDocument.querySelectorAll("template")[2].content;
 
+function fEstablecerPropiedades() {
+	PrototipoFormulario.establecerPropiedades.call(this);
+
+	this.motivoExclusion = this.querySelectorAll(".datos_formulario")[1];
+	this.campos = this.datosFormulario.querySelectorAll("input");
+	this.exclusion = this.motivoExclusion.querySelector("select");
+}
+
+function fHabilitar() {
+	PrototipoFormulario.habilitar.call(this);
+
+	this.motivoExclusion.disabled = "disabled";
+	this.exclusion.selectedIndex = 0;
+}
+
+function fDeshabilitar() {
+	PrototipoFormulario.deshabilitar.call(this);
+
+	for(var i = 0; i < this.campos.length; ++i)
+		this.campos[i].value = null;
+
+	this.motivoExclusion.disabled = null;
+};
+
+protoMebendazol.establecerPropiedades = fEstablecerPropiedades;
+protoMebendazol.habilitar = fHabilitar;
+protoMebendazol.deshabilitar = fDeshabilitar;
+
+protoAlbendazol.establecerPropiedades = fEstablecerPropiedades;
+protoAlbendazol.habilitar = fHabilitar;
+protoAlbendazol.deshabilitar = fDeshabilitar;
+
+protoIvermectina.establecerPropiedades = fEstablecerPropiedades;
+protoIvermectina.habilitar = fHabilitar;
+protoIvermectina.deshabilitar = fDeshabilitar;
+
+/*
 protoTratamientoActual.establecerPropiedades = function() {
 	PrototipoFormulario.establecerPropiedades.call(this);
 
@@ -61,7 +177,9 @@ protoTratamientoActual.deshabilitar = function() {
 
 	this.motivoExclusion.disabled = null;
 };
-
-document.registerElement("form-tratamientoactual", { prototype: protoTratamientoActual });
+*/
+document.registerElement("form-mebendazol", { prototype: protoMebendazol });
+document.registerElement("form-albendazol", { prototype: protoAlbendazol });
+document.registerElement("form-ivermectina", { prototype: protoIvermectina });
 
 </script>

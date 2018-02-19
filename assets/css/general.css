@@ -1,5 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+/*@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');*/
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf') format('truetype'),
+         url('../fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf') format('truetype'),
+         url('../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Source Sans Pro Bold';
+	src: url('../fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf') format('truetype');
+}
 
 body, input, select,
 option, datalist,
@@ -32,95 +44,45 @@ input, select, button {
 	border: 1px solid #696969;
 }
 
-input[type=checkbox] {
-	position: relative;
-	visibility: hidden;
-}
-
-input[type=checkbox]:before {
-	position: absolute;
-	top: -4px;
-	right: -3px;
-	content: '';
-	display: block;
-	width: 16px;
-	height: 16px;
-	border: 2px solid #006400;
-	visibility: visible;
-	transition: all .25s ease-in-out;
-}
-
-input[type=checkbox]:checked:before {
-	background: #0c0;
-}
-
-.grupo_radio label input[type=radio] {
-    /* posicionamiento */
-    position: static;
-
-    /* caja */
-    width: auto;
-    visibility: hidden;
-    cursor: pointer;
-}
-
 /* ELEMENTO INPUT TIPO RADIO */
 
-.grupo_radio {
-    margin-top: 10px;
+input[type=radio] {
+	position: relative;
+	visibility: hidden;
+	color: rgba(0, 0 , 0, .44);
+	background: #5E8FB9;
 }
 
-.grupo_radio label {
-    /* posicionamiento */
+input[type=radio]:before {
     position: relative;
+    /*top: -1px;
+    right: -1px;*/
 
-    /* caja */
-    display: inline-block;
-    width: 100px;
-    margin-top: 0;
-    margin-right: 100px;
-    cursor: pointer;
-}
-
-.grupo_radio label input[type=radio]:before {
-    /* posicionamiento */
-    position: absolute;
-    top: 20%;
-    right: 0;
-
-    /* caja */
     display: block;
-    border: 2px solid rgba(0,0,0,.44);
+    border: 2px solid;
     border-radius: 50%;
-    width: 14px;
-    height: 14px;
+    /*width: 14px;
+    height: 14px;*/
+    width: 100%;
+    height: 100%;
 
-    /* contenido */
     content: '';
-    text-align: center;
-    vertical-align: top;
     visibility: visible;
 }
 
-.grupo_radio label:first-of-type [type=radio]:checked:before {
-    border-color: #5E8FB9;
-}
+input[type=radio]:after {
+    position: relative;
+    /*top: 2px;
+    right: 2px;*/
+    top: calc(-93% - 2px);
+    left: calc(7% + 2px);
 
-.grupo_radio label:last-of-type [type=radio]:checked:before {
-    border-color: #E3335D;
-}
-
-.grupo_radio label input[type=radio]:after {
-    /* posicionamiento */
-    position: absolute;
-    top: 7px;
-    right: 3px;
-
-    /* caja */
-    display: inline-block;
+    display: block;
     border-radius: 50%;
-    width: 12px;
-    height: 12px;
+    /*width: 12px;
+    height: 12px;*/
+    width: 86%;
+    height: 86%;
     visibility: hidden;
 
     content: '';
@@ -129,23 +91,279 @@ input[type=checkbox]:checked:before {
     transform: scale(0);
 }
 
-.grupo_radio label:first-of-type input[type=radio]:after {
-    /* caja */
-    background: #5E8FB9;
+input[type=radio]:checked {
+    color: #5E8FB9;
 }
 
-.grupo_radio label:last-of-type input[type=radio]:after {
-    /* caja */
-    background: #E3335D;
+input[type=radio]:after {
+    background: inherit;
 }
 
-.grupo_radio input[type=radio]:checked:after,
-.grupo_radio label:hover input[type=radio]:after {
-    /* caja */
+input[type=radio]:checked:after,
+input[type=radio]:hover:after {
     visibility: visible;
     transform: scale(1);
 }
 
-.grupo_radio label:hover input[type=radio]:not(:checked):after {
+input[type=radio]:not(:checked):hover:after {
     transform: scale(.8);
+}
+
+/*
+	checkbox personalizado
+*/
+
+input[type=checkbox] {
+	position: relative;
+	visibility: hidden;
+	width: 14px;
+	height: 14px;
+	font-size: 14px;
+	color: rgba(0,0,0,.44);
+}
+
+input[type=checkbox]:checked {
+	color: #5E8FB9;
+}
+
+input[type=checkbox]:before {
+	content: '';
+
+	position: absolute;
+	/*top: -1px;
+	left: 0;*/
+
+	display: block;
+	/*width: 14px;
+	height: 14px;*/
+	width: 100%;
+	height: 100%;
+	border: 2px solid;
+	border-radius: 5px;
+
+	visibility: visible;
+}
+
+input[type=checkbox]:after {
+	content: '✕';
+	font-family: 'Source Sans Pro Bold';
+	font-size: 100%;
+	font-weight: bolder;
+
+	position: relative;
+	/*top: -2px;
+	left: 2px;*/
+	top: calc(-7% + 1px);
+	left: calc(7% + 2px);
+
+	display: block;
+	/*width: 12px;
+	height: 12px;*/
+	width: 86% !important;
+	height: 86% !important;
+
+	visibility: hidden;
+	transform-origin: 50% 50%;
+	transform: scale(0);
+    transition: all .25s ease-in-out;
+}
+
+input[type=checkbox]:enabled:not(:checked):hover:after {
+	visibility: visible;
+	transform: scale(.85);
+}
+
+input[type=checkbox]:checked:after {
+	visibility: visible;
+	transform: scale(1);
+}
+
+/*
+	checkbox tipo switcher o interruptor
+*/
+input[type=checkbox].switcher {
+    background: #dedede;
+    width: 30px;
+    height: 15px;
+}
+
+input[type=checkbox].switcher:checked {
+	background: #32ca32;
+}
+
+input[type=checkbox].switcher:before {
+    /*left: -20px;*/
+    top: 0;
+    left: 0;
+    border: 1px solid #696969;
+    border-radius: 20px;
+    /*width: 30px;*/
+    width: 100%;
+
+    background: inherit;
+
+    transition: all .25s ease-in-out;
+}
+
+input[type=checkbox].switcher:after {
+    content: '';
+
+    /*top: -3px;
+    left: -21px;*/
+    top: -7%;
+    left: calc(-5% - 2px);
+    display: block;
+    background: #fff;
+    /*width: 16px;
+    height: 16px;*/
+    width: 55% !important;
+    height: 110% !important;
+    border: 2px solid #5a5a5a;
+    border-radius: 50%;
+    visibility: visible;
+    transform: none;
+
+    transition: all .25s ease-in-out;
+}
+
+input[type=checkbox].switcher:checked:before {
+    transition: all .35s ease-in-out;
+}
+
+input[type=checkbox].switcher:checked:after {
+    left: calc(50% - 2px);
+    transform: none;
+    transition: all .25s ease-in-out;
+}
+
+input[type=checkbox].switcher:enabled:hover:after {
+	transform: scale(1);
+    transition: all .25s ease-in-out;
+}
+
+.btn, button,
+input[type='submit'], input[type='reset'] {
+    border: 1px solid #696969;
+    color: #2d2d2d;
+    background: transparent;
+
+	transition: .3s ease-in-out;
+}
+
+.btn:hover, button:hover,
+input[type='submit']:hover,
+input[type='reset']:hover {
+	border-color: #4d7cbf;
+	color: #efefef;
+	background: #3585e6;
+	transition: .3s ease-in-out;
+}
+
+input:disabled, select:disabled,
+button:disabled, .btn:disabled {
+	border-color: #929292;
+	color: #929292;
+	transition: all .3s ease-in-out;
+}
+
+button:disabled:hover,
+.btn:disabled:hover {
+	border-color: #929292;
+	color: #929292;
+	background: none;
+}
+
+body {
+    height: calc(100% - 20px);
+}
+
+body > #cabecera_principal {
+    position: relative;
+    color: #fff;
+    background: #5da3ea;
+    padding: 15px;
+}
+
+body > #cabecera_principal > h2 {
+    display: inline-block;
+    font-size: 1.6em;
+    margin-right: 5px;
+}
+
+body > #cabecera_principal > div {
+    display: inline-block;
+}
+
+body > #cabecera_principal > div > span {
+    display: block;
+    font-size: .6em;
+    line-height: 1.1em;
+}
+
+body > #cabecera_principal > h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+.oculto {
+    display: none;
+}
+
+
+#estado_guardar {
+    display: none;
+
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    background-size: 11%;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    width: 330px;
+    padding: 15px 5px 15px 65px;
+
+    z-index: 200;
+}
+
+#estado_guardar.exito_guardar {
+    display: block;
+    background-image: url('/iiet/assets/images/ic_check.svg');
+    border: 1px solid #67c521;
+    border-left: 10px solid #67c521;
+    animation: extender_mensaje .5s ease-in-out;
+}
+
+#estado_guardar.error_guardar {
+    display: block;
+    background-image: url('/iiet/assets/images/ic_error.svg');
+    border: 1px solid #ec4735;
+    border-left: 10px solid #ec4735;
+    animation: extender_mensaje .5s ease-in-out;
+}
+
+#estado_guardar > span:first-child {
+    display: block;
+    padding-bottom: 5px;
+}
+
+#estado_guardar > span:last-child {
+    display: block;
+    padding-top: 5px;
+}
+
+@keyframes extender_mensaje {
+    0% {
+        transform-origin: right;
+        transform: scaleX(0);
+    }
+
+    100% {
+        transform-origin: right;
+        transform: scaleX(100%);
+    }
 }

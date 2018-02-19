@@ -8,32 +8,29 @@ class Paciente_model extends CI_Model {
 	public function nuevo($datos) {
 		$this->db->trans_begin();
 
-		$datos_paciente['dni'] = $datos['dni'];
-		$datos_paciente['apellido'] = $datos['apellido'];
-		$datos_paciente['nombre'] = $datos['nombre'];
-		$datos_paciente['sexo'] = $datos['sexo'];
-		$datos_paciente['fecha_nacimiento'] = $datos['fecha_nacimiento'];
-		$datos_paciente['fecha_carga'] = date('d/m/Y');
+		$datos_paciente = array(
+			'nro_cuaderno'     => $datos['nro_cuaderno'] ? $datos['nro_cuaderno'] : NULL,
+			'dni'              => $datos['dni'],
+			'apellido'         => $datos['apellido'],
+			'nombre'           => $datos['nombre'],
+			'sexo'             => $datos['sexo'],
+			'fecha_nacimiento' => $datos['fecha_nacimiento'],
+			'fecha_carga'      => date('d/m/Y'),
+			'domicilio'        => $datos['domicilio'],
+			'nro_familia'	   => $datos['nro_familia'] ? $datos['nro_familia'] : NULL,
+			'nro_vivienda'	   => $datos['nro_vivienda'] ? $datos['nro_vivienda'] : NULL
+		);
 
 		$this->db->insert('pacientes', $datos_paciente);
 
 		$id = $this->ultimo_id();
+		$datos['paciente'] = $id;
 
-		if($datos['lugar'] == 'paraje') {
-			$datos_puesto['paciente'] = $id;
-			$datos_puesto['puesto'] = $datos['puesto'];
-			$datos_puesto['domicilio'] = $datos['domicilio'];
+		if($datos['lugar'] == 'paraje')
+			$this->establecer_puesto($datos);
 
-			$this->db->insert('puesto_paciente', $datos_puesto);
-		}
-
-		else {
-			$datos_puesto['paciente'] = $id;
-			$datos_puesto['barrio'] = $datos['barrio'];
-			$datos_puesto['domicilio'] = $datos['domicilio'];
-
-			$this->db->insert('barrio_paciente', $datos_puesto);
-		}
+		else
+			$this->establecer_barrio($datos);
 
 		if($this->db->trans_status() === FALSE) {
 			$this->db->trans_rollback();
@@ -46,6 +43,24 @@ class Paciente_model extends CI_Model {
 
 			return $id;
 		}
+	}
+
+	public function establecer_barrio($datos) {
+		$datos_barrio = array(
+			'paciente'  => $datos['paciente'],
+			'barrio'    => $datos['barrio']
+		);
+
+		$this->db->insert('barrio_paciente', $datos_barrio);
+	}
+
+	public function establecer_puesto($datos) {
+		$datos_puesto = array(
+			'paciente'  => $datos['paciente'],
+			'puesto'    => $datos['puesto']
+		);
+
+		$this->db->insert('puesto_paciente', $datos_puesto);
 	}
 
 	public function actualizar($id, $datos_nuevos) {
@@ -104,5 +119,12 @@ class Paciente_model extends CI_Model {
 		$consulta = $this->db->get('pacientes');
 
 		return $consulta->row()->numero;
+	}
+
+	public function obtener_dtsparainterv($id) {
+		$this->db->select('numero, domicilio, nro_familia, nro_vivienda');
+		$this->db->where('numero', $id);
+
+		return $this->db->get('pacientes')->row_array();
 	}
 }

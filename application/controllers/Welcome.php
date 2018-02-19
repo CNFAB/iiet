@@ -23,7 +23,29 @@ class Welcome extends CI_Controller {
 		$this->load->view('inicio');
 	}
 
-	public function prueba() {
-		$this->load->view('prueba');
+	public function consultas2() {
+		$this->load->view('consultas2');
+	}
+
+	public function consultas() {
+		$this->load->view('consultas');
+	}
+
+	public function copro() {
+		$this->load->view('carga_copro_campania');
+	}
+
+	public function anterior() {
+		$this->load->view('html/registro_de_estudios.php');
+	}
+
+	public function biologmolec()
+	{
+		$this->load->view('carga_biologmolec_campania');
+	}
+
+	public function tratamiento()
+	{
+		$this->load->view('carga_tratamiento_campania');
 	}
 }

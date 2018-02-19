@@ -1,0 +1,193 @@
+#form_estudios > #form_part_1 > label {
+    margin: 0;
+    border: none;
+}
+
+#form_estudios > #form_part_1 > label {
+    padding: 7px 15px;
+}
+
+#form_estudios > #form_part_1 > label:first-child {
+    padding: 5px 15px;
+}
+
+#form_estudios > #form_part_1 > label > span:first-child {
+    margin-right: 10px;
+}
+
+#form_estudios > #form_part_1 > label > input,
+#form_estudios > #form_part_1 > label > select {
+    position: unset;
+}
+
+#form_estudios > #form_part_1 > label > input[type=date] {
+    width: 9em;
+    padding: 4px;
+}
+
+#form_estudios > #form_part_1 > label > input[name='peso_materia'] {
+    width: 3em;
+    padding-right: 1.7em;
+}
+
+#form_estudios > #form_part_1 > label > input[name='nro_tubo'] {
+    width: 6em;
+    padding: 4px;
+}
+
+#form_estudios > #form_part_1 > label > input[name='peso_materia'] + span {
+    position: unset;
+    position: relative;
+    top: 0;
+    left: calc(-1.7em - 1px);
+
+    background: #8dcdea;
+    padding: 2px .5em;
+    color: #212121;
+}
+
+#form_estudios > div {
+    text-align: center;
+}
+
+#form_estudios > div > * {
+    display: inline-block;
+    border: 1px solid #1e5faf;
+    margin: 15px 15px;
+    vertical-align: top;
+}
+
+#form_estudios > div > * label {
+    position: relative;
+    text-align: left;
+    display: block;
+    width: 300px;
+    padding: 7px 15px;
+}
+
+#form_estudios > div > * > label {
+    color: #ededed;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #1e5faf;
+}
+
+#form_estudios > div > * > label input[type='checkbox'] {
+    right: 12px;
+    color: #e0e0e0;
+}
+
+#form_estudios > div > * > fieldset > :nth-child(2n) {
+    background: #d0deff;
+    transition: all .3s ease-in-out;
+}
+
+#form_estudios > div > * > fieldset > :nth-child(2n+1) {
+    background: #fff;
+    transition: all .3s ease-in-out;
+}
+
+#form_estudios > div > * > fieldset label input[type='checkbox']:checked {
+    color: #ef7624;
+}
+
+#form_estudios > div > * > fieldset[disabled] > :nth-child(2n) {
+    background: #e4e3e3;
+}
+
+#form_estudios > div > * > fieldset[disabled] > :nth-child(2n+1) {
+    background: #f5f3f3;
+}
+
+#form_estudios > div > * > fieldset[disabled] label {
+    color: #6b6969;
+    transition: all .5s ease-in-out;
+}
+
+#form_estudios label input[type='checkbox'],
+#form_estudios label select {
+    position: absolute;
+    right: 20px;
+}
+
+#form_estudios label select {
+    top: 1px;
+}
+
+#form_estudios label input:not([type='checkbox']) {
+    width: 60px;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    padding-right: calc(2em + 12px);
+}
+
+#form_estudios label input:not([type='checkbox']) + span {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    width: 2em;
+    padding: 4px;
+    background: #8dcdea;
+    text-align: center;
+}
+
+#form_estudios [disabled] label input:not([type='checkbox']) + span {
+    background: #bdbdbd;
+}
+
+#form_estudios .btn_negativo {
+    text-align: center;
+    padding-top: 43px;
+    padding-bottom: 15px;
+}
+
+#form_estudios > div:first-child .btn_negativo {
+    padding-top: 43px;
+}
+
+#form_estudios > div form-haradamori .btn_negativo {
+    padding-top: 15px;
+}
+
+#form_estudios > div form-baerman .btn_negativo,
+#form_estudios > div form-placaagar .btn_negativo {
+    padding-top: 45px;
+}
+
+#form_estudios .btn_negativo button {
+    padding: 5px 10px;
+}
+
+#form_estudios input:focus,
+#form_estudios select:focus {
+    border-color: #00b8ff !important;
+}
+
+#form_estudios > div form-serologia label:last-child > input {
+    background: transparent;
+    padding: 3px 7px;
+    border: none;
+    width: 6em;
+    text-align: center;
+}
+
+#form_estudios > div form-tratamientoprevio input[type=date] {
+    padding: 0 2px;
+    width: 9em;
+    top: 2px;
+}
+
+#form_estudios > div form-tratamientoprevio input[type=text] {
+    width: 12em;
+    padding: 2px;
+}
+
+#form_estudios > div form-tratamientoactual > :last-child {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#form_estudios > div form-tratamientoactual select {
+    right: 4px;
+}

@@ -1,6 +1,7 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Division_politica extends CI_Controller {
+class Entidades extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 
@@ -8,7 +9,7 @@ class Division_politica extends CI_Controller {
 	}
 
 	public function index() {
-		$this->load->view('html/registro_de_estudios');
+		$this->load->view('entidades');
 	}
 
 	public function cargar_divpolit($tabla) {

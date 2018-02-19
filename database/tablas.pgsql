@@ -140,12 +140,16 @@ create table paraje_escuela ( -- *
 
 create table pacientes ( -- *
 	numero DOM_POSITIVO,
+	nro_cuaderno DOM_POSITIVO,
 	dni DOM_DNI,
-	apellido DOM_NOMBRE,
-	nombre DOM_NOMBRE,
-	sexo DOM_SEXO,
+	apellido DOM_NOMBRE not null,
+	nombre DOM_NOMBRE not null,
+	sexo DOM_SEXO not null,
 	fecha_nacimiento date,
 	fecha_carga date,
+	domicilio text,
+	nro_familia DOM_POSITIVO,
+	nro_vivienda DOM_POSITIVO,
 
 	constraint pk_paciente primary key (numero),
 
@@ -155,7 +159,6 @@ create table pacientes ( -- *
 create table barrio_paciente ( -- *
 	paciente DOM_POSITIVO,
 	barrio DOM_POSITIVO,
-	domicilio text,
 
 	constraint pk_barriopaciente primary key (paciente),
 
@@ -168,7 +171,6 @@ create table barrio_paciente ( -- *
 create table puesto_paciente ( -- *
 	paciente DOM_POSITIVO,
 	puesto DOM_POSITIVO,
-	domicilio text,
 
 	constraint pk_localidadparajepaciente primary key (paciente),
 
@@ -186,7 +188,6 @@ create table puesto_paciente ( -- *
 create table intervenciones_geohelmintos ( -- *
 	numero DOM_POSITIVO,
 	paciente DOM_POSITIVO not null,
-	fecha date not null,
 
 	constraint pk_intervenciongeohelmintos primary key (numero),
 
@@ -199,7 +200,6 @@ create table intervenciones_geohelmintos ( -- *
 
 create table coproparasitologico ( -- *
 	intervencion DOM_POSITIVO,
-	nro_cuaderno DOM_POSITIVO,
 	fecha date,
 	peso_materia DOM_R_POSITIVO,
 	consistencia DOM_CONSISTENCIA,
@@ -366,7 +366,7 @@ create table hemogramas ( -- *
 
 create table serologia_strongyloides ( -- *
 	sangre DOM_POSITIVO,
-	positivo boolean not null,
+	resultado DOM_RESULT_SEROLOGIA not null,
 	titulo DOM_R_POSITIVO not null,
 
 	constraint pk_serologia primary key (sangre),
@@ -376,18 +376,27 @@ create table serologia_strongyloides ( -- *
 );
 
 
-       ------------------------------- MEDIDAS ANTROPOMETRICAS ----------------------------------
+       ------------------------------------- TRATAMIENTOS ----------------------------------------
        
-create table medidas_antropometricas ( -- *
+create table tratamientos ( -- *
 	intervencion DOM_POSITIVO,
 	fecha date,
+
+	constraint pk_tratamiento primary key (intervencion),
+
+	constraint fk_tratamiento_intervencion foreign key (intervencion) references intervenciones_geohelmintos (numero)
+		match full on delete restrict on update cascade
+);
+
+create table medidas_antropometricas ( -- *
+	tratamiento DOM_POSITIVO,
 	peso DOM_R_POSITIVO,
 	talla DOM_R_POSITIVO,
 	perimetro_cefalico DOM_R_POSITIVO,
 
-	constraint pk_medidasantropometricas primary key (intervencion),
+	constraint pk_medidasantropometricas primary key (tratamiento),
 
-	constraint fk_medidasantropometricas_intervencion foreign key (intervencion) references intervenciones_geohelmintos (numero)
+	constraint fk_medidasantropometricas_intervencion foreign key (tratamiento) references tratamientos (intervencion)
 		match full on delete restrict on update cascade,
 
 	constraint ck_medidasantropometricas_nonulo check (
@@ -397,22 +406,7 @@ create table medidas_antropometricas ( -- *
 	)
 );
 
-
-       ------------------------------------- TRATAMIENTOS ----------------------------------------
-       
-create table tratamientos ( -- *
-	intervencion DOM_POSITIVO,
-	fecha date,
-	exclusion DOM_EXCLUSION,
-
-	constraint pk_tratamiento primary key (intervencion),
-
-	constraint fk_tratamiento_intervencion foreign key (intervencion) references intervenciones_geohelmintos (numero)
-		match full on delete restrict on update cascade
-);
-
 create table tratamientos_previos ( -- *
-	numero DOM_POSITIVO,
 	tratamiento_actual DOM_POSITIVO,
 	fecha date,
 	mebendazol boolean not null,
@@ -421,7 +415,7 @@ create table tratamientos_previos ( -- *
 	metronidazol boolean not null,
 	otras text,
 
-	constraint pk_tratamientoprevio primary key (numero),
+	constraint pk_tratamientoprevio primary key (tratamiento_actual),
 
 	constraint fk_tratamientoprevio_tratamiento foreign key (tratamiento_actual) references tratamientos (intervencion)
 		match full on delete restrict on update cascade
@@ -430,12 +424,18 @@ create table tratamientos_previos ( -- *
 create table dosis_drogas ( -- *
 	tratamiento DOM_POSITIVO,
 	droga DOM_DROGAS not null,
-	dosis DOM_POSITIVO not null,
+	dosis DOM_POSITIVO,
+	exclusion DOM_EXCLUSION,
 
 	constraint pk_dosisdroga primary key (tratamiento, droga),
 
 	constraint fk_dosisdroga_tratamiento foreign key (tratamiento) references tratamientos (intervencion)
-		match full on delete restrict on update cascade
+		match full on delete restrict on update cascade,
+
+	constraint ck_exclusion_droga check (
+		(dosis is null and exclusion is not null) or
+		(dosis is not null and exclusion is null)
+	)
 );
 
 
@@ -451,80 +451,93 @@ create table campanias ( -- *
 	numero DOM_POSITIVO,
 	fecha_inicio date not null,
 	fecha_fin date not null,
-	etiqueta DOM_NOMBRE,
+	nombre DOM_NOMBRE,
+	basal_control DOM_BASAL not null,
 
 	constraint pk_campania primary key (numero),
 
-	constraint u_campania_etiqueta unique (etiqueta)
+	constraint u_campania_nombre unique (nombre)
 );
 
-create table campanias_comunidades ( -- *
-	campania DOM_POSITIVO,
-
-	constraint pk_campaniabarrio primary key (campania),
-
-	constraint fk_barrio_campania foreign key (campania) references campanias (numero)
-		match full on delete restrict on update cascade
-);
-
-create table barrio_campania ( -- *
+create table campanias_barrios ( -- *
 	campania DOM_POSITIVO,
 	barrio DOM_POSITIVO not null,
 
 	constraint pk_barriocampania primary key (campania),
 
-	constraint fk_barrio_campania foreign key (campania) references campanias_comunidades (campania)
+	constraint fk_barrio_campania foreign key (campania) references campanias (numero)
 		match full on delete restrict on update cascade,
 	constraint fk_campania_barrio foreign key (barrio) references barrios (numero)
 		match full on delete restrict on update cascade
 );
 
-create table paraje_campania ( -- *
-	campania DOM_POSITIVO,
-	paraje DOM_POSITIVO not null,
-
-	constraint pk_parajecampania primary key (campania),
-
-	constraint fk_paraje_campania foreign key (campania) references campanias_comunidades (campania)
-		match full on delete restrict on update cascade,
-	constraint fk_campania_paraje foreign key (paraje) references parajes (numero)
-		match full on delete restrict on update cascade
-);
-
-create table intervencion_comunidad ( -- *
+create table intervenciones_barrios (
 	intervencion DOM_POSITIVO,
-	campania DOM_POSITIVO not null,
+	campania_barrio DOM_POSITIVO,
 	domicilio text,
 	nro_familia DOM_POSITIVO,
 	nro_vivienda DOM_POSITIVO,
 
-	constraint pk_intervencioncomunidad primary key (intervencion),
+	constraint pk_intervencionbarrio primary key (intervencion),
 
-	constraint u_intervencioncomunidad_campania unique (intervencion, campania),
-
-	constraint fk_comunidad_intervencion foreign key (intervencion) references intervenciones_geohelmintos (numero)
+	constraint fk_intervencion_campaniabarrio foreign key (intervencion) references intervenciones_geohelmintos (numero)
 		match full on delete restrict on update cascade,
-
-	constraint fk_intervencion_comunidad foreign key (campania) references campanias_comunidades (campania)
+	constraint fk_campaniabarrio_intervencion foreign key (campania_barrio) references campanias_barrios (campania)
 		match full on delete restrict on update cascade
 );
 
-create table puesto_intervencion ( -- *
-	intervencion DOM_POSITIVO,
+create table campanias_puestos ( -- *
 	campania DOM_POSITIVO,
-	puesto DOM_POSITIVO,
+	puesto DOM_POSITIVO not null,
 
-	constraint pk_puestointervencion primary key (intervencion),
+	constraint pk_puestocampania primary key (campania),
 
-	constraint fk_puesto_intervencion foreign key (intervencion, campania) references intervencion_comunidad (intervencion, campania)
+	constraint fk_puesto_campania foreign key (campania) references campanias (numero)
 		match full on delete restrict on update cascade,
-	constraint fk_campania_parajecampania foreign key (campania) references paraje_campania (campania)
-		match full on delete restrict on update cascade,
-	constraint fk_intervencion_puesto foreign key (puesto) references puestos (numero)
+	constraint fk_campania_puesto foreign key (puesto) references puestos (numero)
 		match full on delete restrict on update cascade
 );
 
-create table factores_riesgo ( -- *
+create table intervenciones_puestos ( -- *
+	intervencion DOM_POSITIVO,
+	campania_puesto DOM_POSITIVO,
+	domicilio text,
+	nro_familia DOM_POSITIVO,
+	nro_vivienda DOM_POSITIVO,
+
+	constraint pk_intervencionpuesto primary key (intervencion),
+
+	constraint fk_intervencion_campaniapuesto foreign key (intervencion) references intervenciones_geohelmintos (numero)
+		match full on delete restrict on update cascade,
+	constraint fk_campaniapuesto_intervencion foreign key (campania_puesto) references campanias_puestos (campania)
+		match full on delete restrict on update cascade
+);
+
+create table campanias_escuelas ( -- *
+	campania DOM_POSITIVO,
+	escuela DOM_POSITIVO not null,
+
+	constraint pk_campaniaescuela primary key (campania),
+
+	constraint fk_escuela_campania foreign key (campania) references campanias (numero)
+		match full on delete restrict on update cascade,
+	constraint fk_campania_escuela foreign key (escuela) references escuelas (numero)
+		match full on delete restrict on update cascade
+);
+
+create table intervenciones_escuelas ( -- *
+	intervencion DOM_POSITIVO,
+	campania_escuela DOM_POSITIVO not null,
+
+	constraint pk_intervencionescuela primary key (intervencion),
+
+	constraint fk_escuela_intervencion foreign key (intervencion) references intervenciones_geohelmintos (numero)
+		match full on delete restrict on update cascade,
+	constraint fk_intervencion_campaniaescuela foreign key (campania_escuela) references campanias_escuelas (campania)
+		match full on delete restrict on update cascade
+);
+
+/*create table factores_riesgo ( -- *
 	intervencion DOM_POSITIVO,
 	red_dom_y_cloaca boolean default false,
 	tratamiento_agua DOM_TRAT_AGUA default false,
@@ -548,32 +561,7 @@ create table factores_riesgo ( -- *
 		piso_vivienda is not null or
 		desempl_ingr_econ_inest is not null
 	)
-);
-
-create table campanias_escuelas ( -- *
-	campania DOM_POSITIVO,
-	escuela DOM_POSITIVO not null,
-
-	constraint pk_campaniaescuela primary key (campania),
-
-	constraint fk_escuela_campania foreign key (campania) references campanias (numero)
-		match full on delete restrict on update cascade,
-	constraint fk_campania_escuela foreign key (escuela) references escuelas (numero)
-		match full on delete restrict on update cascade
-);
-
-create table intervencion_escuelas ( -- *
-	intervencion DOM_POSITIVO,
-	campania DOM_POSITIVO not null,
-	grado DOM_POSITIVO,
-
-	constraint pk_intervencionescuela primary key (intervencion),
-
-	constraint fk_escuela_intervencion foreign key (intervencion) references intervenciones_geohelmintos (numero)
-		match full on delete restrict on update cascade,
-	constraint fk_intervencion_campaniaescuela foreign key (campania) references campanias_escuelas (campania)
-		match full on delete restrict on update cascade
-);
+);*/
 
 
 -- CONSULTORIO EXTERNO

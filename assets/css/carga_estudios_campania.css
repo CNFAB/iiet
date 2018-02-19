@@ -1,0 +1,360 @@
+#selec_camp_ext {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /*background: #272525;*/
+    background: #fff;
+}
+
+#selec_camp_ext div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    transform: translate(-50%, -50%);
+}
+
+#btns_selec button {
+    width: 320px;
+    height: 300px;
+    background: #5da3ea;
+    border: 1px solid #48a5ff;
+    font-size: 2em;
+    margin: 0 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#btns_selec button:hover {
+    background: #389bff;
+    border-color: #238ef5;
+    text-shadow: 0 0 15px #000;
+}
+
+
+#cont_datos {
+    text-align: center;
+    padding-top: 14px;
+}
+
+#cont_datos * {
+    text-align: left;
+}
+
+#datos_campania,
+#datos_paciente {
+    padding: 5px 20px;
+    background: #5da3ea;
+    margin: 5px 10px 0 10px;
+    color: #fff;
+    width: 55%;
+    min-width: 750px;
+    display: inline-block;
+}
+
+#datos_campania > h2,
+#datos_paciente > h2 {
+    font-size: 1em;
+    text-decoration: underline;
+    padding: 2px 0;
+}
+
+#datos_campania > div > p,
+#datos_paciente > div > p {
+    display: inline-block;
+    padding: 5px 0;
+    font-size: .9rem;
+}
+
+#datos_campania > div > p:first-child,
+#datos_paciente > div > p:first-child {
+    width: 70%;
+}
+
+#datos_paciente > div > p:first-child > span:first-child {
+    width: 125px;
+    display: inline-block;
+}
+
+#datos_campania > div > p:first-child > span:first-child {
+    display: inline-block;
+    width: 65px;
+}
+
+#datos_campania > div > p > span:first-child {
+    display: inline-block;
+    width: 105px;
+}
+
+#wrapper_msj_ini {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: #000a;
+}
+
+#wrapper_msj_ini > div {
+    position: absolute;
+    top: calc(50% - 80px - 2em);
+    left: calc(50% - 252px);
+    border: 1px solid #000c;
+
+    text-align: center;
+    width: 500px;
+    padding: 40px 0;
+    background: #fff;
+
+    box-shadow: 0 0 20px 0px #121212;
+}
+
+#wrapper_msj_ini > div > p {
+    margin-bottom: 30px;
+}
+
+#wrapper_msj_ini > div > a {
+    padding: 5px 10px;
+}
+
+@keyframes rotar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn_nuevo {
+    display: inline-block;
+    width: 160px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px 0;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #000;
+}
+
+#agregar {
+    margin-top: 40px;
+}
+
+.grp_campos {
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.grp_campos {
+    margin-top: 2px;
+    display: block;
+    position: relative;
+    text-align: right !important;
+}
+
+.grp_campos select {
+    border-bottom: 1px solid #353535;
+    padding: 2px;
+}
+
+#grp_busqueda {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+}
+
+#campo_busqueda {
+    position: absolute;
+    left: -50%;
+}
+
+#valor_busqueda {
+    border-bottom: 1px solid #333;
+    width: 98%;
+    padding: 5px;
+}
+
+#crear_paciente {
+    display: block;
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    width: 98%;
+    padding: 10px 5px;
+    border: 1px solid #383737;
+    color: #c9c9c9;
+    background: #252525;
+    text-align: center;
+
+    z-index: 10;
+
+    box-shadow: 0 2px 10px #000;
+}
+
+#crear_paciente img {
+    position: absolute;
+    top: calc(50% - 16px);
+    left: 155px;
+}
+
+#crear_paciente:hover {
+    background: #353535;
+    border-color: #3e3e3e;
+    color: #e6e5e5;
+
+    transition: all .25s ease-in-out;
+}
+
+input, select {
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  color: #000;
+}
+
+h2 {
+  font-size: 1.3em;
+}
+
+option {
+  padding: 1px 5px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+
+#cont_input {
+    position: relative;
+}
+
+.datalist {
+    position: absolute;
+    border: 1px solid #696969;
+    border-top: none;
+    width: calc(98% + 10px);
+
+    text-align: left;
+
+    z-index: 10;
+
+    box-shadow: 0 2px 10px #000;
+}
+
+.datalist > li {
+    display: block;
+    background: #fff;
+    color: #0e0e0e;
+    cursor: default;
+}
+
+.datalist > .item_selec {
+    background: #abc3f7 !important;
+}
+
+.datalist > li > span {
+    display: inline-block;
+    width: 47%;
+    padding: 5px !important;
+    background: transparent !important;
+}
+
+.datalist > li > span:first-child {
+    text-align: left;
+}
+
+.datalist > li > span:last-child {
+    text-align: right !important;
+    color: #383737;
+}
+
+#otros_estudios {
+    position: fixed;
+    right: 40px;
+    top: 42%;
+}
+
+#guardar_estudio,
+#btn_salir,
+#otros_estudios > a {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 100%;
+
+    display: block;
+    cursor: pointer;
+
+    box-shadow: 0 0 10px #3e3e3e;
+
+    margin-bottom: 10px;
+    text-align: center;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 55%;
+
+    transition: all .25s ease-in-out;
+}
+
+#guardar_estudio {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+
+    background-image: url('/iiet/assets/images/ic_disquete.svg');
+    background-color: #8400ff;
+
+    transition: all 5s ease-in-out;
+}
+
+#btn_salir {
+    position: fixed;
+    top: 90px;
+    right: 40px;
+
+    background-image: url('/iiet/assets/images/ic_salir.svg');
+    background-color: #8400ff;
+}
+
+#otros_estudios > a:first-child {
+    background-image: url('/iiet/assets/images/ic_microscopio.svg');
+    background-color: #d68a2c;
+}
+
+#otros_estudios > a:nth-child(2) {
+    background-image: url('/iiet/assets/images/ic_sangre.svg');
+    background-color: #e2222b;
+}
+
+#otros_estudios > a:nth-child(3) {
+    background-image: url('/iiet/assets/images/ic_adn.svg');
+    background-color: #39b31a;
+}
+
+#otros_estudios > a:last-child {
+    background-image: url('/iiet/assets/images/ic_pastillas.svg');
+    background-color: #2c8ca9;
+}
+
+#guardar_estudio:hover,
+#btn_salir:hover,
+#otros_estudios > a:hover {
+    background-size: 60%;
+    transition: all .1s ease-in-out;
+}
+
+#guardar_estudio:active,
+#btn_salir:active,
+#otros_estudios > a:active {
+  	box-shadow: inset 0 5px 30px rgba(0,0,0,.2);
+  	background-size: 45%;
+}

@@ -60,7 +60,7 @@ header > span {
 
 /*************************/
 
-.btn_nuevo {
+/*.btn_nuevo {
 	display: inline-block;
 	width: 160px;
 	border: 1px solid black;
@@ -83,9 +83,10 @@ header > span {
 }
 
 .grp_campos {
-	margin-top: 25px;
+	margin-top: 15px;
 	display: block;
 	position: relative;
+	text-align: right !important;
 }
 
 .grp_campos select {
@@ -101,13 +102,13 @@ header > span {
 
 #campo_busqueda {
 	position: absolute;
-	left: -58%;
+	left: -50%;
 }
 
 #valor_busqueda {
 	border-bottom: 1px solid #000;
 	width: 100%;
-	padding: 2px;
+	padding: 5px;
 }
 
 #crear_paciente {
@@ -150,3 +151,48 @@ option {
 .oculto {
 	display: none !important;
 }
+
+
+#cont_input {
+	position: relative;
+}
+
+.datalist {
+	position: absolute;
+	border: 1px solid #696969;
+	border-top: none;
+	width: calc(100% + 10px);
+
+	text-align: left;
+
+	z-index: 10;
+
+	box-shadow: 0 2px 10px #000;
+}
+
+.datalist > li {
+	display: block;
+	background: #fff;
+	color: #0e0e0e;
+	cursor: default;
+}
+
+.datalist > .item_selec {
+	background: #abc3f7 !important;
+}
+
+.datalist > li > span {
+	display: inline-block;
+	width: 47%;
+	padding: 5px !important;
+	background: transparent !important;
+}
+
+.datalist > li > span:first-child {
+	text-align: left;
+}
+
+.datalist > li > span:last-child {
+	text-align: right !important;
+	color: #383737;
+}*/

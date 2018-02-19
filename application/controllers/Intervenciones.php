@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Intervenciones extends CI_Controller {
 	
@@ -12,9 +13,7 @@ class Intervenciones extends CI_Controller {
 		$datos = $this->input->post();
 
 		$id = $this->intervencion_model->nueva($datos);
-		$json = json_encode($id);
 
-		$this->output->set_content_type('application/json');
-		$this->output->set_output($json);
+		return $id;
 	}
 }

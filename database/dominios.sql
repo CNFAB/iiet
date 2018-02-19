@@ -1,4 +1,4 @@
-﻿
+
                   --------------------------------------------------------------------------------------------
                   --------------------------------------------------------------------------------------------
                   --------------------------------                            --------------------------------
@@ -38,13 +38,13 @@ create domain DOM_POSITIVO as integer check (value > 0);
 create domain DOM_NO_NEGATIVO as integer check (value >= 0);
 create domain DOM_R_POSITIVO as float(2) check (value > 0);
 create domain DOM_R_NO_NEGATIVO as float(2) check (value >= 0);
-create domain DOM_DNI as varchar(8) check (value ~ E'^[1-9]\\d{7,8}');
-create domain DOM_SEXO as char(1) check (value in ('M', 'F'));
+create domain DOM_DNI as integer check (value > 1000000 and value < 100000000);
+create domain DOM_SEXO as char(9) check (value in ('MASCULINO', 'FEMENINO'));
 
 create domain DOM_CUALITATIVO as varchar(8) check (value in('+', '++', '+++', 'NEGATIVO'));
 create domain DOM_NRO_TUBO as varchar(10) check (value ~ E'^[A-Z]{3}-\\d{3}-\\d{2}$');
 create domain DOM_DROGAS as varchar(11) check (value in ('ALBENDAZOL', 'MEBENDAZOL', 'IVERMECTINA'));
-create domain DOM_EXCLUSION as varchar(16) check (value in ('AUSENTE', 'RECHAZO', 'EMBARAZO', 'LACTANCIA', 'MENOR A 12 MESES', 'MENOS DE 15 KG'));
+create domain DOM_EXCLUSION as varchar(16) check (value in ('NO SUMINISTRADO', 'AUSENTE', 'RECHAZO', 'EMBARAZO', 'PUERPERIO', 'MENOR A 12 MESES', 'MENOS DE 15 KG'));
 create domain DOM_TRAT_AGUA as varchar(2) check (value in ('CL', 'F', 'H', 'P', 'NO'));
 create domain DOM_DSE as varchar(2) check (value in ('CP', 'L', 'RC', 'NO'));
 create domain DOM_TSB as varchar(2) check (value in ('R', 'PB', 'NO'));
@@ -53,6 +53,8 @@ create domain DOM_COORDENADAS as float(4);
 create domain DOM_CONSISTENCIA as varchar(7) check (value in ('SOLIDA', 'PASTOSA', 'LIQUIDA'));
 create domain DOM_NRO_ROMANO as varchar(15) check (value ~ E'^M{0,3}(D?C{0,3}|CD|CM)(L?X{0,3}|XL|XC)(I{0,3}|IV|VI{0,3}|IX)$');
 create domain DOM_FUENTE_BM as varchar(13) check (value in ('MATERIA FECAL', 'ORINA'));
+create domain DOM_BASAL as text check (value ~ E'^(Basal \\d+|Control \\d+)$');
+create domain DOM_RESULT_SEROLOGIA as text check (value in ('POSITIVO', 'NEGATIVO'));
 
 
 create domain DOM_CLAVE as varchar(256);

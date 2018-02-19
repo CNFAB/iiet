@@ -1,0 +1,56 @@
+<script>
+	
+var protoTablaAsinc = Object.create(protoTableScroll);
+var t = null;
+(function() {
+
+function listarDatos(tabla, datos) {
+	tabla.clearBody();
+
+	for(let dato of datos) {
+		let fila = tabla.insertRow();
+		
+		for(let n of tabla.campos)
+			fila.insertCell('th').insertTextContent(dato[n]);
+
+		console.log(dato);
+	}
+
+	tabla.normalize();
+}
+
+protoTablaAsinc.attachedCallback = function() {
+	protoTableScroll.attachedCallback.call(this);
+	
+	this.campos = [];
+
+	var datoscampos = this.rows[0].children;
+
+	for(let celda of datoscampos)
+		this.campos.push(celda.dataset.nombre);
+
+	console.log(this.campos);
+
+	this.ajax();
+};
+
+protoTablaAsinc.ajax = function(){
+	var dataset = this.dataset;
+	var xhr = new XMLHttpRequest();
+
+	xhr.open('POST', dataset.target, true);
+	xhr.responseType = 'json';
+	xhr.addEventListener('load', e => listarDatos(this, e.target.response));
+
+	var f = new FormData();
+
+	f.append('tabla', dataset.table);
+
+	xhr.send(f);
+};
+
+document.registerElement('tabla-asinc', { prototype: protoTablaAsinc, extends: 'table' });
+
+})();
+
+</script>
