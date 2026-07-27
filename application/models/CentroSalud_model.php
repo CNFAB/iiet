@@ -57,4 +57,23 @@ class CentroSalud_model extends CI_Model {
 
 		return $consulta->row()->numero;
 	}
+
+	public function obtener_centros($lugar) {
+		$this->db->select('numero, nombre');
+		$this->db->from('centros_salud CS');
+
+		if(isset($lugar['barrio'])) {
+			$this->db->join('barrio_centro_salud BCS', 'CS.numero = BCS.centro_salud');
+			$this->db->where('BCS.barrio = ' . $lugar['barrio']);
+		}
+
+		else {
+			$this->db->join('paraje_centro_salud PCS', 'CS.numero = PCS.centro_salud');
+			$this->db->where('PCS.paraje = ' . $lugar['paraje']);
+		}
+
+		$centros = $this->db->get();
+
+		return $centros->result_array();
+	}
 }

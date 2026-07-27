@@ -1,0 +1,174 @@
+#contenido_principal {
+	position: relative;
+}
+
+#contenido_principal > article > div:first-child {
+	height: calc(100vh - 55px);
+}
+
+#contenido_principal > article > div:not(:first-child) {
+	height: calc(100vh - 50px);
+	padding: 30px;
+}
+
+canvas {
+	width: 100%;
+	height: 100%;
+}
+
+#est_prevalencia {
+	text-align: center;
+	/*padding-top: calc(18% - 80px);*/
+}
+
+#tabla_copro {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+
+	margin-top: 30px;
+}
+
+#est_prevalencia > div > form,
+#est_prevalencia > div > table {
+	display: inline-block;
+	margin: 140px 10px;
+}
+
+#est_prevalencia > div > form > label {
+	display: block;
+	padding: 5px 0;
+}
+
+#est_prevalencia > div > form > select {
+	overflow-y: hidden;
+}
+
+table * {
+	font-size: .98em;
+}
+
+table > thead > tr > th,
+table > tbody > tr > td {
+	padding: 10px 20px;
+}
+
+#tabla_copro > tbody > tr > :first-child,
+#tabla_copro > tbody > tr > :nth-child(3) {
+	text-align: right;
+}
+
+#prevalencia > tbody > tr > td:not(:first-child) {
+	text-align: center;
+}
+
+.botones {
+	width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 100%;
+
+    display: block;
+    cursor: pointer;
+
+    box-shadow: 0 0 10px #3e3e3e;
+
+    margin-bottom: 10px;
+    text-align: center;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 55%;
+
+    transition: all .25s ease-in-out;
+}
+
+#btn_geohelmintos,
+#btn_prevalencia {
+	position: fixed;
+	bottom: 10px;
+	right: 20px;
+}
+
+#btn_geohelmintos {
+	background-color: red;
+}
+
+#btn_prevalencia {
+	background-color: green;
+}
+
+#geo_2x2 > div > div > * {
+	display: inline-block;
+}
+
+#geo_2x2 > div > div > form > label {
+	position: absolute;
+	top: 50px;
+	left: 340px;
+}
+
+#geo_2x2 label > span {
+	display: block;
+	text-align: center;
+	padding: 5px 0;
+}
+
+#geo_2x2 label > select {
+	width: 150px;
+	overflow-y: hidden;
+	font-size: .8em;
+}
+
+#geo_2x2 > div > :last-child {
+	position: absolute;
+	left: 50%;
+	top: 220px;;
+	transform: translateX(-50%);
+}
+
+#geo_2x2 > div > :last-child > label {
+	position: absolute;
+}
+
+#geo_2x2 > div > :last-child > :first-child {
+	left: -170px;
+	bottom: 0;
+}
+
+#geo_2x2 > div > :last-child > label:last-of-type {
+	top: -150px;
+	left: 90px;
+}
+
+#tabla_2x2 > * {
+	text-align: center !important;
+}
+
+#tabla_2x2 > thead > tr > :not(:last-child),
+#tabla_2x2 > tbody > tr:not(:last-child) > :first-child {
+	font-size: 1.5em;
+}
+
+.links {
+	position: fixed;
+	top: 50%;
+	left: 10px;
+	transform: translateY(-50%);
+	height: unset !important;
+	padding: unset !important;
+}
+
+.links > a {
+	display: block;
+	background-color: #ff7d26a1;
+	height: 20px;
+	width: 20px;
+	margin: 15px 0;
+	border-radius: 100%;
+}
+
+.links > a:hover {
+	background-color: #ff7d26;
+	transition: .2s all ease-in-out;
+}

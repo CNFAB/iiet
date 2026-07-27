@@ -184,3 +184,35 @@
 .nueva_entidad {
     padding: 10px 20px;
 }
+
+#ir_inicio {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 100%;
+
+    display: block;
+    cursor: pointer;
+
+    box-shadow: 0 0 10px #3e3e3e;
+
+    margin-bottom: 10px;
+    text-align: center;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 55%;
+
+    transition: all .25s ease-in-out;
+}
+
+#ir_inicio {
+    position: fixed;
+    top: 70px;
+    right: 40px;
+
+    background-image: url('/iiet/assets/images/ic_casa.svg');
+    background-color: #cc03e8;
+
+    transition: all 5s ease-in-out;
+}

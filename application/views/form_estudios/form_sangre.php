@@ -1,7 +1,4 @@
-<form id="form_estudios" name="form_estudios" is="form-asinc" action="/iiet/estudios/cargar_sangre">
-	<input type="hidden" id="paciente" name="intervencion[paciente]"/>
-	<input type="hidden" id="campania" name="intervencion[campania]"/>
-	<input type="hidden" id="tipo" name="intervencion[tipo]"/>
+<form id="form_estudios" name="form_sangre" is="form-asinc" action="/iiet/intervenciones/cargar_sangre">
 	<div id="form_part_1">
 		<label>
 			<span>Fecha</span>
@@ -9,7 +6,7 @@
 		</label>
 		<label>
 			<span>N° de Tubo</span>
-			<input type="text" class="numero" required="required" name="nro_tubo" pattern="^[A-Z]{3}-\d{3}-\d{2}$" />
+			<input type="text" class="numero" required="required" name="nro_tubo" pattern="^[A-Z]{3,4}-\d{4}-\d{2}$" />
 		</label>
 	</div>
 	<div id="form_part_2">

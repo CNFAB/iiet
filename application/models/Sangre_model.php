@@ -6,12 +6,26 @@ class Sangre_model extends CI_Model {
 		parent::__construct();
 
 		$this->load->model('intervencion_model');
+		//$this->load->model('campania_model');
 	}
 
 	public function nuevo($datos) {
 		$this->db->trans_begin();
 
-		$id_interv = $this->intervencion_model->obtener_intervencion($datos['intervencion']);
+		$interv = $datos['intervencion'];
+
+		// si existe la propiedad numero es porque la intervención es de tipo EXTERNO
+		// de lo contrario es de tipo CAMPANIA
+		if(isset($interv['numero'])) {
+			$id_interv = $interv['numero'];
+		}
+
+		else {
+			$id_interv = $this->campania_model->obtener_intervencion($interv['campania'], $interv['paciente']);
+			
+			if(!$id_interv)
+				$id_interv = $this->intervencion_model->nueva($interv);
+		}
 
 		$datos_sangre = array(
 			'intervencion' => $id_interv,
@@ -111,5 +125,44 @@ class Sangre_model extends CI_Model {
 		$consulta = $this->db->get($nombre);
 
 		return $consulta->num_rows() > 0;
+	}
+
+	public function obtener_datos_sangre($intervencion) {
+		$this->db->where('intervencion', $intervencion);
+		$resultado = $this->db->get('sangre');
+
+		if($resultado->num_rows() === 0)
+			return FALSE;
+
+		$sangre = $resultado->row();
+
+		$datos_sangre['fecha']     = $sangre->fecha;
+		$datos_sangre['nro_tubo']  = $sangre->nro_tubo;
+		$datos_sangre['hemograma'] = $this->obtener_datos_metodo($intervencion, 'hemogramas');
+		$datos_sangre['serologia'] = $this->obtener_datos_metodo($intervencion, 'serologia_strongyloides');
+
+		return $datos_sangre;
+	}
+
+	public function obtener_datos_metodo($sangre, $metodo) {
+		$this->db->where('sangre', $sangre);
+		$resultado = $this->db->get($metodo);
+
+		return $resultado->num_rows() > 0 ? $resultado->row_array() : FALSE;
+	}
+
+	public function eliminar($intervencion) {
+		$this->eliminar_metodo($intervencion, 'hemogramas');
+		$this->eliminar_metodo($intervencion, 'serologia_strongyloides');
+
+		$this->db->where('intervencion', $intervencion);
+
+		return $this->db->delete('sangre');
+	}
+
+	private function eliminar_metodo($sangre, $metodo) {
+		$this->db->where('sangre', $sangre);
+
+		return $this->db->delete($metodo);
 	}
 }

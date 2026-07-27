@@ -1,0 +1,418 @@
+#main > article > h2 > span {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1.1em;
+    padding: 10px;
+}
+
+#main > article > h2 > img {
+    width: 60px;
+}
+
+#selec_campos > #campos {
+    width: calc(100% - 20px);
+    height: 290px;
+    overflow-x: scroll;
+}
+
+#selec_campos > article {
+    background: #fff;
+}
+
+#selec_campos > article > p {
+    text-align: left;
+    font-size: 1.05em;
+    padding: 10px;
+}
+
+#selec_campos > article > div {
+    text-align: left;
+    width: 1470px;
+    background: #e6e6e6;
+    border: 1px solid #5f5f5f;
+}
+
+#selec_campos form {
+    display: inline-block;
+    vertical-align: top;
+    width: 220px;
+    height: 225px;
+    background: #fffefd;
+    border: 1px solid #777;
+    margin: 5px;
+}
+
+#selec_campos #campos_tratamientos {
+    width: 280px;
+}
+
+#selec_campos #campos_campanias > fieldset,
+#selec_campos #campos_copro > fieldset,
+#selec_campos #campos_biologmolec > fieldset,
+#selec_campos #campos_tratamientos > fieldset {
+    height: calc(100% - 36px);
+    overflow-y: scroll;
+}
+
+#selec_campos form > div {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    background: #0db90a;
+}
+
+#selec_campos form > div > input {
+    position: absolute;
+    right: 20px;
+    color: #565656;
+}
+
+#selec_campos form > div > input:before {
+    background: #ffffff63;
+}
+
+#selec_campos form > div > input:checked {
+    color: #f56d2f;
+}
+
+#selec_campos form > fieldset > label {
+    position: relative;
+    display: block;
+    color: #232323;
+    padding: 5px 5px 5px 15px;
+}
+
+#selec_campos form > fieldset > label:nth-child(2n) {
+    background: #e1ffd7;
+}
+
+#selec_campos form > fieldset > label > input {
+    position: absolute;
+    right: 20px;
+    color: #6f6f6f;
+}
+
+#selec_campos form > fieldset > label > input:checked {
+    color: #ff8a54;
+}
+
+article {
+    text-align: center;
+    background: #ececec;
+    padding: 0 0 10px 0;
+    margin: 10px;
+}
+
+article > h2 {
+    background: #0db;
+    padding: 10px;
+    color: #fff;
+    font-size: 1.1em;
+    text-align: left;
+}
+
+article > table {
+    text-align: center;
+    border: 1px solid #00000080;
+    margin: 10px 0 0 0;
+    cursor: default;
+
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+thead {
+    background: #10a90d;
+    color: #ffffff;
+}
+
+thead > tr {
+    border-bottom: 1px solid #00000052;
+}
+
+tbody {
+    background: #cccccc;
+}
+
+tbody > tr {
+    border-bottom: 1px solid #7d7d7d;
+    background: #fff;
+    color: #232323;
+}
+
+tbody > tr:hover {
+    background: #baffb1;
+    color: #101010;
+}
+
+th, td {
+    padding: 8px 10px;
+    border-right: 1px solid #0000004f;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+th {
+    background: #0db90a;
+    position: relative;
+}
+
+th > a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+}
+
+th > a > img {
+    width: 10px;
+    background: #676767;
+    padding: 2px;
+}
+
+th.filtrado > a > img {
+    background: #0909ff;
+}
+
+ventana-modal {
+    background: #25252585 !important;
+}
+
+ventana-modal .close {
+    display: none;
+}
+
+ventana-modal .modal {
+    padding: 20px 15px 15px;
+}
+
+#vm_campania fieldset {
+    width: 400px !important;
+    max-height: calc(100vh - 150px);
+    overflow-y: scroll;
+}
+
+ventana-modal form > fieldset {
+    position: relative;
+    padding: 16px;
+    border: 1px solid #6d6d6d;
+}
+
+ventana-modal form > h1 {
+    position: absolute;
+    top: 2px;
+    left: 30px;
+
+    font-size: 1.1em;
+    background: white;
+    padding: 10px 10px;
+
+    z-index: 3;
+}
+
+ventana-modal form > fieldset > label {
+    display: block;
+    position: relative;
+
+    text-align: left;
+    padding: 8px 10px;
+    /*width: 200px;*/
+}
+
+ventana-modal form .centrado {
+    text-align: center;
+}
+
+ventana-modal form > fieldset input.numero {
+    width: 50px;
+}
+
+ventana-modal form fieldset input[type=date] {
+    padding-right: 0;
+    width: 9.2em;
+}
+
+ventana-modal form > fieldset > label > input[type=checkbox] {
+    position: absolute !important;
+    right: 20px;
+}
+
+ventana-modal form > fieldset > .nueva_restric {
+    position: relative;
+    height: 20px;
+}
+
+ventana-modal form > fieldset > .nueva_restric > button {
+    border: none;
+    position: absolute;
+    right: -15px;
+    bottom: -12px;
+    display: inline-flex;
+}
+
+ventana-modal form > fieldset > .nueva_restric > button:hover {
+    background: none;
+}
+
+ventana-modal form .eliminar_restric {
+    border: none;
+}
+
+ventana-modal form .eliminar_restric:hover {
+    background: none;
+}
+
+ventana-modal form > div {
+    text-align: center;
+    padding: 11px 0 0 0;
+}
+
+ventana-modal form > div > input {
+    width: 80px;
+    margin: 0 5px;
+}
+
+ventana-modal form .nexo {
+    padding: 10px;
+}
+
+ventana-modal form > fieldset > div:first-of-type > .nexo {
+    display: none;
+}
+
+ventana-modal form .nexo > label {
+    margin: 0 10px;
+}
+
+.menu,
+.ir_inicio,
+#siguiente,
+#atras,
+#exp_excel,
+#guardar,
+#salir {
+    position: fixed;
+
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 100%;
+
+    display: block;
+    cursor: pointer;
+
+    box-shadow: 0 0 20px 3px #3e3e3e;
+
+    margin-bottom: 10px;
+    text-align: center;
+
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: 55%;
+
+    transition: all .25s ease-in-out;
+}
+
+#siguiente {
+    bottom: 80px;
+    right: 30px;
+    
+    background-image: url('/iiet/assets/images/ic_adelante.svg');
+    background-color: #0e0ee6;
+}
+
+#atras {
+    bottom: 220px;
+    right: 30px;
+    background-image: url('/iiet/assets/images/ic_atras.svg');
+    background-color: #ef6408;
+}
+
+#exp_excel {
+    bottom: 80px;
+    right: 30px;
+    background-image: url('/iiet/assets/images/ic_excel.svg');
+    background-color: green;
+}
+
+#guardar {
+    bottom: 150px;
+    right: 30px;
+
+    background-image: url('/iiet/assets/images/ic_upload.svg');
+    background-color: #1124de;
+}
+
+.menu:hover,
+.ir_inicio:hover,
+#siguiente:hover,
+#atras:hover,
+#exp_excel:hover,
+#guardar:hover,
+#salir:hover {
+    background-size: 60%;
+    transition: all .1s ease-in-out;
+
+    box-shadow: 0 0 20px 1px #3e3e3e;
+}
+
+.menu:active,
+.ir_inicio:active,
+#siguiente:active,
+#atras:active,
+#exp_excel:active,
+#guardar:active,
+#salir:active {
+    box-shadow: inset 0 5px 30px rgba(0,0,0,.2);
+  	background-size: 45%;
+}
+
+.menu,
+.menu:hover {
+    bottom: 0px;
+    right: 30px;
+    
+    background-image: url('/iiet/assets/images/ic_menu.svg');
+    background-color: #151515;
+}
+
+.ir_inicio,
+.ir_inicio:hover {
+    bottom: 150px;
+    right: 30px;
+
+    background-image: url('/iiet/assets/images/ic_casa.svg');
+    background-color: #23bfbd;
+}
+
+#selec_campos .ir_inicio {
+    bottom: 290px;
+}
+
+.barra_operaciones > div {
+    position: fixed;
+    bottom: 75px;
+    right: 18px;
+
+    /*background: #ff8100c9;*/
+    width: 80px;
+    /*border: 1px solid #8e8e8ee6;
+    box-shadow: 0 0 10px 1px #545454c2;*/
+}
+
+#main .barra_operaciones > div {
+    height: 155px;
+}
+
+#selec_campos .barra_operaciones > div {
+    height: 295px;
+}
+
+#vm_guardar form fieldset label {
+    width: 400px;
+    text-align: center;
+}

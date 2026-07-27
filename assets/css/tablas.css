@@ -1,0 +1,56 @@
+#tabla-pacientes > tbody > tr :first-child,
+#tabla-pacientes > tbody > tr :nth-child(2) {
+    text-align: right;
+}
+
+#tabla-pacientes > thead > tr :nth-child(6),
+#tabla-pacientes > thead > tr :nth-child(5),
+#tabla-pacientes > thead > tr :last-child,
+#tabla-pacientes > tbody > tr :nth-child(6),
+#tabla-pacientes > tbody > tr :nth-child(5),
+#tabla-pacientes > tbody > tr :last-child {
+    text-align: center;
+}
+
+#tabla-campanias > thead > tr :last-child,
+#tabla-campanias > tbody > tr :last-child {
+    text-align: center;
+}
+
+#datos-usuario {
+    padding: 15px 25px;
+    width: 300px !important;
+    border-radius: 0
+}
+
+#datos-usuario > div > p {
+    font-size: var(--iiet-font-size);
+    margin: 0;
+}
+
+#datos-usuario > div > p:first-child {
+    font-weight: 400;
+}
+
+#links > .navbar-nav > .nav-item > .nav-link {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#links > .navbar-nav > .nav-item.dropdown > .dropdown-toggle {
+    padding-right: 0;
+    padding-left: 1.2rem;
+}
+
+#links > .navbar-nav > .nav-item.dropdown > .dropdown-toggle > i {
+    font-size: 1.1rem;
+}
+
+#links > .navbar-nav > .nav-item.dropdown > .dropdown-toggle:after {
+    border: 0;
+}
+
+#modal-pacientes .modal-body {
+    height: calc(100vh - 180px);
+    overflow-y: auto;
+}

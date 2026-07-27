@@ -9,7 +9,20 @@ class BiologMolec_model extends CI_Model {
 	public function nueva($datos) {
 		$this->db->trans_begin();
 
-		$id_interv = $this->intervencion_model->obtener_intervencion($datos['intervencion']);
+		$interv = $datos['intervencion'];
+
+		// si existe la propiedad numero es porque la intervención es de tipo EXTERNO
+		// de lo contrario es de tipo CAMPANIA
+		if(isset($interv['numero'])) {
+			$id_interv = $interv['numero'];
+		}
+
+		else {
+			$id_interv = $this->campania_model->obtener_intervencion($interv['campania'], $interv['paciente']);
+			
+			if(!$id_interv)
+				$id_interv = $this->intervencion_model->nueva($interv);
+		}
 		
 		$datos_biomolec = array(
 			'intervencion' => $id_interv,
@@ -24,7 +37,7 @@ class BiologMolec_model extends CI_Model {
 		else
 			$this->db->insert('biologia_molecular', $datos_biomolec);
 
-		$datos_pcr  = isset($datos['pcr'])  ? $datos['pcr'] : false;
+		$datos_pcr  = isset($datos['pcr'])  ? $datos['pcr']  : false;
 		$datos_qpcr = isset($datos['qpcr']) ? $datos['qpcr'] : false;
 
 		$this->cargar_pcr($id_interv, $datos_pcr);
@@ -54,11 +67,11 @@ class BiologMolec_model extends CI_Model {
 		elseif($datos !== false) {
 			$datos_pcr = array(
 				'bio_molec'     => $id_biologmolec,
-				'strongyloides' => $datos['strongyloides'] !== '' ? $datos['strongyloides'] : NULL,
-				'ancylostoma'   => $datos['ancylostoma']   !== '' ? $datos['ancylostoma']   : NULL,
-				'necator'       => $datos['necator'] 	   !== '' ? $datos['necator']       : NULL,
-				'ascaris'       => $datos['ascaris'] 	   !== '' ? $datos['ascaris']       : NULL,
-				'trichuris'     => $datos['trichuris'] 	   !== '' ? $datos['trichuris']     : NULL
+				'strongyloides' => $datos['strongyloides'],
+				'ancylostoma'   => $datos['ancylostoma'],
+				'necator'       => $datos['necator'],
+				'ascaris'       => $datos['ascaris'],
+				'trichuris'     => $datos['trichuris']
 			);
 
 			if($ya_existe) {
@@ -82,11 +95,11 @@ class BiologMolec_model extends CI_Model {
 		elseif($datos !== false) {
 			$datos_qpcr = array(
 				'bio_molec'     => $id_biologmolec,
-				'strongyloides' => $datos['strongyloides'] !== '' ? $datos['strongyloides'] : NULL,
-				'ancylostoma'   => $datos['ancylostoma']   !== '' ? $datos['ancylostoma']   : NULL,
-				'necator'       => $datos['necator'] 	   !== '' ? $datos['necator']       : NULL,
-				'ascaris'       => $datos['ascaris'] 	   !== '' ? $datos['ascaris']       : NULL,
-				'trichuris'     => $datos['trichuris'] 	   !== '' ? $datos['trichuris']     : NULL
+				'strongyloides' => $datos['strongyloides'],
+				'ancylostoma'   => $datos['ancylostoma'],
+				'necator'       => $datos['necator'],
+				'ascaris'       => $datos['ascaris'],
+				'trichuris'     => $datos['trichuris']
 			);
 
 			if($ya_existe) {
@@ -113,5 +126,41 @@ class BiologMolec_model extends CI_Model {
 		$consulta = $this->db->get($nombre);
 
 		return $consulta->num_rows() > 0;
+	}
+
+	public function obtener_datos_biologmolec($intervencion) {
+		$this->db->where('intervencion', $intervencion);
+		$resultado = $this->db->get('biologia_molecular');
+
+		if($resultado->num_rows() === 0)
+			return FALSE;
+
+		$datos_biologmolec['fuente'] = $resultado->row()->fuente;
+		$datos_biologmolec['pcr']    = $this->obtener_datos_metodo($intervencion, 'pcr');
+		$datos_biologmolec['qpcr']   = $this->obtener_datos_metodo($intervencion, 'qpcr');
+
+		return $datos_biologmolec;
+	}
+
+	public function obtener_datos_metodo($biologmolec, $metodo) {
+		$this->db->where('bio_molec', $biologmolec);
+		$resultado = $this->db->get($metodo);
+
+		return $resultado->num_rows() > 0 ? $resultado->row_array() : FALSE;
+	}
+
+	public function eliminar($intervencion) {
+		$this->eliminar_metodo($intervencion, 'pcr');
+		$this->eliminar_metodo($intervencion, 'qpcr');
+
+		$this->db->where('intervencion', $intervencion);
+
+		return $this->db->delete('biologia_molecular');
+	}
+
+	private function eliminar_metodo($biologmolec, $metodo) {
+		$this->db->where('bio_molec', $biologmolec);
+
+		return $this->db->delete($metodo);
 	}
 }

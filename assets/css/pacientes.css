@@ -1,0 +1,223 @@
+#contenido_principal {
+    position: relative;
+    text-align: center;
+}
+
+#filtro {
+    padding: 20px 0;
+}
+
+#filtro > input {
+    padding: 3px 10px;
+    width: 25em;
+    margin-left: 5px;
+}
+
+.tabla {
+    position: absolute;
+    bottom: unset;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-bottom: 1px solid #b3b3b3;
+}
+
+.tabla > thead {
+    color: #fefefe;
+    
+    border-top: 1px solid #da850d;
+    border-right: 1px solid #da850d;
+    border-left: 1px solid #da850d;
+}
+
+.tabla > thead > tr {
+    background-color: #ffa526;
+}
+
+.tabla > thead > tr > th {
+    padding: 10px 10px;
+    border-right: 1px solid #8c8c8c78;
+}
+
+.tabla > tbody {
+    border-right: 1px solid #b3b3b3;
+    border-left: 1px solid #b3b3b3;
+}
+
+.tabla > tbody > tr {
+    border-bottom: 1px solid #c5c5c5;
+}
+
+.tabla > tbody > tr:hover {
+    background-color: #f9aa3c4f;
+}
+
+.tabla > tbody > tr > td {
+    padding: 5px 10px;
+    border-right: 1px solid #c5c5c5;
+}
+
+#tabla_pacientes > tbody > tr > td:first-child {
+    text-align: right;
+}
+
+#tabla_campanias > tbody > tr > td:first-child,
+#tabla_campanias > tbody > tr > td:nth-child(4),
+#tabla_pacientes > tbody > tr > td:nth-child(3),
+#tabla_pacientes > tbody > tr > td:nth-child(4) {
+    text-align: left;
+}
+
+.tabla > tbody > tr > td:last-child > button,
+.tabla > tbody > tr > td:last-child > a {
+    font-size: .8em;
+    padding: 5px 10px !important;
+}
+
+.tabla > tbody > tr > td:last-child > button:first-child  {
+    color: #fff;
+    background-color: green;
+    border: 1px solid green;
+    margin-right: 2px;
+}
+
+.tabla > tbody > tr > td:last-child > button:nth-child(2)  {
+    color: #fff;
+    background-color: #0d51de;
+    border: 1px solid blue;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.tabla > tbody > tr > td:last-child > button:nth-child(3) {
+    color: #fff;
+    background-color: #de0000;
+    border: 1px solid red;
+    margin-left: 2px;
+}
+
+.tabla > tbody > tr > td:last-child > :nth-child(4) {
+    color: #fff;
+    background-color: #ffa526;
+    border: 1px solid #ffa526;
+    margin-left: 4px;
+}
+
+.tabla > tbody > tr > td:last-child > button:hover {
+    cursor: pointer;
+}
+
+#btn_salir,
+#btn_nuevo_paciente,
+#btn_nueva_campania {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 100%;
+
+    display: block;
+    cursor: pointer;
+
+    box-shadow: 0 0 10px #3e3e3e;
+
+    margin-bottom: 10px;
+    text-align: center;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 55%;
+
+    transition: all .25s ease-in-out;
+}
+
+#btn_nuevo_paciente,
+#btn_nueva_campania {
+    position: fixed;
+    bottom: 10px;
+    right: 40px;
+
+    background-color: #e87e03;
+
+    transition: all 5s ease-in-out;
+}
+
+#btn_nuevo_paciente {
+    background-image: url('/iiet/assets/images/ic_nuevo_paciente.svg');
+}
+
+#btn_nueva_campania {
+    background-image: url('/iiet/assets/images/ic_nuevo_doc_2.svg');
+}
+
+#btn_salir {
+    position: fixed;
+    top: 70px;
+    right: 40px;
+
+    background-image: url('/iiet/assets/images/ic_casa.svg');
+    background-color: #cc03e8;
+
+    transition: all 5s ease-in-out;
+}
+
+
+#btn_salir:hover,
+#btn_nuevo_paciente:hover,
+#btn_nueva_campania:hover {
+    background-size: 60%;
+    transition: all .1s ease-in-out;
+}
+
+#btn_salir:active,
+#btn_nuevo_paciente:active,
+#btn_nueva_campania:active {
+  	box-shadow: inset 0 5px 30px rgba(0,0,0,.2);
+  	background-size: 45%;
+}
+
+.msj_eliminar_intervenido .modal {
+    text-align: center;
+}
+
+.msj_eliminar_intervenido .modal > p {
+    padding: 10px 20px;
+}
+
+.msj_eliminar_intervenido .modal > div {
+    margin-top: 16px;
+}
+
+.msj_eliminar_intervenido .modal > div > button {
+    width: 12em;
+    padding: 6px;
+    margin: 0 2px;
+}
+
+.modificado {
+    animation: modificado 1.5s ease-in-out;
+}
+
+@keyframes modificado {
+    0% {
+        background: linear-gradient(to right, #8fcbfb, #8fcbfb);
+        background-repeat: no-repeat;
+        background-position: center left;
+        background-size: 0% 100%;
+    }
+
+    20% {
+        background: linear-gradient(to right, #8fcbfb, #8fcbfb);
+        background-repeat: no-repeat;
+        background-position: center left;
+        background-size: 100% 100%;
+    }
+
+    21% {
+        background-color: #8fcbfbff;
+    }
+
+    100% {
+        background-color: #8fcbfb00;
+    }
+}

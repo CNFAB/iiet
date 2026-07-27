@@ -1,7 +1,4 @@
-<form id="form_estudios" name="form_estudios" is="form-asinc" action="/iiet/estudios/cargar_copro">
-	<input type="hidden" id="paciente" name="intervencion[paciente]"/>
-	<input type="hidden" id="campania" name="intervencion[campania]"/>
-	<input type="hidden" id="tipo" name="intervencion[tipo]"/>
+<form id="form_estudios" name="form_copro" is="form-asinc" action="/iiet/intervenciones/cargar_copro">
 	<div id="form_part_1">
 		<label>
 			<span>Fecha</span>
@@ -20,6 +17,10 @@
 				<option value="LIQUIDA">LIQUIDA</option>
 			</select>
 		</label>
+		<label>
+			<span>N° de Muestra</span>
+			<input type="number" name="nro_muestra" class="numero" />
+		</label>
 	</div>
 	<div id="form_part_2">
 		<form-concentrado class="estudios"></form-concentrado>
@@ -31,4 +32,16 @@
 		<form-placaagar class="estudios"></form-placaagar>
 	</div>
 	<input type="submit" value="" form="form_estudios" id="guardar_estudio" title="Guardar"/>
+	<button type="button" id="positividad"></button>
+	<div id="datos_positividad" class="oculto">
+		<h1>Positividad</h1>
+		<div>
+			<p><span class="result_positivo"></span><span>Ascaris</span></p>
+			<p><span class="result_negativo"></span><span>Uncinarias</span></p>
+			<p><span class="result_negativo"></span><span>Ancylostoma</span></p>
+			<p><span class="result_negativo"></span><span>Necator</span></p>
+			<p><span class="no_realizado"></span><span>Strongyloides</span></p>
+			<p><span class="result_positivo"></span><span>Trichuris</span></p>
+		</div>
+	</div>
 </form>

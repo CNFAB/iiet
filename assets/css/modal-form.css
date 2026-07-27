@@ -1,0 +1,41 @@
+option {
+	color: var(--iiet-dark);
+}
+
+.modal form .form-row .form-group:first-child {
+	padding-right: 1rem !important;
+}
+
+.modal form .form-row .form-group:nth-child(2) {
+	padding-left: 1rem !important;
+}
+
+.valido,
+.was-validated :valid:not(fieldset) {
+	border-bottom: 2px solid var(--success);
+}
+
+.invalido,
+.invalido:focus,
+.was-validated :invalid:not(fieldset),
+.dni-duplicado {
+	border-bottom: 2px solid #e05c52 !important;
+}
+
+.invalid-feedback {
+	color: #e05c52;
+}
+
+.msj-dni-duplicado {
+	display: none;
+	width: 100%;
+	margin-top: 0.25rem;
+	font-size: 80%;
+	/*color: var(--danger);*/
+	color: #e05c52;
+}
+
+.invalido ~ .invalid-feedback,
+.dni-duplicado ~ .msj-dni-duplicado {
+	display: block;
+}

@@ -1,0 +1,141 @@
+# ============================================
+# ARCHIVOS DE CONFIGURACIÓN (CON CREDENCIALES)
+# ============================================
+application/config/config.php
+application/config/database.php
+application/config/development/
+application/config/production/
+application/config/testing/
+
+# ============================================
+# LOGS Y CACHÉ DE LA APLICACIÓN
+# ============================================
+application/logs/*.php
+application/logs/*.log
+application/cache/*.php
+application/cache/*.html
+application/cache/*.txt
+
+# Mantener archivos .htaccess e index.html
+!application/logs/.htaccess
+!application/logs/index.html
+!application/cache/.htaccess
+!application/cache/index.html
+
+# ============================================
+# BASE DE DATOS (Scripts SQL)
+# ============================================
+database/
+database/*.sql
+database/*.dump
+database/backup-*.sql
+database/*.db
+*.sqlite
+*.db
+*.dump
+*.sql
+
+# SI quieres subir estructura base, descomenta:
+# !database/estructura.sql
+# !database/datos_iniciales.sql
+
+# ============================================
+# SISTEMA CORE (NO MODIFICAR - NO SUBIR)
+# ============================================
+system/
+!system/.htaccess
+!system/index.html
+
+# ============================================
+# DEPENDENCIAS (si usas Composer)
+# ============================================
+vendor/
+node_modules/
+composer.lock
+package-lock.json
+yarn.lock
+
+# ============================================
+# ARCHIVOS TEMPORALES
+# ============================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.bak
+*.old
+*.orig
+*.log
+error_log
+debug.log
+
+# ============================================
+# IDE Y EDITORES
+# ============================================
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.settings/
+*.sublime-*
+.DS_Store
+Thumbs.db
+desktop.ini
+*.code-workspace
+
+# ============================================
+# ARCHIVOS COMPRIMIDOS
+# ============================================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.gz
+*.tgz
+
+# ============================================
+# ARCHIVOS DE AUTENTICACIÓN
+# ============================================
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# ============================================
+# ARCHIVOS DE DESPLIEGUE
+# ============================================
+.htaccess.bak
+.htaccess.old
+.htpasswd
+.ftpconfig
+.ftpasswd
+
+# ============================================
+# ARCHIVOS DE CI/CD
+# ============================================
+.gitlab-ci.yml
+.github/
+.gitlab/
+.gitmodules
+
+# ============================================
+# ARCHIVOS DE ENTORNO
+# ============================================
+.env
+.env.*
+!.env.example
+
+# ============================================
+# ARCHIVOS ESPECÍFICOS DE LA APLICACIÓN
+# ============================================
+*.csv
+*.xlsx
+*.xls
+uploads/
+images/uploads/
+media/
+temp/
+tmp/

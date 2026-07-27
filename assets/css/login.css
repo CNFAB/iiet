@@ -1,0 +1,63 @@
+section {
+    height: 100vh;
+    background-image: url('/iiet/assets/images/fondo_login.jpg');
+    background-size: 140%;
+    background-position: 60%;
+    background-repeat: no-repeat;
+}
+
+section > div {
+    background-color: #ffffff8a;
+    height: 100%;
+}
+
+section > div > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #5da3ea;
+    display: inline-block;
+    width: 300px;
+    padding: 30px 50px;
+    text-align: center;
+    color: #fff;
+}
+
+section > div > div > h1 {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+section label {
+    display: block;
+}
+
+section > div > div > form > :last-child {
+    margin-top: 30px;
+}
+
+section label > span {
+    display: block;
+    text-align: left;
+    padding: 10px 0;
+}
+
+section label > input {
+    width: 280px;
+    padding: 5px;
+    border: 1px solid #fff;
+}
+
+section form > :last-child {
+    padding: 10px 20px;
+    background-color: #ffa526;
+    border: 1px solid #ca821d;
+    color: #fff;
+}
+
+section form > :last-child:hover {
+    background-color: #f9960a;
+    border: 1px solid #b9720f;
+    cursor: pointer;
+}

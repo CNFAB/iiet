@@ -1,7 +1,4 @@
-<form id="form_estudios" name="form_estudios" is="form-asinc" action="/iiet/estudios/cargar_biologmolec">
-	<input type="hidden" id="paciente" name="intervencion[paciente]"/>
-	<input type="hidden" id="campania" name="intervencion[campania]"/>
-	<input type="hidden" id="tipo" name="intervencion[tipo]"/>
+<form id="form_estudios" name="form_biologmolec" is="form-asinc" action="/iiet/intervenciones/cargar_biologmolec">
 	<div id="form_part_1">
 		<label>
 			<span>Fuente</span>

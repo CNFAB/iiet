@@ -1,0 +1,547 @@
+.btn-cargar {
+	background-color: #cc7731;
+	color: var(--iiet-text-color);
+}
+
+.btn-cargar:hover {
+	background-color: #bd6822;
+}
+
+#alertas {
+	position: fixed;
+	bottom: 0 !important;
+	left: 10px;
+}
+
+
+/*------------------------------------*/
+/*              General               */
+/*------------------------------------*/
+
+.numero {
+	text-align: right;
+}
+
+#form_estudios select {
+	height: auto !important;
+}
+
+#form_estudios .form-control,
+#form_estudios .custom-select {
+	display: inline !important;
+	width: auto;
+}
+
+#form_estudios .form-row > * > label {
+	font-weight: normal !important;
+}
+
+#form_estudios .contenedor-metodos .form-row label {
+	margin: unset;
+}
+
+#form_estudios fieldset > .form-row {
+	padding: .6rem 1.2rem;
+}
+
+#form_estudios fieldset > .form-row:first-child {
+	border-top: unset;
+}
+
+#form_estudios fieldset > .form-row:nth-child(odd) {
+	background-color: rgba(255, 255, 255, .08);
+}
+
+#form_estudios fieldset > .form-row:nth-child(odd) input,
+#form_estudios fieldset > .form-row:nth-child(odd) select {
+	border-bottom-color: rgba(255, 255, 255, .15);
+}
+
+#form_estudios fieldset .form-row div {
+	min-height: 1.5rem;
+}
+
+#form_estudios .grupo-control {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#form_estudios .contenedor-metodos .custom-select {
+	color: #e05c52;
+	font-weight: 400;
+	letter-spacing: .1rem;
+}
+
+#form_estudios .custom-checkbox .custom-control-input ~ .custom-control-label::before {
+	background-color: var(--primary);
+}
+
+#form_estudios .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+	background-color: #e05c52;
+}
+
+
+/*
+#form_estudios .cabecera-metodo {
+	padding: 1rem;
+}
+
+#form_estudios .cabecera-metodo input {
+	display: none;
+}
+
+#form_estudios .contenedor-metodos .form-row label {
+	display: block;
+}
+*/
+
+label[for=fc-fecha] {
+	/*color: #4fada2;*/
+	color: #cc7731;
+}
+
+label[for=fc-peso] {
+	/*color: #57b952;*/
+	color: #bbb429;
+}
+
+label[for=fc-consistencia] {
+	/*color: #c2ce6c;*/
+	color: #ffc56b;
+}
+
+label[for=fc-nro-muestra] {
+	/*color: #c16766;*/
+	color: #9774a0;
+}
+
+label[for=fc-seriado] {
+	color: #48b7ff;
+}
+
+
+
+
+
+
+
+
+/*------------------------------------*/
+/*         Contenedor Estudios        */
+/*------------------------------------*/
+
+.card {
+	background-color: unset;
+}
+
+/* cabecera estudio */
+#form_estudios .card .card-header {
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+	border-radius: unset;
+	background-color: #cc7731;
+}
+
+#form_estudios .card .card-header button {
+	position: relative;
+	display: block;
+	width: 100%;
+	text-align: left;
+	font-weight: 400;
+	padding-right: 0;
+	padding-left: 0;
+	text-decoration: none;
+	color: var(--iiet-text-color) !important;
+}
+
+#form_estudios .card .card-header button.collapsed {
+	color: var(--iiet-bg-color) !important;
+}
+
+#form_estudios .card .card-header button > div::before {
+	position: absolute;
+	top: 25%;
+	right: 0;
+	content: '\f106';
+}
+
+#form_estudios .card .card-header button.collapsed > div::before {
+	content: '\f107';
+}
+
+/* cuerpo estudio */
+#form_estudios .card .card-body {
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+#form_estudios .contenedor-metodos fieldset {
+	padding: unset;
+	border: none;
+}
+
+/* botón 'Completar con Negativos' */
+#form_estudios .card .card-footer {
+	padding-top: .3rem;
+	padding-bottom: .3rem;
+	background-color: var(--primary);
+}
+
+#form_estudios .card .card-footer button {
+	font-size: .9rem;
+	font-weight: 400 !important;
+	color: #fff;
+	text-decoration: none;
+	border-radius: unset;
+}
+
+
+/*------------------------------------*/
+/*          Botones Laterales         */
+/*------------------------------------*/
+
+#btns-estudios {
+	position: fixed;
+	bottom: 25%;
+	left: 20px;
+}
+
+#btns-estudios > a,
+#btns-operaciones > .btn,
+#btn-guardar {
+	width: 50px;
+	height: 50px;
+
+	background-repeat: no-repeat;
+	background-size: 70%;
+	background-position: center;
+
+	transition: all .3s ease-in-out;
+}
+
+#btns-estudios > a:hover,
+#btns-operaciones > .btn:hover,
+#btn-guardar:hover {
+	background-size: 80%;
+
+	transition: all .3s ease-in-out;
+}
+
+#btns-estudios > #btn-copro {
+	background-image: url('/iiet/assets/images/ic_microscopio.svg');
+	background-color: #cc7731;
+}
+
+#btns-estudios > #btn-sangre {
+	background-image: url('/iiet/assets/images/ic_sangre.svg');
+}
+
+#btns-estudios > #btn-biomolec {
+	background-image: url('/iiet/assets/images/ic_adn.svg');
+}
+
+#btns-estudios > #btn-tratamiento {
+	background-image: url('/iiet/assets/images/ic_pastillas.svg');
+}
+
+#btns-operaciones {
+	position: fixed;
+	bottom: 25%;
+	right: 20px;
+}
+
+#btns-operaciones > #btn-crear-interv {
+	background-image: url('/iiet/assets/images/ic_nuevo_doc.svg');
+}
+
+#btns-operaciones > #btn-eliminar {
+	background-image: url('/iiet/assets/images/ic_eliminar_archivo.svg');
+}
+
+#btn-guardar {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-image: url('/iiet/assets/images/ic_upload.svg');
+}
+
+
+/*------------------------------------*/
+/*        Buscador de Pacientes       */
+/*------------------------------------*/
+
+label[for='busc-paciente'] {
+	font-weight: 400 !important;;
+}
+
+#lista-pacientes,
+#btn-crear-paciente {
+	position: absolute;
+	top: 1.8rem;
+	width: calc(100% - 1.8rem) !important;
+	overflow-y: auto;
+	z-index: 10;
+}
+
+#lista-pacientes > li {
+	text-align: left;
+	cursor: default;
+}
+
+#lista-pacientes > li > :first-child {
+	color: var(--dark);
+}
+
+#lista-pacientes > li.active > :first-child {
+	color: var(--light);
+}
+
+#lista-pacientes > li > :last-child {
+	position: absolute;
+	right: 20px;
+}
+
+/* etiqueta lateral izquierda que muestra el DNI del paciente actual */
+#dni-paciente {
+	position: absolute;
+	top: .2rem;
+	right: 3.2rem;
+	color: #bbb;
+}
+
+/* botón lateral izquierdo que limpia el buscador */
+#limpiar-buscador {
+	position: absolute;
+	top: 0rem;
+	right: 1.4rem;
+
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #e05c52;
+
+	padding: 0;
+	background: unset;
+	border: unset;
+
+	cursor: pointer;
+}
+
+#limpiar-buscador:hover {
+	color: #e44a3e;
+}
+
+#limpiar-buscador:focus {
+	outline: unset;
+}
+
+/* botón que aparece cuando el paciente buscado no existe */
+#btn-crear-paciente {
+	font-size: .9rem;
+	padding-top: .6rem;
+	padding-bottom: .6rem;
+
+	border-radius: unset;
+}
+
+#btn-crear-paciente > div {
+	position: relative;
+	left: .8rem;
+}
+
+
+/*------------------------------------*/
+/*   Formulario General de Estudios   */
+/*------------------------------------*/
+
+#metodo-mm .form-row,
+#metodo-kk .form-row {
+	position: relative;
+}
+
+#metodo-mm .form-row .form-control,
+#metodo-kk .form-row .form-control,
+#hemograma .form-row .form-control,
+#medidas .form-row .form-control {
+	width: 6rem !important;
+}
+
+#metodo-mm input,
+#metodo-kk input,
+#hemograma input,
+#medidas input {
+	color: #e05c52;
+	font-weight: 400;
+}
+
+#metodo-cc input[type=checkbox] ~ .custom-control-label::after,
+#previo input[type=checkbox] ~ .custom-control-label::after {
+	left: unset;
+	right: 0;
+}
+
+#metodo-cc input[type=checkbox] ~ .custom-control-label::before,
+#previo input[type=checkbox] ~ .custom-control-label::before {
+	left: unset;
+	right: 0;
+}
+
+#fc-fecha,
+#fs-fecha,
+#ft-fecha,
+#tp-fecha {
+	width: 8.8rem !important;
+	padding-right: 0;
+	text-align: right;
+}
+
+
+/*------------------------------------*/
+/*          Formulario Copro          */
+/*------------------------------------*/
+
+#fc-peso,
+#fc-nro-muestra,
+#fc-seriado {
+	width: 4rem !important;
+}
+
+#metodo-cc .custom-checkbox .custom-control-input ~ .custom-control-label::after {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAkElEQVQ4je2SMQrCUBBE3wupgliIlZVn8Ahey5N4KUuPkCKFdbD4Y5NA1GCTRsSpdmFndmZZQ1iCahH7NwTqlNTqDlh9GkyCOrY3oENKre6TnNXtHGFKnNSXJCexrYGNepzZQpI3sQGNugbaKkk/WHoamgqN9TRCkjuApZRGPYw3eLU+FwXogCvS+//ELxB4AMbsSz98gjf3AAAAAElFTkSuQmCC');
+}
+
+#metodo-cc .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHUlEQVQ4jZWTzSpFURiGn/e0kyRJBgYyIxnJHZi4AHciEzdkqNwJQ/kpSTI4SSdJOq3HwN46OWuf+PZo9f70vmt/KyJTI4vqGtAkeVefMsh4mghY+/SwlHJRSrlRz9TtKg9pqq6wlWRXBRio6yFXNeKgmsqpWlXeTAAgySwYgAaZB3bU1U4UsjmRZgHYw59kJckjcEsYR91WT5MsT4iWk6y0xzEwBN4n8MskR4SHRl1Kstf1rsRu2l/6gycpwALAIMmnOpoU17q3wq7Gmzru3B+A4ySraifeBw5a7UuSc/WmM1Kvkzx/96kv0olqKUX1Tj3oW6S/7kHvVA1+38Usw75FGgKjVviaZNhnkJ7XuKJuAHNJRsA94ePvBv+YL6m6yQ0Ti5ryAAAAAElFTkSuQmCC');
+}
+
+#metodo-mm input,
+#metodo-kk input {
+	width: 5rem !important;
+	text-align: right;
+}
+
+/*------------------------------------*/
+/*          Formulario Sangre         */
+/*------------------------------------*/
+
+#fs-nro-tubo {
+	width: 7rem !important;
+}
+
+
+/*------------------------------------*/
+/*       Formulario Tratamiento       */
+/*------------------------------------*/
+
+#actual label {
+	display: inline !important;
+}
+
+.dosis {
+	display: inline;
+	margin-left: 1rem;
+}
+
+#actual input {
+	width: 5em !important;
+}
+
+#check-recibio-tratamiento {
+	padding: 5px;
+}
+
+#check-recibio-tratamiento > legend {
+	font-size: .9rem;
+	margin-bottom: 0 !important;
+}
+
+#fecha-tratamiento {
+	padding-top: 1.2rem;
+}
+
+#div-no-tratado > div {
+	margin-top: 5rem;
+	padding: 1.2rem;
+	text-align: center;
+}
+
+#div-no-tratado label {
+	display: block !important;
+	color: #efe7e7;
+}
+
+#div-no-tratado select#no_tratado {
+	margin-top: 1rem;
+	color: #efe7e7;
+	border-color: #b5b5b5;
+}
+
+#div-no-tratado select#no_tratado > option {
+	background-color: #efe7e7;
+}
+
+
+/*****************************************/
+/*              Paginación               */
+/*****************************************/
+
+#pag-contenido {
+	background-color: rgba(255, 255, 255, .06)
+}
+
+#pag-indices {
+	border-top: 1px solid var(--gray);
+}
+
+/* desplegable con los datos del evento */
+#datos-interv .dropdown-toggle,
+#datos-interv .dropdown-toggle ~ .dropdown-menu {
+	border-radius: unset;
+	font-weight: var(--iiet-font-weight);
+}
+
+#datos-interv .dropdown-toggle:focus {
+	box-shadow: unset;
+}
+
+#datos-interv .dropdown-toggle ~ .dropdown-menu {
+	background-color: #4b5875;
+	border-color: #717a90;
+	min-width: 100%;
+}
+
+#datos-interv .dropdown-toggle ~ .dropdown-menu > .dropdown-item {
+	margin-bottom: 0;
+	color: #141415;
+	font-size: var(--iiet-font-size);
+	font-weight: var(--iiet-font-weight);
+}
+
+#datos-interv .dropdown-toggle ~ .dropdown-menu > .dropdown-item:hover {
+	background-color: unset;
+}
+
+#datos-interv .dropdown-toggle ~ .dropdown-menu > .dropdown-item > span:first-child {
+	font-weight: 400;
+}
+
+label[for=sc-nombre] {
+	margin-bottom: .168rem;
+}
+
+
+#resumen {
+	position: absolute;
+	top: -2rem;
+	left: -12rem;
+}
+
+#modal-crear-interv .custom-radio .custom-control-label {
+	font-weight: 400 !important;
+}
+
+#metodo-cc .card {
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+}

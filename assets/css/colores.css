@@ -1,0 +1,32 @@
+:root {
+	--iiet-gray: #6c757d;
+	--iiet-gray-dark: #343a40;
+	--iiet-primary: #1997c6;
+	--iiet-secondary: #6c757d;
+	--iiet-success: #1BC98E;
+	--iiet-info: #9F86FF;
+	--iiet-warning: #E4D836;
+	--iiet-danger: #F74656;
+	--iiet-light: #f8f9fa;
+	--iiet-dark: #1a1c22;
+	/*--iiet-bg-color: #252836;*/
+	--iiet-bg-color: #252830;
+	--iiet-text-color: #cfd2da;
+	--iiet-link-color: #1997c6;
+	--iiet-link-hover-color: #54d1ff;
+	/*--iiet-link-hover-color: #106382;*/
+	--iiet-form-ctrl-bg-color: #434857;
+	--iiet-form-ctrl-text-color: #efefef;
+	--iiet-form-ctrl-border-color: #434857;
+	--iiet-form-ctrl-focus-bg-color: #fff;
+	--iiet-form-ctrl-focus-text-color: #495057;
+	--iiet-font-size: 0.9rem;
+	--iiet-font-weight: 300;
+	--iiet-font-size-h1: 2.5rem;
+	--iiet-font-size-h2: 2rem;
+	--iiet-font-size-h3: 1.75rem;
+	--iiet-font-size-h4: 1.5rem;
+	--iiet-font-size-h5: 2.25rem;
+	--iiet-font-size-h6: 1rem;
+	--iiet-font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

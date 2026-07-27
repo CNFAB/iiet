@@ -1,36 +1,82 @@
 body > section {
     text-align: center;
-    background: #fff;
+    background: #000;
 }
 
 body > section > div {
-    margin: 20px 0;
+    background: #fff;
+}
+
+body > section > div:first-child {
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+body > section > div:last-child {
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 body > section > div > a {
     display: inline-block;
     vertical-align: top;
-    /*position: relative;
-    top: 50%;
-    transform: translateY(-50%);*/
     
     color: #fff;
     font-size: 1.3em;
     text-align: center;
     background: #ffae49;
     width: 20%;
-    height: 260px;
+    height: calc(100% - 30px);
     padding: 10px;
-    margin: 0 20px;
+    margin: 0 10px;
+
+    background-size: 45%;
+    background-position: center 70%;
+    background-repeat: no-repeat;
+
+    transition: all .2s ease-in-out;
 }
 
 body > section > div > a:hover {
     background: #00a0ff;
+    background-size: 60%;
+    background-position: center 70%;
+    background-repeat: no-repeat;
+
+
+    transition: all .3s ease-in-out;
 }
 
 body > section > div > a > span {
     display: block;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 20px;
+}
+
+body > section > div > a:hover > span {
+    color: #262626;
+}
+
+#intervenciones{
+    background-image: url('/iiet/assets/images/ic_carpeta.svg');
+}
+
+#pacientes {
+    background-image: url('/iiet/assets/images/ic_pacientes.svg');
+}
+
+#campanias {
+    background-image: url('/iiet/assets/images/ic_camioneta.svg');
+}
+
+#div_inst {
+    background-image: url('/iiet/assets/images/ic_divinst.svg');
+}
+
+#consultas {
+    background-image: url('/iiet/assets/images/ic_busqueda_bd.svg');
+}
+
+#usuarios {
+    background-image: url('/iiet/assets/images/ic_usuario.svg');
 }

@@ -71,6 +71,16 @@ ventana-modal .btn_submit * {
 	cursor: pointer;
 }
 
+ventana-modal .btn_submit > .load {
+	color: #fff0;
+	border-color: #4d7cbf;
+	background-color: #3585e6 !important;
+	background-image: url('/iiet/assets/images/loading.gif') !important;
+	background-size: 20%;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
 
 ventana-modal .grupo_radio label input[type=radio] {
     width: 15px;
@@ -100,6 +110,59 @@ ventana-modal .grupo_radio label:last-of-type [type=radio]:checked {
     color: #E3335D;
 }
 
+.divpolit > label {
+	width: 100%;
+}
+
+.divpolit > label > input {
+	position: relative;
+	left: 100px !important;
+	width: 500px !important;
+}
+
+.divpolit > label > select {
+	position: relative;
+	left: 55px;
+}
+
+.divpolit > label > .buscar {
+	position: absolute;
+	top: -5px;
+	right: 35px;
+
+	width: 35px;
+	height: 35px;
+
+	background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50%;
+	background-image: url('/iiet/assets/images/ic_lupa.svg');
+	background-color: #34bde6ff;
+
+	border: none;
+	border-radius: 50%;
+
+	cursor: pointer;
+
+	transition: .1s ease-in-out;
+}
+
+.divpolit > label > .buscar:hover {
+	background-size: 55%;
+	transition: .1s ease-in-out;
+}
+
+.divpolit > label > .buscar:active {
+	background-size: 45%;
+}
+
+.divpolit .mapa {
+	width: 700px;
+	height: 400px;
+
+	border: 1px solid #34bde6ff;
+}
+
 .select_lugar {
 	position: relative;
 
@@ -124,11 +187,12 @@ ventana-modal form fieldset:last-of-type {
 	margin-bottom: 10px;
 }
 
-.domicilio > label, .domicilio .select_lugar {
+.domicilio > label, .domicilio .select_lugar,
+.procedencia > label, .procedencia .select_lugar {
 	width: 370px;
 }
 
-.domicilio > .grupo_radio {
+.procedencia > .grupo_radio {
 	width: 380px;
 }
 

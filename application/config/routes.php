@@ -52,3 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'inicio';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['eventos'] = 'intervenciones';
+$route['eventos/copro'] = 'intervenciones/copro';
+$route['eventos/sangre'] = 'intervenciones/sangre';
+$route['eventos/biologia_molecular'] = 'intervenciones/biologia_molecular';
+$route['eventos/tratamiento'] = 'intervenciones/tratamiento';

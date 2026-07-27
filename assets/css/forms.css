@@ -1,0 +1,67 @@
+option {
+	color: var(--iiet-dark);
+}
+
+.modal form .form-row .form-group:first-child {
+	padding-right: 1rem !important;
+}
+
+.modal form .form-row .form-group:nth-child(2) {
+	padding-left: 1rem !important;
+}
+
+.valido,
+.was-validated :valid:not(fieldset) {
+	border-bottom: 2px solid var(--success);
+}
+
+.invalido,
+.invalido:focus,
+.was-validated :invalid:not(fieldset),
+.dni-duplicado {
+	/*border-bottom: 2px solid var(--danger);*/
+	border-bottom: 2px solid #e05c52 !important;
+}
+
+.invalid-feedback {
+	color: #e05c52;
+}
+
+.invalid-tooltip {
+	background-color: #d64c42;
+	color: #ffffff;
+	width: 300px !important;
+	line-height: 1.2rem;
+	box-shadow: 0 2px 5px 2px #464242;
+}
+
+.msj-dni-duplicado {
+	display: none;
+	width: 100%;
+	margin-top: 0.25rem;
+	font-size: 80%;
+	/*color: var(--danger);*/
+	color: #e05c52;
+}
+
+.invalido ~ .invalid-feedback,
+.invalido ~ .invalid-tooltip,
+.dni-duplicado ~ .msj-dni-duplicado {
+	display: block;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.dataTables_processing.card {
+	color: var(--iiet-text-color);
+	background-color: var(--dark);
+	border-radius: unset;
+}

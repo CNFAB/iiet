@@ -98,6 +98,7 @@
 			</article>
 		</section>
 	</div>
+	<a href="/iiet" id="ir_inicio" title="Ir a Inicio"></a>
 	<aside id="v_modales"></aside>
 	<div id="estado_guardar">
 		<span></span>

@@ -1,0 +1,83 @@
+.modal > .modal-dialog > .modal-content > .modal-body > .row > .col-5 > .list-group,
+.modal > .modal-dialog > .modal-content > .modal-body > .row > .col-5 > .list-group {
+  height: calc(100vh - 15rem);
+}
+
+.modal > .modal-dialog > .modal-content > .modal-body > .row > .col-2,
+.modal > .modal-dialog > .modal-content > .modal-body > .row > .col-2 {
+  align-self: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.list-group {
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.lista-datos-sel {
+  height: 5.8rem;
+}
+
+.item-vacio {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.item-vacio > p {
+  align-self: center;
+  margin: 0;
+}
+
+fieldset fieldset > legend {
+  font-size: .95rem !important;
+}
+
+form > fieldset {
+  border-color: #756f56;
+  border-width: 2px;
+}
+
+form .alert {
+  background-color: rgba(255, 255, 255, .1);
+}
+
+form .alert .close {
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  
+  color: #de0707;
+}
+
+#list-fechas-datos-sel > li,
+#list-edades-datos-sel > li {
+  text-align: center;
+}
+
+.edad-min,
+.edad-max {
+  text-align: right;
+}
+
+#btn-listo {
+  font-size: 1.5rem;
+  background-color: #b95807;
+}
+
+#btn-listo:hover {
+  font-size: 1.35rem;
+}
+
+#btn-exportar {
+  background-repeat: no-repeat;
+	background-size: 50%;
+	background-position: center;
+	background-image: url('/iiet/assets/images/ic_excel.svg');
+	background-color: #165a16;
+}
+
+#btn-exportar:hover {
+	background-size: 60%;
+}

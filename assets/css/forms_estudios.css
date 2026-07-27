@@ -30,6 +30,11 @@
     padding-right: 1.7em;
 }
 
+#form_estudios > #form_part_1 > label > input[type=number] {
+    width: 2em;
+    padding-right: 5px;
+}
+
 #form_estudios > #form_part_1 > label > input[name='nro_tubo'] {
     width: 6em;
     padding: 4px;
@@ -178,11 +183,6 @@
     top: 2px;
 }
 
-#form_estudios > div form-tratamientoprevio input[type=text] {
-    width: 12em;
-    padding: 2px;
-}
-
 #form_estudios > div form-tratamientoactual > :last-child {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -190,4 +190,47 @@
 
 #form_estudios > div form-tratamientoactual select {
     right: 4px;
+}
+
+form-mebendazol label > select,
+form-albendazol label > select,
+form-ivermectina label > select {
+    right: 4px !important;
+}
+
+form-tratamientoprevio label > input[type=text],
+form-diagpresunt label > input[type=text] {
+    padding-right: 2px !important;
+    width: 250px !important;
+}
+
+#contenedor_form.vacio {
+    position: relative;
+    height: calc(100% - 83px);
+}
+
+.msj_no_estudio {
+    position: relative;
+    top: 40%;
+    text-align: center;
+}
+
+.msj_no_estudio > p {
+    padding: 10px;
+}
+
+.msj_no_estudio > button,
+.msj_no_estudio > a {
+    display: inline-block;
+    color: #fff;
+    background: #ed8b1b;
+    padding: 5px 15px;
+    border: 1px solid #e8820c;
+}
+
+.msj_no_estudio > button:hover,
+.msj_no_estudio > a:hover {
+    background: #fe9319;
+    border: 1px solid #fd9113;
+    cursor: pointer;
 }

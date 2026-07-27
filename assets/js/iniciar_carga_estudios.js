@@ -366,6 +366,13 @@ function confirmarItemSeleccionado() {
 		valor:  inputBuscPaciente.value
 	};
 
+	Utils.ajax(
+		'/iiet/campanias/obtener_estudios_paciente/' + inputPaciente.value,
+		[],
+		function(e) {
+			console.log(e.target.response);
+	});
+
 	localStorage.setItem(esCampania ? 'campania_paciente' : 'externo_paciente', JSON.stringify(objPaciente));
 	resetFormEstudios();
 }

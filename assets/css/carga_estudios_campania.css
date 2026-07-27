@@ -37,7 +37,8 @@
 
 #cont_datos {
     text-align: center;
-    padding-top: 14px;
+    border-right: 15px solid transparent;
+    margin-bottom: 5px;
 }
 
 #cont_datos * {
@@ -45,6 +46,7 @@
 }
 
 #datos_campania,
+#datos_externo,
 #datos_paciente {
     padding: 5px 20px;
     background: #5da3ea;
@@ -55,6 +57,7 @@
     display: inline-block;
 }
 
+#datos_externo > h2,
 #datos_campania > h2,
 #datos_paciente > h2 {
     font-size: 1em;
@@ -62,6 +65,7 @@
     padding: 2px 0;
 }
 
+#datos_externo > div > p,
 #datos_campania > div > p,
 #datos_paciente > div > p {
     display: inline-block;
@@ -69,6 +73,7 @@
     font-size: .9rem;
 }
 
+#datos_externo > div > p:first-child,
 #datos_campania > div > p:first-child,
 #datos_paciente > div > p:first-child {
     width: 70%;
@@ -82,6 +87,11 @@
 #datos_campania > div > p:first-child > span:first-child {
     display: inline-block;
     width: 65px;
+}
+
+#datos_externo > div > p:first-child > span:first-child {
+    display: inline-block;
+    width: 90px;
 }
 
 #datos_campania > div > p > span:first-child {
@@ -162,7 +172,7 @@
 
 .grp_campos select {
     border-bottom: 1px solid #353535;
-    padding: 2px;
+    padding: 4px;
 }
 
 #grp_busqueda {
@@ -182,7 +192,33 @@
     padding: 5px;
 }
 
-#crear_paciente {
+#campbusq_ver_datos {
+    position: absolute;
+    right: -40px;
+    top: 0;
+
+    width: 32px;
+    height: 32px;
+    background: #000;
+    border: none;
+
+    background-image: url('/iiet/assets/images/ic_datos_personales.svg');
+    background-color: #f37700;
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#campbusq_ver_datos:hover {
+    background-size: 93%;
+    cursor: pointer;
+}
+
+#campbusq_ver_datos:active {
+    background-size: 80%;
+}
+
+#cb_crear_paciente {
     display: block;
     position: absolute;
     top: calc(100% - 1px);
@@ -199,13 +235,13 @@
     box-shadow: 0 2px 10px #000;
 }
 
-#crear_paciente img {
+#cb_crear_paciente img {
     position: absolute;
     top: calc(50% - 16px);
     left: 155px;
 }
 
-#crear_paciente:hover {
+#cb_crear_paciente:hover {
     background: #353535;
     border-color: #3e3e3e;
     color: #e6e5e5;
@@ -234,6 +270,7 @@ option {
 
 #cont_input {
     position: relative;
+    left: -5px;
 }
 
 .datalist {
@@ -276,15 +313,23 @@ option {
     color: #383737;
 }
 
-#otros_estudios {
+#acciones_intervencion {
     position: fixed;
     right: 40px;
-    top: 42%;
+    bottom: 130px;
+}
+
+#otros_estudios {
+    position: fixed;
+    left: 40px;
+    bottom: 130px;
 }
 
 #guardar_estudio,
 #btn_salir,
-#otros_estudios > a {
+#acciones_intervencion > *,
+#otros_estudios > *,
+#positividad {
     width: 55px;
     height: 55px;
     border: none;
@@ -307,10 +352,10 @@ option {
 
 #guardar_estudio {
     position: fixed;
-    bottom: 20px;
+    bottom: 30px;
     right: 40px;
 
-    background-image: url('/iiet/assets/images/ic_disquete.svg');
+    background-image: url('/iiet/assets/images/ic_upload.svg');
     background-color: #8400ff;
 
     transition: all 5s ease-in-out;
@@ -318,43 +363,226 @@ option {
 
 #btn_salir {
     position: fixed;
-    top: 90px;
+    top: 70px;
     right: 40px;
 
-    background-image: url('/iiet/assets/images/ic_salir.svg');
+    background-image: url('/iiet/assets/images/ic_casa.svg');
     background-color: #8400ff;
 }
 
-#otros_estudios > a:first-child {
+#link_diagpresunt {
+    background-image: url('/iiet/assets/images/ic_archivo.svg');
+    background-color: #11cfb6;
+}
+
+#link_copro {
     background-image: url('/iiet/assets/images/ic_microscopio.svg');
     background-color: #d68a2c;
 }
 
-#otros_estudios > a:nth-child(2) {
+#link_sangre {
     background-image: url('/iiet/assets/images/ic_sangre.svg');
     background-color: #e2222b;
 }
 
-#otros_estudios > a:nth-child(3) {
+#link_biologmolec {
     background-image: url('/iiet/assets/images/ic_adn.svg');
     background-color: #39b31a;
 }
 
-#otros_estudios > a:last-child {
+#link_tratamientos {
     background-image: url('/iiet/assets/images/ic_pastillas.svg');
     background-color: #2c8ca9;
 }
 
+#eliminar_intervencion {
+    background-image: url('/iiet/assets/images/ic_eliminar_archivo.svg');
+    background-color: #e2222b;
+}
+
+#nueva_intervencion {
+    background-image: url('/iiet/assets/images/ic_nuevo_doc.svg');
+    background-color: #2c8ca9;
+}
+
+#positividad {
+    position: fixed;
+    bottom: 300px;
+    right: 40px;
+    background-image: url('/iiet/assets/images/ic_positividad.svg');
+    background-color: #f19008;
+}
+
+
+#nueva_intervencion[data-disabled=disabled],
+#eliminar_intervencion[data-disabled=disabled] {
+    background-color: #8e8e8e !important;
+    pointer-events: none; 
+}
+
 #guardar_estudio:hover,
 #btn_salir:hover,
-#otros_estudios > a:hover {
+#acciones_intervencion > *:hover,
+#otros_estudios > *:hover,
+#positividad:hover {
     background-size: 60%;
     transition: all .1s ease-in-out;
 }
 
+
+#nueva_intervencion[data-disabled=disabled]:hover,
+#eliminar_intervencion[data-disabled=disabled]:hover {
+    background-size: 55% !important;
+}
+
 #guardar_estudio:active,
 #btn_salir:active,
-#otros_estudios > a:active {
+#acciones_intervencion > *:active,
+#otros_estudios > *:active,
+#positividad:active {
   	box-shadow: inset 0 5px 30px rgba(0,0,0,.2);
   	background-size: 45%;
+}
+
+.wc-paginacion_pagina {
+    text-align: center;
+    background: #b6fff1 !important;
+}
+
+#datos_campania,
+#datos_externo {
+    text-align: left;
+}
+
+#fue_tratado {
+    padding: 5px;
+    margin: 0 !important;
+    border: none !important;
+}
+
+#fue_tratado > div > label {
+    display: inline-block;
+    width: 40px;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+#fue_tratado > div > label > input {
+    width: 15px !important;
+}
+
+#fue_tratado > div > label:first-child > input:checked,
+#fue_tratado > div > label:first-child > input:hover {
+    color: #0a9e0a;
+    background: #0a9e0a;
+}
+
+#fue_tratado > div > label:last-child > input:checked,
+#fue_tratado > div > label:last-child > input:hover {
+    color: #fb2323;
+    background: #fb2323;
+}
+
+#form_part_4 > label {
+    text-align: center;
+    border: none;
+}
+
+#form_part_4 > label > span {
+    display: block;
+    padding: 10px;
+}
+
+#form_part_4 > label > select {
+    position: unset;
+}
+
+#vm_tipo_intervencion form > label {
+    display: block;
+    text-align: left;
+    padding-left: 70px;
+    width: 200px;
+}
+
+#vm_consult_ext form > label {
+    text-align: center;
+}
+
+#vm_consult_ext form > label > input {
+    position: unset;
+    padding-right: 0;
+    width: 9em;
+}
+
+#datos_positividad {
+    position: fixed;
+    bottom: 150px;
+    right: 120px;
+
+    background: #fff;
+    padding: 4px 10px;
+
+    box-shadow: 0 0 5px #000;
+}
+
+#datos_positividad:before {
+    position: absolute;
+    top: -30px;
+    left: 50px;
+    content: '';
+    width: 100px;
+    height: 45px;
+
+    background-image: url('/iiet/assets/images/ic_broche.png');
+}
+
+#datos_positividad > h1 {
+    display: block;
+    padding: 20px 0 0 0;
+    border: none;
+    margin: 0;
+}
+
+#datos_positividad > div {
+    width: 160px;
+    padding: 10px;
+    border: none;
+    margin: 0;
+}
+
+#datos_positividad > div > p {
+    text-align: left;
+    padding: 5px;
+}
+
+#datos_positividad > div > p:nth-child(3),
+#datos_positividad > div > p:nth-child(4) {
+    font-size: .8em;
+    padding-left: 25px;
+}
+
+#datos_positividad > div > p > span:first-child {
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80%;
+
+    margin-right: 5px;
+}
+
+.result_positivo {
+    background-image: url('/iiet/assets/images/ic_positivo.svg');
+}
+
+.result_negativo {
+    background-image: url('/iiet/assets/images/ic_negativo.svg');
+}
+
+.no_realizado {
+    background-image: url('/iiet/assets/images/ic_no_realizado.svg');
 }

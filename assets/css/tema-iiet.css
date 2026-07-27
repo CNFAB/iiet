@@ -1,0 +1,261 @@
+body {
+	font-family: var(--iiet-font-family-sans-serif);
+	font-size: var(--iiet-font-size);
+	font-weight: var(--iiet-font-weight);
+	background-color: var(--iiet-bg-color);
+	color: var(--iiet-text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: var(--iiet-font-weight);
+	color: var(--iiet-text-color);
+}
+
+h2 {
+	font-size: var(--iiet-font-size-h2);
+}
+
+a {
+	color: var(--iiet-link-color);
+}
+
+a:hover, a:active {
+	color: var(--iiet-link-hover-color);
+}
+
+.alert-success {
+	background-color: var(--iiet-success);
+	border-color: #05290c;
+	color: rgb(4, 30, 10);
+}
+
+.form-control,
+.custom-select {
+	background-color: var(--iiet-form-ctrl-hover-bg-color);
+	color: var(--iiet-form-ctrl-text-color);
+	border-color: var(--iiet-form-ctrl-border-color);
+	font-weight: var(--iiet-font-weight);
+	border-radius: unset;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	font-size: var(--iiet-font-size);
+}
+
+.form-control:focus,
+.custom-select:focus {
+	border: unset;
+	border-bottom: 2px solid var(--iiet-primary);
+	box-shadow: unset !important;
+	background-color: inherit;
+	color: #fff !important;
+}
+
+form label {
+	font-weight: 400 !important;
+}
+
+legend {
+	color: var(--iiet-text-color);
+}
+
+
+.modal {
+	background-color: #ffffff73;
+}
+
+.modal-header {
+	border-bottom-color: #3d4146;
+}
+
+.modal-header .close {
+	color: #fff;
+}
+
+.modal-content,
+.page-link {
+	background-color: var(--iiet-bg-color) !important;
+}
+
+.modal-footer {
+	border-top-color: #3d4146;
+	padding: 0.5rem 1rem;
+}
+
+.page-link {
+	color: var(--iiet-gray);
+	border-color: var(--iiet-gray) !important;
+}
+
+.page-item.active .page-link {
+	background-color: var(--iiet-gray) !important;
+	border-color: #a6a7ab !important;
+	color: var(--iiet-text-color) !important;
+}
+
+.page-link:hover {
+	color: #fff;
+	background-color: var(--iiet-form-ctrl-bg-color) !important;
+}
+
+.btn {
+	/*border-radius: unset;*/
+}
+
+.btn-outline-danger {
+	/*border: none;*/
+}
+
+.btn-circle {
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+
+	width: 3rem;
+	height: 3rem;
+	border-radius: 100%;
+
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+
+	transition: all .3s ease-in-out;
+}
+
+.btn-circle:hover,
+.btn-circle:active {
+	font-size: 1.2rem;
+
+	transition: all .3s ease-in-out;
+}
+
+
+.nav-link.active {
+	/*border-bottom: 2px solid var(--iiet-primary);*/
+}
+
+header {
+	border-bottom: 2px solid var(--iiet-primary);
+}
+
+.table th {
+	font-weight: 400;
+}
+
+.table > thead th.sorting_asc,
+.table > thead th.sorting_desc {
+	border-top-color: #81cde8 !important;
+	border-bottom-color: #81cde8 !important;
+	color: #81cde8;
+	background-color: rgba(255, 255, 255, 0.06);
+}
+
+.table > tbody .sorting_1 {
+	background-color: rgba(255, 255, 255, 0.06);
+	border-top-color: #81cde8 !important;
+	color: #81cde8;
+}
+
+fieldset {
+	border: 1px solid var(--iiet-form-ctrl-border-color);
+	padding: 0 1rem 1rem;
+}
+
+legend.col-form-legend {
+	display: inline-block !important;
+	width: auto;
+	padding: 0 10px;
+	font-size: 1.2rem;
+}
+
+option {
+	color: var(--dark);
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* #47958c: celeste */
+/* #4e9b4a: verde */
+/* #919b49: amarillo */
+/* #9f5251: rojo */
+
+.table th {
+	border-top-color: #434857;
+	border-bottom-color: #434857 !important;
+}
+
+.table td {
+	border-top-color: #434857;
+}
+
+
+
+.navbar-dark .navbar-nav .nav-link.active {
+	color: var(--iiet-text-color);
+}
+
+.dropdown-menu {
+	/*background-color: #4b5875;*/
+	background-color: #485357;
+	border: 1px solid #717a90;
+}
+
+.dropdown-menu * {
+	color: #dadada;
+}
+
+.dropdown-menu div > .cerrar-sesion {
+	background-color: #b73d34;
+	border-color: #a73930;
+	color: #d8cece;
+}
+
+.dropdown-menu > a {
+	color: #cf8ae9;
+}
+
+#perfil-usuario.dropdown {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 5rem;
+	height: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+
+	background-color: rgba(255, 255, 255, .1);
+}
+
+#perfil-usuario.dropdown > a {
+	color: var(--text-color) !important;
+}
+
+#perfil-usuario.dropdown > .dropdown-menu {
+	min-width: 330px;
+}
+
+#perfil-usuario .conmutador {
+	background-color: rgba(0, 0, 0, .2);
+}
+
+#perfil-usuario .conmutador.disabled {
+	background-color: #f07309;
+	color: #fff;
+}
+
+.dataTables_filter .form-control {
+	width: 25rem !important;
+}

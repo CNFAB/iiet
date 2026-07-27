@@ -1,0 +1,112 @@
+.condicion {
+    padding: 15px 10px;
+    width: 450px;
+    border: 1px solid #000;
+    border-top: none;
+}
+
+.condicion > h6 {
+    font-size: 1.1em;
+    text-align: left;
+}
+
+.condicion > div {
+    text-align: center;
+}
+
+.condicion > div > .proposicion {
+    display: inline-block;
+    padding: 5px;
+}
+
+.condicion > div > .proposicion > span {
+    display: block;
+}
+
+.condicion > div > .proposicion > button {
+    width: 20px;
+    height: 20px;
+    border: none;
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+}
+
+.condicion > div > .proposicion > .positivo {
+    background-image: url('/iiet/assets/images/ic_positivo.svg');
+}
+
+.condicion > div > .proposicion > .negativo {
+    background-image: url('/iiet/assets/images/ic_negativo.svg');
+}
+
+.condicion > div > .proposicion > .no_realizado {
+    background-image: url('/iiet/assets/images/ic_no_realizado.svg');
+}
+
+.condicion > div > .proposicion > button:hover {
+    background-color: transparent !important;
+}
+
+.condicion > div > .proposicion > button:active {
+    background-size: 80%;
+}
+
+.proposicion_compleja {
+    position: relative;
+}
+
+.proposicion_compleja > .oper_log {
+    position: absolute;
+    bottom: -20px;
+    left: calc(50% - 20px);
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+}
+
+.condicion > div > .oper_log {
+    margin: 0 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.proposicion_compleja > .oper_log:after,
+.condicion > div > .oper_log:after {
+    content: none;
+}
+
+.proposicion_compleja > .oper_log:hover:before,
+.condicion > div > .oper_log:hover:before {
+    background-size: 95%;
+}
+
+.proposicion_compleja > .oper_log:active:before,
+.condicion > div > .oper_log:active:before {
+    background-size: 80%;
+}
+
+.proposicion_compleja > .oper_log:before,
+.condicion > div > .oper_log:before {
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center center;
+    background-image: url('/iiet/assets/images/ic_disyuncion.svg');
+
+    border: none;
+    transition: .1s ease-in;
+}
+
+.proposicion_compleja > .oper_log:checked:before,
+.condicion > div > .oper_log:checked:before {
+    background-image: url('/iiet/assets/images/ic_conjuncion.svg');
+}
+
+.condicion > div > .proposicion > label > span {
+    margin: 0 5px;
+}
+
+.numero {
+    width: 3em;
+}
