@@ -219,12 +219,32 @@ class Intervenciones extends CI_Controller {
 	}
 
 	public function obtener_copro($intervencion) {
-		$copro = $this->copro_model->obtener_datos_copro($intervencion);
-		$json  = json_encode($copro);
-
-		$this->output->set_content_type('application/json');
-		$this->output->set_output($json);
-	}
+    $copro = $this->copro_model->obtener_datos_copro($intervencion);
+    
+    if (!$copro) {
+        $this->output->set_content_type('application/json');
+        $this->output->set_output(json_encode(null));
+        return;
+    }
+    
+    // Asegurar que concentrado_cantidad existe
+    if (!isset($copro['concentrado_cantidad']) || $copro['concentrado_cantidad'] === FALSE) {
+        $copro['concentrado_cantidad'] = [];
+    }
+    
+    // Agregar las cantidades dentro del objeto concentrado
+    if (isset($copro['concentrado']) && is_array($copro['concentrado'])) {
+        foreach ($copro['concentrado_cantidad'] as $key => $value) {
+            if ($value) {
+                $copro['concentrado'][$key . '_cantidad'] = $value;
+            }
+        }
+    }
+    
+    $json = json_encode($copro);
+    $this->output->set_content_type('application/json');
+    $this->output->set_output($json);
+}
 
 	public function obtener_sangre($intervencion) {
 		$sangre = $this->sangre_model->obtener_datos_sangre($intervencion);

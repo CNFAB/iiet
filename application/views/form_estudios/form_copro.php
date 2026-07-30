@@ -13,7 +13,7 @@
 			<span>Consistencia</span>
 			<select name="consistencia">
 				<option value="SOLIDA">SOLIDA</option>
-				<option value="PASTOSA">PASTOSA</option>
+				<option value="PASTOSA">PASTOSAss</option>
 				<option value="LIQUIDA">LIQUIDA</option>
 			</select>
 		</label>

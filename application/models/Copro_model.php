@@ -51,6 +51,8 @@ class Copro_model extends CI_Model {
 		$datos_baerman     = isset($datos['baerman'])     ? $datos['baerman']     : false;
 		$datos_placaagar   = isset($datos['placa_agar'])  ? $datos['placa_agar']  : false;
 
+		$datos_cantidad    = isset($datos['concentrado_cantidad']) ? $datos['concentrado_cantidad'] : false;
+
 		$this->cargar_concentrado($id_interv, $datos_concentrado);
 		$this->cargar_mc_master($id_interv, $datos_mcmaster);
 		$this->cargar_kato_katz($id_interv, $datos_katokatz);
@@ -58,6 +60,7 @@ class Copro_model extends CI_Model {
 		$this->cargar_baerman($id_interv, $datos_baerman);
 		$this->cargar_placa_agar($id_interv, $datos_placaagar);
 
+		$this->cargar_concentrado_cantidad($id_interv, $datos_cantidad);
 		if($this->db->trans_status() === FALSE) {
 			$this->db->trans_rollback();
 
@@ -131,6 +134,46 @@ class Copro_model extends CI_Model {
 
 			else
 				$this->db->insert('mc_master', $datos_mc_master);
+		}
+	}
+
+	/**
+	 * Cargar/Actualizar cantidad del concentrado (ESCASO/FRECUENTE/ABUNDANTE)
+	 * @param int $id_copro - ID del coproparasitologico
+	 * @param array|false $datos - Datos de cantidad o false si no hay
+	 */
+	private function cargar_concentrado_cantidad($id_copro, $datos) {
+		$ya_existe = $this->existe_metodo('concentrado_cantidad', $id_copro);
+
+		// Si no hay datos y ya existe, eliminar
+		if (!$datos && $ya_existe) {
+			$this->db->where('copro', $id_copro);
+			$this->db->delete('concentrado_cantidad');
+			return;
+		}
+
+		// Si hay datos, guardar o actualizar
+		if ($datos !== false && !empty($datos)) {
+			$datos_cantidad = array(
+				'copro' => $id_copro,
+				'ascaris' => isset($datos['ascaris']) && !empty($datos['ascaris']) ? $datos['ascaris'] : null,
+				'giardia' => isset($datos['giardia']) && !empty($datos['giardia']) ? $datos['giardia'] : null,
+				'entamoebacoli' => isset($datos['entamoebacoli']) && !empty($datos['entamoebacoli']) ? $datos['entamoebacoli'] : null,
+				'uncinarias' => isset($datos['uncinarias']) && !empty($datos['uncinarias']) ? $datos['uncinarias'] : null,
+				'strongyloides' => isset($datos['strongyloides']) && !empty($datos['strongyloides']) ? $datos['strongyloides'] : null,
+				'hymenolepis' => isset($datos['hymenolepis']) && !empty($datos['hymenolepis']) ? $datos['hymenolepis'] : null,
+				'trichuris' => isset($datos['trichuris']) && !empty($datos['trichuris']) ? $datos['trichuris'] : null,
+				'enterobius' => isset($datos['enterobius']) && !empty($datos['enterobius']) ? $datos['enterobius'] : null,
+				'taenia' => isset($datos['taenia']) && !empty($datos['taenia']) ? $datos['taenia'] : null,
+				'isosporabelli' => isset($datos['isosporabelli']) && !empty($datos['isosporabelli']) ? $datos['isosporabelli'] : null
+			);
+
+			if ($ya_existe) {
+				$this->db->where('copro', $id_copro);
+				$this->db->update('concentrado_cantidad', $datos_cantidad);
+			} else {
+				$this->db->insert('concentrado_cantidad', $datos_cantidad);
+			}
 		}
 	}
 
@@ -286,6 +329,14 @@ class Copro_model extends CI_Model {
 		$datos_copro['baerman']      = $this->obtener_datos_metodo($intervencion, 'baerman');
 		$datos_copro['placa_agar']   = $this->obtener_datos_metodo($intervencion, 'placa_agar');
 
+		$datos_copro['concentrado_cantidad'] = $this->obtener_datos_metodo($intervencion, 'concentrado_cantidad');
+		//$datos_copro['concentrado_cantidad'] = $this->obtener_datos_metodo($intervencion, 'concentrado_cantidad');
+		 if ($datos_copro['concentrado_cantidad'] === FALSE) {
+        $datos_copro['concentrado_cantidad'] = [];
+        error_log("concentrado_cantidad: vacío (no hay datos)");
+    } else {
+        error_log("concentrado_cantidad: " . print_r($datos_copro['concentrado_cantidad'], true));
+    }
 		return $datos_copro;
 	}
 
@@ -298,6 +349,7 @@ class Copro_model extends CI_Model {
 
 	public function eliminar($intervencion) {
 		$this->eliminar_metodo($intervencion, 'concentrado');
+		$this->eliminar_metodo($intervencion, 'concentrado_cantidad');
 		$this->eliminar_metodo($intervencion, 'mc_master');
 		$this->eliminar_metodo($intervencion, 'kato_katz');
 		$this->eliminar_metodo($intervencion, 'harada_mori');

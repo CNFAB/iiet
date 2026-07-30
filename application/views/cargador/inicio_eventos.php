@@ -57,7 +57,7 @@
             position: absolute;
             left: 0;
             width: 100%;
-            height: 0%;  /* ← INICIALMENTE 0% (abierto, no se ve) */
+            height: 0%;  
             background: rgba(0, 0, 0, 0.85);
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 2;

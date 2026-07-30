@@ -495,4 +495,5 @@
 <script src="/iiet/assets/js/FormPaciente.js"></script>
 <script src="/iiet/assets/js/FormBuscPaciente.js"></script>
 <script src="/iiet/assets/js/config-historia-paciente.js" type="module"></script>
+<script type="module" src="/iiet/assets/js/concentrado_ocultar.js"></script>
 </html>

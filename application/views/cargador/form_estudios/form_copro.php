@@ -38,81 +38,221 @@
 						</h5>
 					</div>
 					<div id="result-cc" class="collapse" data-parent="#metodo-cc">
-						<fieldset class="card-body cuerpo-metodo" disabled>
-							<input type="hidden" name="concentrado"/><!-- campo auxiliar -->
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-ascaris" class="custom-control-input" name="concentrado[ascaris]" value="true" />
-									<label for="cc-ascaris" class="custom-control-label">Ascaris</label>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-giardia" class="custom-control-input" name="concentrado[giardia]" value="true" />
-									<label for="cc-giardia" class="custom-control-label">Giardia</label>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-coli" class="custom-control-input" name="concentrado[entamoebacoli]" value="true" />
-									<label for="cc-coli" class="custom-control-label">Entamoeba Coli</label>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-uncinarias" class="custom-control-input" name="concentrado[uncinarias]" value="true" />
-									<label for="cc-uncinarias" class="custom-control-label">Uncinarias</label>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-strongyloides" class="custom-control-input" name="concentrado[strongyloides]" value="true" />
-									<label for="cc-strongyloides" class="custom-control-label">Strongyloides</label>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-hymenolepis" class="custom-control-input" name="concentrado[hymenolepis]" value="true" />
-									<label for="cc-hymenolepis" class="custom-control-label">Hymenolepis</label>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-trichuris" class="custom-control-input" name="concentrado[trichuris]" value="true" />
-									<label for="cc-trichuris" class="custom-control-label">Trichuris</label>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-enterobius" class="custom-control-input" name="concentrado[enterobius]" value="true" />
-									<label for="cc-enterobius" class="custom-control-label">Enterobius</label>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-taenia" class="custom-control-input" name="concentrado[taenia]" value="true" />
-									<label for="cc-taenia" class="custom-control-label">Taenia</label>
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="col-12 custom-control custom-checkbox">
-									<input type="checkbox" id="cc-isosporabelli" class="custom-control-input" name="concentrado[isosporabelli]" value="true" />
-									<label for="cc-isosporabelli" class="custom-control-label">Isospora belli</label>
-								</div>
-							</div>
-							<!--<div class="form-row">
-								<div class="col-12">
-									<label for="cc-clasificacion">Clasificación</label>
-									<select id="cc-clasificacion" class="custom-select grupo-control" name="concentrado[clasificacion]" required="required">
-										<option></option>
-										<option value="ESCASO">ESCASOS</option>
-										<option value="FRECUENTE">FRECUENTES</option>
-										<option value="ABUNDANTE">ABUNDANTES</option>
-									</select>
-								</div>
-							</div>-->
-						</fieldset>
-					</div>
+    <fieldset class="card-body cuerpo-metodo" disabled>
+        <input type="hidden" name="concentrado"/><!-- campo auxiliar -->
+        
+        <!-- Ascaris -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-ascaris" class="custom-control-input" name="concentrado[ascaris]" value="true" />
+                    <label for="cc-ascaris" class="custom-control-label">Ascaris lumbricoides</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-ascaris-cantidad" 
+                        name="concentrado_cantidad[ascaris]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Giardia -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-giardia" class="custom-control-input" name="concentrado[giardia]" value="true" />
+                    <label for="cc-giardia" class="custom-control-label">Giardia lamblia</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-giardia-cantidad" 
+                        name="concentrado_cantidad[giardia]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Entamoeba Coli -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-coli" class="custom-control-input" name="concentrado[entamoebacoli]" value="true" />
+                    <label for="cc-coli" class="custom-control-label">Entamoeba Coli</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-coli-cantidad" 
+                        name="concentrado_cantidad[entamoebacoli]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Uncinarias -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-uncinarias" class="custom-control-input" name="concentrado[uncinarias]" value="true" />
+                    <label for="cc-uncinarias" class="custom-control-label">Uncinarias</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-uncinarias-cantidad" 
+                        name="concentrado_cantidad[uncinarias]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Strongyloides -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-strongyloides" class="custom-control-input" name="concentrado[strongyloides]" value="true" />
+                    <label for="cc-strongyloides" class="custom-control-label">Strongyloides stercolaris</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-strongyloides-cantidad" 
+                        name="concentrado_cantidad[strongyloides]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Hymenolepis -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-hymenolepis" class="custom-control-input" name="concentrado[hymenolepis]" value="true" />
+                    <label for="cc-hymenolepis" class="custom-control-label">Hymenolepis nana</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-hymenolepis-cantidad" 
+                        name="concentrado_cantidad[hymenolepis]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Trichuris -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-trichuris" class="custom-control-input" name="concentrado[trichuris]" value="true" />
+                    <label for="cc-trichuris" class="custom-control-label">Trichuris trichiura</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-trichuris-cantidad" 
+                        name="concentrado_cantidad[trichuris]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Enterobius -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-enterobius" class="custom-control-input" name="concentrado[enterobius]" value="true" />
+                    <label for="cc-enterobius" class="custom-control-label">Enterobius vermicularis</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-enterobius-cantidad" 
+                        name="concentrado_cantidad[enterobius]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Taenia -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-taenia" class="custom-control-input" name="concentrado[taenia]" value="true" />
+                    <label for="cc-taenia" class="custom-control-label">Taenia</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-taenia-cantidad" 
+                        name="concentrado_cantidad[taenia]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Isospora belli -->
+        <div class="form-row align-items-center mb-2">
+            <div class="col-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" id="cc-isosporabelli" class="custom-control-input" name="concentrado[isosporabelli]" value="true" />
+                    <label for="cc-isosporabelli" class="custom-control-label">Isospora belli</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <select class="custom-select custom-select-sm" 
+                        id="cc-isosporabelli-cantidad" 
+                        name="concentrado_cantidad[isosporabelli]" 
+                        disabled>
+                    <option value="">Cantidad</option>
+                    <option value="ESCASO">ESCASO</option>
+                    <option value="FRECUENTE">FRECUENTE</option>
+                    <option value="ABUNDANTE">ABUNDANTE</option>
+                </select>
+            </div>
+        </div>
+        
+    </fieldset>
+</div>
 				</div>
 			</div>
 		</div>
@@ -128,7 +268,7 @@
 						<fieldset class="card-body cuerpo-metodo" disabled>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="mm-ascaris">Ascaris</label>
+									<label for="mm-ascaris">Ascaris lumbricoides</label>
 									<div class="grupo-control">
 										<input type="number" id="mm-ascaris" class="form-control" name="mc_master[ascaris]" required="required" min="0" />
 										<span>hpg</span>
@@ -146,7 +286,7 @@
 							</div>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="mm-hymenolepis">Hymenolepis</label>
+									<label for="mm-hymenolepis">Hymenolepis nana</label>
 									<div class="grupo-control">
 										<input type="number" id="mm-hymenolepis" class="form-control" name="mc_master[hymenolepis]" required="required" min="0" />
 										<span>hpg</span>
@@ -155,7 +295,7 @@
 							</div>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="mm-trichuris">Trichuris</label>
+									<label for="mm-trichuris">Trichuris trichiura</label>
 									<div class="grupo-control">
 										<input type="number" id="mm-trichuris" class="form-control" name="mc_master[trichuris]" required="required" min="0" />
 										<span>hpg</span>
@@ -164,7 +304,7 @@
 							</div>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="mm-enterobius">Enterobius</label>
+									<label for="mm-enterobius">Enterobius vermicularis</label>
 									<div class="grupo-control">
 										<input type="number" id="mm-enterobius" class="form-control" name="mc_master[enterobius]" required="required" min="0" />
 										<span>hpg</span>
@@ -209,7 +349,7 @@
 						<fieldset class="card-body cuerpo-metodo" disabled>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="kk-ascaris">Ascaris</label>
+									<label for="kk-ascaris">Ascaris lumbricoides</label>
 									<div class="grupo-control">
 										<input type="number" id="kk-ascaris" class="form-control" name="kato_katz[ascaris]" required="required" min="0" />
 										<span>hpg</span>
@@ -227,7 +367,7 @@
 							</div>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="kk-hymenolepis">Hymenolepis</label>
+									<label for="kk-hymenolepis">Hymenolepis nana</label>
 									<div class="grupo-control">
 										<input type="number" id="kk-hymenolepis" class="form-control" name="kato_katz[hymenolepis]" required="required" min="0" />
 										<span>hpg</span>
@@ -236,7 +376,7 @@
 							</div>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="kk-trichuris">Trichuris</label>
+									<label for="kk-trichuris">Trichuris trichiura</label>
 									<div class="grupo-control">
 										<input type="number" id="kk-trichuris" class="form-control" name="kato_katz[trichuris]" required="required" min="0" />
 										<span>hpg</span>
@@ -245,7 +385,7 @@
 							</div>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="kk-enterobius">Enterobius</label>
+									<label for="kk-enterobius">Enterobius vermicularis</label>
 									<div class="grupo-control">
 										<input type="number" id="kk-enterobius" class="form-control" name="kato_katz[enterobius]" required="required" min="0" />
 										<span>hpg</span>
@@ -292,7 +432,7 @@
 						<fieldset class="card-body cuerpo-metodo" disabled>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="hm-strongyloides">Strongyloides</label>
+									<label for="hm-strongyloides">Strongyloides stercolaris</label>
 									<select id="hm-strongyloides" class="custom-select grupo-control" name="harada_mori[strongyloides]" required="required">
 										<option></option>
 										<option value="+">+</option>
@@ -304,7 +444,7 @@
 							</div>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="hm-ancylostoma">Ancylostoma</label>
+									<label for="hm-ancylostoma">Ancylostoma duodenale</label>
 									<select id="hm-ancylostoma" class="custom-select grupo-control" name="harada_mori[ancylostoma]" required="required">
 										<option></option>
 										<option value="+">+</option>
