@@ -1,6 +1,8 @@
 <form id="form_estudios" name="form_sangre" is="form-asinc" action="/iiet/intervenciones/cargar_sangre" class="d-none">
 	<div class="form-row justify-content-center">
 		<div class="form-group col-3">
+			<label for="fb-fuente" class="mr-2">funcion venosa y funcion digital</label> 
+
 			<label for="fs-fecha" class="mr-2">Fecha</label>
 			<input type="date" name="fecha" id="fs-fecha" class="form-control" required="required" />
 		</div>

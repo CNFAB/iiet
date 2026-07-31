@@ -193,7 +193,7 @@
             <div class="col-6">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" id="cc-enterobius" class="custom-control-input" name="concentrado[enterobius]" value="true" />
-                    <label for="cc-enterobius" class="custom-control-label">Enterobius vermicularis</label>
+                    <label for="cc-enterobius" class="custom-control-label">Enterobius vermicu.</label>
                 </div>
             </div>
             <div class="col-6">
@@ -320,15 +320,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-row">
-								<div class="col-12">
-									<label for="mm-isosporabelli">Isospora belli</label>
-									<div class="grupo-control">
-										<input type="number" id="mm-isosporabelli" class="form-control" name="mc_master[isosporabelli]" required="required" min="0" />
-										<span>hpg</span>
-									</div>
-								</div>
-							</div>
 						</fieldset>
 						<div class="card-footer btn_negativo text-center">
 							<button type="button" class="btn-negativo btn btn-link">Completar con Negativos</button>
@@ -401,7 +392,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-row">
+							<!-- <div class="form-row">
 								<div class="col-12">
 									<label for="kk-isosporabelli">Isospora belli</label>
 									<div class="grupo-control">
@@ -409,7 +400,7 @@
 										<span>hpg</span>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</fieldset>
 						<div class="card-footer btn_negativo text-center">
 							<button type="button" class="btn-negativo btn btn-link">Completar con Negativos</button>
@@ -498,7 +489,7 @@
 						<fieldset class="card-body cuerpo-metodo" disabled>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="bm-strongyloides">Strongyloides</label>
+									<label for="bm-strongyloides">Strongyloides stercolaris</label>
 									<select id="bm-strongyloides" class="custom-select grupo-control" name="baerman[strongyloides]" required="required">
 										<option></option>
 										<option value="+">+</option>
@@ -508,10 +499,11 @@
 									</select>
 								</div>
 							</div>
+							
 							<div class="form-row">
 								<div class="col-12">
-									<label for="bm-ancylostoma">Ancylostoma</label>
-									<select id="bm-ancylostoma" class="custom-select grupo-control" name="baerman[ancylostoma]" required="required">
+									<label for="bm-uncinarias">uncinarias</label>
+									<select id="bm-uncinarias" class="custom-select grupo-control" name="baerman[uncinarias]" required="required">
 										<option></option>
 										<option value="+">+</option>
 										<option value="++">++</option>
@@ -520,18 +512,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="form-row">
-								<div class="col-12">
-									<label for="bm-necator">Necator</label>
-									<select id="bm-necator" class="custom-select grupo-control" name="baerman[necator]" required="required">
-										<option></option>
-										<option value="+">+</option>
-										<option value="++">++</option>
-										<option value="+++">+++</option>
-										<option value="NEGATIVO">NEGATIVO</option>
-									</select>
-								</div>
-							</div>
+							
 						</fieldset>
 						<div class="card-footer btn_negativo text-center">
 							<button type="button" class="btn-negativo btn btn-link">Completar con Negativos</button>
@@ -552,7 +533,7 @@
 						<fieldset class="card-body cuerpo-metodo" disabled>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="pa-strongyloides">Strongyloides</label>
+									<label for="pa-strongyloides">Strongyloides stercolaris</label>
 									<select id="pa-strongyloides" class="custom-select grupo-control" name="placa_agar[strongyloides]" required="required">
 										<option></option>
 										<option value="+">+</option>
@@ -564,7 +545,7 @@
 							</div>
 							<div class="form-row">
 								<div class="col-12">
-									<label for="pa-ancylostoma">Ancylostoma</label>
+									<label for="pa-ancylostoma">Ancylostoma duodenale</label>
 									<select id="pa-ancylostoma" class="custom-select grupo-control" name="placa_agar[ancylostoma]" required="required">
 										<option></option>
 										<option value="+">+</option>

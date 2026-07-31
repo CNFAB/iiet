@@ -43,11 +43,15 @@ McMaster.prototype.deshabilitar = function() {
 };
 
 McMaster.prototype.cargarDatos = function(mcMaster) {
-	this.campos[0].value = mcMaster.ascaris;
-	this.campos[1].value = mcMaster.uncinarias;
-	this.campos[2].value = mcMaster.hymenolepis;
-	this.campos[3].value = mcMaster.trichuris;
-	this.campos[4].value = mcMaster.enterobius;
-	this.campos[5].value = mcMaster.taenia;
-	this.campos[6].value = mcMaster.isosporabelli;
+	for(var i = 0; i < this.campos.length; ++i) {
+		var input = this.campos[i];
+		var match = input.name.match(/\[(\w+)\]/);
+
+		if(!match) continue;
+
+		var campo = match[1];
+
+		if(mcMaster[campo] !== undefined && mcMaster[campo] !== null)
+			input.value = mcMaster[campo];
+	}
 };

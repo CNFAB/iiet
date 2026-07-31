@@ -6,7 +6,7 @@ application/config/database.php
 application/config/development/
 application/config/production/
 application/config/testing/
-
+application/session/
 # ============================================
 # LOGS Y CACHÉ DE LA APLICACIÓN
 # ============================================
@@ -138,4 +138,4 @@ uploads/
 images/uploads/
 media/
 temp/
-tmp/
+tmp/"application/session/" 

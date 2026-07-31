@@ -124,7 +124,7 @@ class Copro_model extends CI_Model {
 				'trichuris'     => $datos['trichuris'],
 				'enterobius'    => $datos['enterobius'],
 				'taenia'        => $datos['taenia'],
-				'isosporabelli' => $datos['isosporabelli']
+				'isosporabelli' => isset($datos['isosporabelli']) ? $datos['isosporabelli'] : 0   
 			);
 
 			if($ya_existe) {
@@ -194,7 +194,7 @@ class Copro_model extends CI_Model {
 				'trichuris'     => $datos['trichuris'],
 				'enterobius'    => $datos['enterobius'],
 				'taenia'        => $datos['taenia'],
-				'isosporabelli' => $datos['isosporabelli']
+				'isosporabelli' => isset($datos['isosporabelli']) ? $datos['isosporabelli'] : 0 
 			);
 
 			if($ya_existe) {
@@ -234,7 +234,7 @@ class Copro_model extends CI_Model {
 		}
 	}
 
-	private function cargar_baerman($id_copro, $datos)	{
+		private function cargar_baerman($id_copro, $datos)	{
 		$ya_existe = $this->existe_metodo('baerman', $id_copro);
 
 		if(!$datos && $ya_existe) {
@@ -246,8 +246,9 @@ class Copro_model extends CI_Model {
 			$datos_baerman = array(
 				'copro'         => $id_copro,
 				'strongyloides' => $datos['strongyloides'],
-				'ancylostoma'   => $datos['ancylostoma'],
-				'necator'       => $datos['necator']
+				'ancylostoma'   => isset($datos['ancylostoma']) ? $datos['ancylostoma'] : 'NEGATIVO',
+				'necator'       => isset($datos['necator'])     ? $datos['necator']     : 'NEGATIVO',
+				'uncinarias'    => isset($datos['uncinarias'])  ? $datos['uncinarias']  : 'NEGATIVO'
 			);
 
 			if($ya_existe) {
@@ -330,6 +331,7 @@ class Copro_model extends CI_Model {
 		$datos_copro['placa_agar']   = $this->obtener_datos_metodo($intervencion, 'placa_agar');
 
 		$datos_copro['concentrado_cantidad'] = $this->obtener_datos_metodo($intervencion, 'concentrado_cantidad');
+		
 		//$datos_copro['concentrado_cantidad'] = $this->obtener_datos_metodo($intervencion, 'concentrado_cantidad');
 		 if ($datos_copro['concentrado_cantidad'] === FALSE) {
         $datos_copro['concentrado_cantidad'] = [];

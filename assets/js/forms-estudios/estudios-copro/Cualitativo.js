@@ -43,10 +43,15 @@ Cualitativo.prototype.deshabilitar = function() {
 };
 
 Cualitativo.prototype.cargarDatos = function(caulitativo) {
-	this.campos[0].value = caulitativo.strongyloides;
-	this.campos[1].value = caulitativo.ancylostoma;
-	this.campos[2].value = caulitativo.necator;
+	for(var i = 0; i < this.campos.length; ++i) {
+		var select = this.campos[i];
+		var match = select.name.match(/\[(\w+)\]/);
 
-	if(caulitativo.enterobius)
-		this.campos[3].value = caulitativo.enterobius;
+		if(!match) continue;
+
+		var campo = match[1];
+
+		if(caulitativo[campo] !== undefined && caulitativo[campo] !== null)
+			select.value = caulitativo[campo];
+	}
 };
